@@ -13,7 +13,7 @@ namespace HBGDatorServiceDAL
         public int AdminLevel { get; set; }
         public bool IsActive { get; set; }
         public string Email { get; set; }
-       
+
 
         public User()
         {
@@ -27,7 +27,7 @@ namespace HBGDatorServiceDAL
             AdminLevel = adminLevel;
             Email = email;
             IsActive = true;
-         
+
         }
     }
 }

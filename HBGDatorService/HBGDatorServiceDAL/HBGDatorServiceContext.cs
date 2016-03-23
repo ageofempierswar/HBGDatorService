@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using HBGDatorServiceDAL.POCO;
 namespace HBGDatorServiceDAL
 {
-    class HBGDatorServiceContext: DbContext 
+    class HBGDatorServiceContext : DbContext
     {
         public DbSet<User> Users { get; set; }
     }

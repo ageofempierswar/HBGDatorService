@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6EB0F154-88B4-49CE-B53C-A937F47A8490}</ProjectGuid>
+    <ProjectGuid>{9F29C560-317E-4F7F-8250-C1ED62521962}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>HBGDatorServiceDAL</RootNamespace>
@@ -54,10 +54,6 @@
     <Compile Include="POCO\About.cs" />
     <Compile Include="POCO\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
