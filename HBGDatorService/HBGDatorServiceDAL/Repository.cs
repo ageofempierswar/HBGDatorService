@@ -6,13 +6,10 @@ using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.UI.WebControls;
 using System.Xml.Schema;
-
 using HBGDatorServiceDAL.Models;
 using HBGDatorServiceDAL.POCO;
-using HBGDatorService.Controllers;
-using HBGDatorService.Models;
+
 namespace HBGDatorServiceDAL
 {
     public static class Repository
@@ -32,4 +29,5 @@ namespace HBGDatorServiceDAL
                         })).ToList();
             }
         }
+    }
 }
