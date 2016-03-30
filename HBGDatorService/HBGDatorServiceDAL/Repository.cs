@@ -19,7 +19,7 @@ namespace HBGDatorServiceDAL
             using (var context = new HBGDatorServiceContext())
             {
                 return (from i in context.SlideShowImages
-                        where i.Active == true && i.ImagePath.StartsWith(@"~/SlideImages/")
+                        where i.Active == true && i.ImagePath.StartsWith(@"~/Content/Images")
                         select (new ImageModel
                         {
                             ID = i.ID,
