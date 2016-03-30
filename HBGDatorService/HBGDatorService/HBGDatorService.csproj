@@ -182,13 +182,13 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Images\7cf0d7b2ceaf3358305aafa10b0f376c.jpg" />
-    <Content Include="Content\Images\all-mass-effect-characters.jpg" />
-    <Content Include="Content\Images\mass-effect-2-16685-1366x768.jpg" />
-    <Content Include="Content\Images\mass-effect-3-17004-1366x768.jpg" />
-    <Content Include="Content\Images\mass_effect_shepard_female_graphics_gun_1366x768_hd-wallpaper-15574.jpg" />
-    <Content Include="Content\Images\tali-mass-effect-15770-1366x768.jpg" />
-    <Content Include="Content\Images\IMG_0210.JPG" />
+    <Content Include="SlideImages\7cf0d7b2ceaf3358305aafa10b0f376c.jpg" />
+    <Content Include="SlideImages\all-mass-effect-characters.jpg" />
+    <Content Include="SlideImages\mass-effect-2-16685-1366x768.jpg" />
+    <Content Include="SlideImages\mass-effect-3-17004-1366x768.jpg" />
+    <Content Include="SlideImages\mass_effect_shepard_female_graphics_gun_1366x768_hd-wallpaper-15574.jpg" />
+    <Content Include="SlideImages\tali-mass-effect-15770-1366x768.jpg" />
+    <Content Include="Images\IMG_0210.JPG" />
     <Content Include="Content\owl.carousel.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

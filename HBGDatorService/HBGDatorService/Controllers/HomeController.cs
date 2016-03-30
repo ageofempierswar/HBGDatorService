@@ -12,12 +12,11 @@ namespace HBGDatorService.Controllers
         {
             var images = Repository.GetAllSlideShowImages();
             List<string> list = new List<string>();
-            list.Add("~/Content/Images/7cf0d7b2ceaf3358305aafa10b0f376c.jpg");
-            list.Add("~/Content/Images/all-mass-effect-characters.jpg");
-            list.Add("~/Content/Images/mass-effect-2-16685-1366x768.jpg");
-                                
-            list.Add("~/Content/Images/mass-effect-3-17004-1366x768.jpg");
-            list.Add("~/Content/Images/mass_effect_shepard_female_graphics_gun_1366x768_hd-wallpaper-15574.jpg");
+            list.Add("~/SlideImages/7cf0d7b2ceaf3358305aafa10b0f376c.jpg");
+            list.Add("~/SlideImages/all-mass-effect-characters.jpg");
+            list.Add("~/SlideImages/mass-effect-2-16685-1366x768.jpg");                       
+            list.Add("~/SlideImages/mass-effect-3-17004-1366x768.jpg");
+            list.Add("~/SlideImages/mass_effect_shepard_female_graphics_gun_1366x768_hd-wallpaper-15574.jpg");
             foreach (var SlideImage in images)
             {
                 list.Add(SlideImage.ImagePath);

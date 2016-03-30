@@ -17,8 +17,9 @@
 </div>
 <div class="row">
     <div class="col-md-4">
- 
-        <img src="~/Content/Images/IMG_0210.JPG" width="400" height="400" />
+
+        <img src="~/Images/IMG_0210.JPG"width="400" height="400" />
+     
     
     </div>
     <div class="col-md-4">
@@ -39,3 +40,60 @@
         </p>
     </div>
 </div>
+
+
+@section Styles {
+    <link href="~/Content/owl.carousel.css" rel="stylesheet" />
+}
+
+@section Scripts {
+    <script src="~/Scripts/owl.carousel.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".slider").owlCarousel({
+                autoPlay: 5000,
+                singleItem: true,
+                //items: 1,
+                responsive: true,
+                navigation: false,
+                afterInit: function (event) {
+                    $(".slider-container > .hiddenoo").fadeIn(100);
+                }
+            });
+        });
+    </script>
+}
+
+
+<script>
+
+    $(document).ready(function () {
+        function updateSize() {
+            var minHeight = parseInt($('.owl-item').eq(0).css('height'));
+            $('.owl-item').each(function () {
+                var thisHeight = parseInt($(this).css('height'));
+                minHeight = (minHeight <= thisHeight ? minHeight : thisHeight);
+            });
+            $('.owl-wrapper-outer').css('height', minHeight + 'px');
+
+            /*show the bottom part of the cropped images*/
+            $('.owl-carousel .owl-item img').each(function () {
+                var thisHeight = parseInt($(this).css('height'));
+                if (thisHeight > minHeight) {
+                    $(this).css('margin-top', -1 * (thisHeight - minHeight) + 'px');
+                }
+            });
+            $("#owl-example").owlCarousel({
+                afterUpdate: function () {
+                    updateSize();
+                },
+                afterInit: function () {
+                    updateSize();
+                }
+            });
+
+
+        }
+    });
+
+</script>
