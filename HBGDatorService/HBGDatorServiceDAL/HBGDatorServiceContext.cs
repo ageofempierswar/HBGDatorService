@@ -10,5 +10,6 @@ namespace HBGDatorServiceDAL
     class HBGDatorServiceContext : DbContext
     {
         public DbSet<User> Users { get; set; }
+        public DbSet<SlideShowImage> SlideShowImages { get; set; }
     }
 }

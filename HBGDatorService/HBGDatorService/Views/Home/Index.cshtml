@@ -1,24 +1,24 @@
-﻿
-@{
-    ViewBag.Title = "Home Page";
-}
+﻿@using System.Collections.Specialized
+@using System.Web.Razor
+@using HBGDatorService.Controllers
+@model List<string>
 
 <div class="slider-container">
     <div class="hiddenoo">
         <div class="owl-carousel slider">
-            @*@foreach (var image in Model)
+            @foreach (var image in Model)
             {
                 <div class="panel panel-primary slider-item">
                     <img src="@Url.Content(image)" />
                 </div>
-            }*@
+            }
         </div>
     </div>
 </div>
 <div class="row">
     <div class="col-md-4">
  
-        <img src="~/Content/Images/IMG_0210.JPG" width="400px" height="400px" />
+        <img src="~/Content/Images/IMG_0210.JPG" width="400" height="400" />
     
     </div>
     <div class="col-md-4">
