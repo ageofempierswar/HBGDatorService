@@ -56,3 +56,38 @@ footer{
     -ms-box-shadow: 0 0 10px 5px #C4C4C4;
     box-shadow: 0 0 10px 5px #C4C4C4;
 }
+.slider-container {
+    max-width: 1024px;
+    height: auto;
+    margin-top: -20px;
+    margin-left: -15px;
+    margin-right: -50px;
+    margin-bottom: 30px;
+    background-color: #ffffff;
+}
+
+#contact {
+    width: 300px;
+    float: left;
+    padding: 30px;
+}
+
+#googleMap {
+    width: 300px;
+    float: left;
+    padding: 30px;
+}
+
+.slider-item {
+    width: auto;
+    height: 290px;
+}
+
+    .slider-item .panel-footer {
+        height: 55px;
+        line-height: 33px;
+    }
+
+.hiddenoo {
+    display: none;
+}
