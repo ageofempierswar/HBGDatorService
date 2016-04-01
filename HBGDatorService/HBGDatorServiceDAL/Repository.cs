@@ -29,5 +29,56 @@ namespace HBGDatorServiceDAL
                         })).ToList();
             }
         }
+
+        public static int GetAdminId(string username)
+        {
+            using (var context = new HBGDatorServiceContext())
+            {
+                return
+                    (from u in context.Users
+                     where u.Username == username
+                     select u.ID).FirstOrDefault();
+            }
+
+        }
+
+        public static bool AuthenticateAdminLogin(string username, string password)
+        {
+            using (var context = new HBGDatorServiceContext())
+            {
+                return
+                    (from a in context.Users
+                     where a.Username == username && a.Password == password && a.IsActive
+                     select a).Any();
+            }
+        }
+
+        public static EditAdminModel GetAdminInformationForEditModel(int id)
+        {
+            using (var context = new HBG())
+            {
+                return (from u in context.Users
+                        where u.ID == id
+                        select new EditAdminModel
+                        {
+                            Email = u.Email
+                        }).FirstOrDefault();
+            }
+        }
+
+        public static void UpdateAdminProfile(int adminId, EditAdminModel model)
+        {
+            using (var context = new HBGDatorServiceContext())
+            {
+
+                var admin = context.Users.Find(adminId);
+                admin.Email = model.Email;
+                admin.Password = model.Password.SuperHash();
+
+
+                context.Entry(admin).State = EntityState.Modified;
+                context.SaveChanges();
+            }
+        }
     }
 }
