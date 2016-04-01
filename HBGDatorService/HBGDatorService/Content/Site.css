@@ -7,7 +7,7 @@ body {
     background-color:black;
     /*background-image:url("Images/mass_effect_shepard_female_graphics_gun_1366x768_hd-wallpaper-15574.jpg");*/
      -webkit-box-shadow: inset 0 0 100px 1px #ff6a00;
-    -ms-box-shadow: inset 0 0 100px 1px #ff6a00;
+    
     box-shadow: inset 0 0 100px 1px #ff6a00;
     padding-top: 50px;
     background-size:cover;
@@ -41,11 +41,7 @@ textarea {
     max-width: 280px;
 }
 
-footer{
-    height:100%;
-    width:100%;
-    background-color:gray;
-}
+
 .wrapper {
     max-width: 1024px;
     height: auto;
@@ -53,7 +49,7 @@ footer{
     margin-left: auto;
     margin-right: auto;
     -webkit-box-shadow: 0 0 10px 5px #C4C4C4;
-    -ms-box-shadow: 0 0 10px 5px #C4C4C4;
+ 
     box-shadow: 0 0 10px 5px #C4C4C4;
 }
 .slider-container {
@@ -102,3 +98,33 @@ footer{
     display: block;
     float: left;
 }
+
+footer {
+    height:100%;
+    width:100%;
+    background-color:gray;
+    min-height: 100px;
+    overflow: auto;
+    -webkit-box-shadow: inset 0 0 100px 1px #000000;
+    box-shadow: inset 0 0 100px 1px #000000;
+    padding-top: 50px;
+}
+footer{
+    
+}
+   footer ul {
+        list-style: none;
+        line-height: 125%;
+    }
+
+    footer a {
+        color: #ffffff;
+        font-family: 'Oswald', sans-serif;
+    }
+
+        footer a:hover {
+            list-style: none;
+            color: #D1081D;
+            background-color: transparent;
+            text-decoration: none;
+        }

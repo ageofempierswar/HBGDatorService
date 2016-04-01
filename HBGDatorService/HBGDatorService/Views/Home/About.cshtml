@@ -1,9 +1,32 @@
-﻿@{
-    ViewBag.Title = "About";
-}
-@*<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>*@
+﻿@model HBGDatorServiceDAL.Models.AboutReadOnlyModel
+
+
 <p>
+    @if (User.Identity.IsAuthenticated && int.Parse(User.Identity.Name) < 2)
+    {
+        @Html.ActionLink("Edit", "EditAbout", "EditAboutPage")
+    }
+</p>
+
+<div class="AboutContent">
+    <div class="AboutInfoBox">
+        <h1>@Model.Header1</h1>
+        <p>@Model.Textfield1</p>
+        <hr />
+    </div>
+
+    <div class="AboutInfoBox">
+        <h1>@Model.Header2</h1>
+        <p>@Model.Textfield2</p>
+        <hr />
+    </div>
+
+    <div class="AboutInfoBox">
+        <h1>@Model.Header3</h1>
+        <p>@Model.Textfield3</p>
+    </div>
+</div>
+@*<p>
     Vi är ett företag som varit verksamt i Helsingborg i 2 år med butik och tillhörande datorverkstad i Helsingborgs City. Vi arbetar med små & medelstora företag genom service avtal och privatpersoner.
     Vi har 20 års erfarenhet av datorer, reparationer, service och säkerhet.
 
@@ -13,4 +36,4 @@
     Helsingborgs Datorservice har teknisk kompetens, både egen och förstärkt med IT konsulter, som kan komma med kreativa lösningar på svårare problem.
 
     Vi kan service och säkerhet.
-</p>
+</p>*@

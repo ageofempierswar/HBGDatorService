@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 namespace HBGDatorServiceDAL.POCO
 {
-    class About
+     public class About
     {
         public int ID { get; set; }
         public string Header1 { get; set; }

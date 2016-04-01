@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="HBGDatorServiceContext.cs" />
     <Compile Include="HBGDatorServiceContextInitializer.cs" />
+    <Compile Include="Models\AboutReadOnlyModel.cs" />
     <Compile Include="Models\AdminModel.cs" />
     <Compile Include="Models\EditAdminModel.cs" />
     <Compile Include="Models\ImageModel.cs" />

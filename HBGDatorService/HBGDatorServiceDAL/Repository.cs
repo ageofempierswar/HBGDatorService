@@ -87,21 +87,38 @@ namespace HBGDatorServiceDAL
                          }).FirstOrDefault();
              }
          }
- 
-         public static void UpdateAdminProfile(int adminId, EditAdminModel model)
-         {
-             using (var context = new HBGDatorServiceContext())
-             {
- 
-                 var admin = context.Users.Find(adminId);
-                 admin.Email = model.Email;
-                 admin.Password = model.Password.SuperHash();
- 
- 
-                 context.Entry(admin).State = EntityState.Modified;
-                 context.SaveChanges();
-             }
-         }
 
+        //public static void UpdateAdminProfile(int adminId, EditAdminModel model)
+        //{
+        //    using (var context = new HBGDatorServiceContext())
+        //    {
+
+        //        var admin = context.Users.Find(adminId);
+        //        admin.Email = model.Email;
+        //        admin.Password = model.Password.SuperHash();
+
+
+        //        context.Entry(admin).State = EntityState.Modified;
+        //        context.SaveChanges();
+        //    }
+        //}
+        public static AboutReadOnlyModel AboutReadOnly()
+        {
+            using (var contex = new HBGDatorServiceContext())
+            {
+
+                return (from a in contex.Abouts
+                        select new AboutReadOnlyModel()
+                        {
+                            Header1 = a.Header1,
+                            Header2 = a.Header2,
+                            Header3 = a.Header3,
+                            Textfield1 = a.Textfield1,
+                            Textfield2 = a.Textfield2,
+                            Textfield3 = a.Textfield3
+                        }).ToList().LastOrDefault();
+
+            }
+        }
     }
 }
