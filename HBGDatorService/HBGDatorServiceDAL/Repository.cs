@@ -29,5 +29,19 @@ namespace HBGDatorServiceDAL
                         })).ToList();
             }
         }
+        public static void AddNewSlideShowFile(string fileName, string path)
+        {
+            using (var context = new HBGDatorServiceContext())
+            {
+                context.SlideShowImages.Add(new SlideShowImage()
+                {
+                    FileName = fileName,
+                    ImagePath = path,
+                    Active = true
+                }
+                    );
+                context.SaveChanges();
+            }
+        }
     }
 }
