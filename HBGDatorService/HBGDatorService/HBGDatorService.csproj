@@ -185,6 +185,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Images\HBGDatorserviceNYliten.png" />
     <Content Include="SlideImages\7cf0d7b2ceaf3358305aafa10b0f376c.jpg" />
     <Content Include="SlideImages\all-mass-effect-characters.jpg" />
     <Content Include="SlideImages\mass-effect-2-16685-1366x768.jpg" />
