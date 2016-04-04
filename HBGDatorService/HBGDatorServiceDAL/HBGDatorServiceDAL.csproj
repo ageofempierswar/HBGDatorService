@@ -54,6 +54,7 @@
     <Compile Include="Models\AboutReadOnlyModel.cs" />
     <Compile Include="Models\AdminModel.cs" />
     <Compile Include="Models\EditAdminModel.cs" />
+    <Compile Include="Models\ErrorModel.cs" />
     <Compile Include="Models\ImageModel.cs" />
     <Compile Include="Models\SlideShowImgModel.cs" />
     <Compile Include="Models\UploadFileModel.cs" />

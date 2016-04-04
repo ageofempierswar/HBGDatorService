@@ -128,3 +128,7 @@ footer{
             background-color: transparent;
             text-decoration: none;
         }
+.Error{
+    background-color:aqua;
+    color:black;
+}
