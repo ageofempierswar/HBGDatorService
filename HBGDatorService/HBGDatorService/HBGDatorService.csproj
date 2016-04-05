@@ -264,10 +264,11 @@
     <Content Include="Views\AdminLogin\Login.cshtml" />
     <Content Include="Views\ManageAdmins\Edit.cshtml" />
     <Content Include="Views\ManageAdmins\Index.cshtml" />
+    <Content Include="Views\RegisterAdmin\Index.cshtml" />
+    <Content Include="Views\RegisterAdmin\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\RegisterAdmin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

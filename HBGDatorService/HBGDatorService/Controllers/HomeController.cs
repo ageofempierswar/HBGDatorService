@@ -26,9 +26,8 @@ namespace HBGDatorService.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            var model = Repository.AboutReadOnly();
+            return View(model);
         }
 
         public ActionResult Contact()
