@@ -8,14 +8,8 @@ namespace HBGDatorServiceDAL.Models
 {
     public class AdminModel
     {
-
-        [Required, MinLength(1), MaxLength(12)]
+        public int ID { get; set; }
         public string Username { get; set; }
-
-        [Required, MinLength(1), MaxLength(20)]
-        [DataType(DataType.Password)]
-        public string Password { get; set; }
-
         public int AdminLevel { get; set; }
     }
 }

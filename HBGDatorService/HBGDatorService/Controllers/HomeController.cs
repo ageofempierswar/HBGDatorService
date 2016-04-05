@@ -26,11 +26,9 @@ namespace HBGDatorService.Controllers
 
         public ActionResult About()
         {
-            var model = Repository.AboutReadOnly(); // när jag trycker på about, så krashar sidan, och jag/vi vet inte varför, den säger att model.header är fel.
-            return View(model); // kopplar mot rätt view, men header(och förmodligen dem andra också) är tomma/null
-            // christoffer säger att home controller har en about, denna här controllern har ingen view, och sakerna som ska vara i header ligger i DAL
-            // så vad är rätt/fel?
+            ViewBag.Message = "Your application description page.";
 
+            return View();
         }
 
         public ActionResult Contact()
