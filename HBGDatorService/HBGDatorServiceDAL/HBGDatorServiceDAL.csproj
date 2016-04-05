@@ -41,6 +41,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,10 +53,14 @@
     <Compile Include="HBGDatorServiceContext.cs" />
     <Compile Include="HBGDatorServiceContextInitializer.cs" />
     <Compile Include="Models\AboutReadOnlyModel.cs" />
+    <Compile Include="Models\AdminLoginModel.cs" />
     <Compile Include="Models\AdminModel.cs" />
+    <Compile Include="Models\ContactModel.cs" />
+    <Compile Include="Models\EditAboutModel.cs" />
     <Compile Include="Models\EditAdminModel.cs" />
     <Compile Include="Models\ErrorModel.cs" />
     <Compile Include="Models\ImageModel.cs" />
+    <Compile Include="Models\RegisterAdminModel.cs" />
     <Compile Include="Models\SlideShowImgModel.cs" />
     <Compile Include="Models\UploadFileModel.cs" />
     <Compile Include="POCO\About.cs" />

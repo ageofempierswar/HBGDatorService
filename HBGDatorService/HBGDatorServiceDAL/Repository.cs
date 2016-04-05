@@ -63,8 +63,17 @@ namespace HBGDatorServiceDAL
              }
  
          }
- 
-         public static bool AuthenticateAdminLogin(string username, string password)
+        public static string GetAdminEmail()
+        {
+            using (var context = new HBGDatorServiceContext())
+            {
+                return
+                    (from u in context.Users
+                     where u.AdminLevel == 1
+                     select u.Email).FirstOrDefault();
+            }
+        }
+        public static bool AuthenticateAdminLogin(string username, string password)
          {
              using (var context = new HBGDatorServiceContext())
              {
@@ -120,5 +129,95 @@ namespace HBGDatorServiceDAL
 
             }
         }
+
+        public static void UpdateAdminProfile(int adminId, EditAdminModel model)
+        {
+            using (var context = new HBGDatorServiceContext())
+            {
+
+                var admin = context.Users.Find(adminId);
+                admin.Email = model.Email;
+                admin.Password = model.Password;
+
+
+                context.Entry(admin).State = EntityState.Modified;
+                context.SaveChanges();
+            }
+        }
+        public static void UpdateAbouts(About about)
+        {
+            using (var context = new HBGDatorServiceContext())
+            {
+                context.Entry(about).State = EntityState.Modified;
+                context.SaveChanges();
+            }
+        }
+        public static EditAboutModel GetLatestAboutInformation()
+        {
+            using (var context = new HBGDatorServiceContext())
+            {
+                var query =
+                    (from a in context.Abouts
+                     orderby a.ID descending
+                     select
+                         new EditAboutModel()
+                         {
+                             ID = a.ID,
+                             Header1 = a.Header1,
+                             Header2 = a.Header2,
+                             Header3 = a.Header3,
+                             Textfield1 = a.Textfield1,
+                             Textfield2 = a.Textfield2,
+                             Textfield3 = a.Textfield3
+                         }).FirstOrDefault();
+
+                return query;
+            }
+        }
+
+        public static About GetLatestAbout()
+        {
+            using (var context = new HBGDatorServiceContext())
+            {
+                var query =
+                    (from a in context.Abouts
+                     orderby a.ID descending
+                     select a).FirstOrDefault();
+
+                return query;
+            }
+        }
+        public static void RemoveAdminByID(int id)
+        {
+            using (var context = new HBGDatorServiceContext())
+            {
+                var user = context.Users.Find(id);
+                user.IsActive = false;
+                context.SaveChanges();
+            }
+        }
+
+        public static List<AdminModel> GetAllAdmins()
+        {
+            using (var context = new HBGDatorServiceContext())
+            {
+                return (from a in context.Users
+                        where a.IsActive == true
+                        select new AdminModel { Username = a.Username, AdminLevel = a.AdminLevel, ID = a.ID }).ToList();
+            }
+        }
+
+        public static About SetAboutValues(EditAboutModel model, About about)
+        {
+            about.ID = model.ID;
+            about.Header1 = model.Header1;
+            about.Header2 = model.Header2;
+            about.Header3 = model.Header3;
+            about.Textfield1 = model.Textfield1;
+            about.Textfield2 = model.Textfield2;
+            about.Textfield3 = model.Textfield3;
+            return about;
+        }
     }
+
 }
