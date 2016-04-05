@@ -96,21 +96,6 @@ namespace HBGDatorServiceDAL
                          }).FirstOrDefault();
              }
          }
-
-        //public static void UpdateAdminProfile(int adminId, EditAdminModel model)
-        //{
-        //    using (var context = new HBGDatorServiceContext())
-        //    {
-
-        //        var admin = context.Users.Find(adminId);
-        //        admin.Email = model.Email;
-        //        admin.Password = model.Password.SuperHash();
-
-
-        //        context.Entry(admin).State = EntityState.Modified;
-        //        context.SaveChanges();
-        //    }
-        //}
         public static AboutReadOnlyModel AboutReadOnly()
         {
             using (var contex = new HBGDatorServiceContext())
@@ -196,7 +181,23 @@ namespace HBGDatorServiceDAL
                 context.SaveChanges();
             }
         }
+        public static void RegisterAdmin(RegisterAdminModel model)
+        {
+            using (var context = new HBGDatorServiceContext())
+            {
+                var newAdmin = new User()
+                {
+                    Username = model.Username,
+                    Email = model.Email,
+                    Password = model.Password,
+                    AdminLevel = model.AdminLevel,
+                    IsActive = true,
+                };
 
+                context.Users.Add(newAdmin);
+                context.SaveChanges();
+            }
+        }
         public static List<AdminModel> GetAllAdmins()
         {
             using (var context = new HBGDatorServiceContext())

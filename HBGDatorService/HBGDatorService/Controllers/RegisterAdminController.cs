@@ -1,0 +1,36 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using HBGDatorServiceDAL;
+using HBGDatorServiceDAL.Models;
+namespace HBGDatorService.Controllers
+{
+    [Authorize]
+    public class RegisterAdminController : Controller
+    {
+        // GET: RegisterAdmin
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public ActionResult Register(RegisterAdminModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                Repository.RegisterAdmin(model);
+                ModelState.Clear();
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
+        }
+    }
+}
