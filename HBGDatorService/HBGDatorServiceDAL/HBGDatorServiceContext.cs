@@ -9,11 +9,11 @@ namespace HBGDatorServiceDAL
 {
     public class HBGDatorServiceContext : DbContext
     {
-        //public HBGDatorServiceContext()
-        //{
-        //    Database.SetInitializer(new HBGDatorServiceContextInitializer(this));
-        //}
-        
+        public HBGDatorServiceContext()
+        {
+            Database.SetInitializer(new HBGDatorServiceContextInitializer(this));
+        }
+
         public DbSet<User> Users { get; set; }
         public DbSet<SlideShowImage> SlideShowImages { get; set; }
         public DbSet<About> Abouts { get; set; }

@@ -13,8 +13,7 @@ namespace HBGDatorService.Controllers
         // GET: About
         public ActionResult About()
         {
-            var model = Repository.AboutReadOnly();
-            return View(model);
+            return View();
         } 
     }
 }
