@@ -99,18 +99,16 @@ textarea {
     float: left;
 }
 
-footer {
-    height:100%;
-    width:100%;
+
+footer{
+     height:100%;
+ max-width: 1024px;
     background-color:gray;
     min-height: 100px;
     overflow: auto;
     -webkit-box-shadow: inset 0 0 100px 1px #000000;
     box-shadow: inset 0 0 100px 1px #000000;
     padding-top: 50px;
-}
-footer{
-    
 }
    footer ul {
         list-style: none;
