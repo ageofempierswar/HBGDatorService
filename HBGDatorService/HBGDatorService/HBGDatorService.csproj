@@ -266,6 +266,7 @@
     <Content Include="Views\ManageAdmins\Index.cshtml" />
     <Content Include="Views\RegisterAdmin\Index.cshtml" />
     <Content Include="Views\RegisterAdmin\Register.cshtml" />
+    <Content Include="Views\Shared\_Contact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
