@@ -1,0 +1,19 @@
+﻿@using System.Web.Mvc;
+
+@helper MenuItem(string linkText, string action, string controller)
+{
+var mvcHandler = Context.CurrentHandler as MvcHandler;
+if (mvcHandler != null)
+{
+    var url = new UrlHelper(mvcHandler.RequestContext);
+    var routeData = mvcHandler.RequestContext.RouteData;
+    var currentAction = routeData.Values["action"].ToString();
+    var currentController = routeData.Values["controller"].ToString();
+    var isCurrent = string.Equals(currentAction, action, StringComparison.InvariantCultureIgnoreCase) &&
+                    string.Equals(currentController, controller, StringComparison.InvariantCultureIgnoreCase);
+
+        <li class="@(isCurrent ? "active" : "")"><a href="@url.Action(action, controller)">@linkText</a></li>
+        
+}
+}
+
