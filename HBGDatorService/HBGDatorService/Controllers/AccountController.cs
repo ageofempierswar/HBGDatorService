@@ -74,7 +74,7 @@ namespace HBGDatorService.Controllers
         {
             using (HBGDatorServiceContext db = new HBGDatorServiceContext())
             {
-                var usr = db.UserAccount.Single(u => u.Username == user.Username && u.Password == user.Password);
+                var usr = db.UserAccount.Where(u => u.Username == user.Username && u.Password == user.Password).FirstOrDefault();
                 if (usr != null)
                 {
                     Session["UserID"] = usr.UserID.ToString();

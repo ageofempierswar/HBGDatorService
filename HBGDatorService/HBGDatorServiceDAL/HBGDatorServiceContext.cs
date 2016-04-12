@@ -11,7 +11,17 @@ namespace HBGDatorServiceDAL
     {
         public HBGDatorServiceContext()
         {
-            Database.SetInitializer(new HBGDatorServiceContextInitializer(this));
+            System.Data.Entity.Database.SetInitializer<HBGDatorServiceContext>(new System.Data.Entity.DropCreateDatabaseIfModelChanges<HBGDatorServiceContext>());
+            /*
+            Ovan uppdaterar databasen endast om modellen förändrats, men jag tror inte den kickar igång seed, nästa förändring får ni kolla
+            */
+
+            // Denna kör seed också, men ändrar inte databasen.
+           // Database.SetInitializer(new HBGDatorServiceContextInitializer(this)); 
+           /*
+           Vet ej om SetInitializer behövs efter nästa förändring av modellen, eller om Seed kickas igång av den ovan.
+
+            */
         }
 
         public DbSet<User> Users { get; set; }
