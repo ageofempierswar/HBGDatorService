@@ -17,5 +17,6 @@ namespace HBGDatorServiceDAL
         public DbSet<User> Users { get; set; }
         public DbSet<SlideShowImage> SlideShowImages { get; set; }
         public DbSet<About> Abouts { get; set; }
+        public DbSet<UserAccount> UserAccount { get; set; }
     }
 }
