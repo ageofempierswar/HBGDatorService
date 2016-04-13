@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace HBGDatorService.Controllers
 {
-    public class TjänsterController : Controller
+    public class ServiceController : Controller
     {
-        // GET: Tjänster
+        // GET: Service
         public ActionResult Index()
         {
             return View();
