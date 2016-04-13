@@ -86,37 +86,12 @@ namespace HBGDatorService.Controllers
                     ModelState.AddModelError("", "The user name or password provided is incorrect.");
                 }
             }
-            return View();
-
-            //if (ModelState.IsValid)
-            //{
-            //    if (Membership.ValidateUser(user.Username, user.Password))
-            //    {
-            //        MigrateShoppingCart(user.Username);
-
-            //        FormsAuthentication.SetAuthCookie(user.Username,
-            //            user.RememberMe);
-            //        if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1
-            //            && returnUrl.StartsWith("/")
-            //            && !returnUrl.StartsWith("//") &&
-            //            !returnUrl.StartsWith("/\\"))
-            //        {
-            //            return Redirect(returnUrl);
-            //        }
-            //        else
-            //        {
-            //            return RedirectToAction("Index", "Home");
-            //        }
-            //    }
-            //    else
-            //    {
-            //        ModelState.AddModelError("", "The user name or password provided is incorrect.");
-            //    }
-            //}
-            // If we got this far, something failed, redisplay form
-            //return View(user);
+            return View(); //error, kommer inte in i LoggedIn efter inloggning.
         }
-        public ActionResult Loggedin()
+
+
+
+        public ActionResult Loggedin()          //error, kommer inte in i LoggedIn efter inloggning.
         {
             if (Session["UserID"] != null)
             {
