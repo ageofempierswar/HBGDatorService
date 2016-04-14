@@ -17,7 +17,7 @@ namespace HBGDatorService
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            //Database.SetInitializer(new HorseContextInitializer());
+            Database.SetInitializer(new HBGDatorServiceContextInitializer());
         }
     }
 }
