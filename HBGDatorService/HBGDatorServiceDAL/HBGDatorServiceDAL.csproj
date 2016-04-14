@@ -58,12 +58,15 @@
     <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Models\EditAboutModel.cs" />
     <Compile Include="Models\EditAdminModel.cs" />
+    <Compile Include="Models\EditServiceModel.cs" />
     <Compile Include="Models\ErrorModel.cs" />
     <Compile Include="Models\ImageModel.cs" />
     <Compile Include="Models\RegisterAdminModel.cs" />
+    <Compile Include="Models\ServiceReadOnlyModel.cs" />
     <Compile Include="Models\SlideShowImgModel.cs" />
     <Compile Include="Models\UploadFileModel.cs" />
     <Compile Include="POCO\About.cs" />
+    <Compile Include="POCO\Service.cs" />
     <Compile Include="POCO\SlideShowImage.cs" />
     <Compile Include="POCO\User.cs" />
     <Compile Include="POCO\UserAccount.cs" />

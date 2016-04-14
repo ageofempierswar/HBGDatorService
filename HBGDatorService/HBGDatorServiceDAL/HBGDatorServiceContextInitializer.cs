@@ -11,7 +11,7 @@ namespace HBGDatorServiceDAL
     public class HBGDatorServiceContextInitializer : DropCreateDatabaseIfModelChanges<HBGDatorServiceContext>
     {
         private HBGDatorServiceContext context;
-        private List<About> abouts;
+        private List<About> abouts; //används inte.
 
         protected override void Seed(HBGDatorServiceContext context)
         {
