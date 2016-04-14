@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using HBGDatorServiceDAL.POCO;
 namespace HBGDatorServiceDAL
 {
-    public class HBGDatorServiceContextInitializer : DropCreateDatabaseIfModelChanges<HBGDatorServiceContext>
+    public class HBGDatorServiceContextInitializer : DropCreateDatabaseAlways<HBGDatorServiceContext>
     {
         private HBGDatorServiceContext context;
         private List<About> abouts; //används inte.
