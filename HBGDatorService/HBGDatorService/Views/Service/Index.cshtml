@@ -4,39 +4,60 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="ServiceContent"> @*tillsvidare innehåll tills vi kommer på något bättre.*@
-    <div class="row">
-        <div class="ServiceHeader">
-            <h1>Våra Tjänster</h1>
-            <h3>Här är en lista över vad vi här på HBG Datorservice kan stå till tjänst med.</h3>
-        </div>
+
+<div class="tabsIfoboxes">
+    <div id="horseDescription" class="col-md-12">
+        <div role="tabpanel" id="horseInformation">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#Företag" aria-controls="Företag" role="tab" data-toggle="tab">För Företag</a></li>
+                <li role="presentation"><a href="#PrivatPersoner" aria-controls="PrivatPersoner" role="tab" data-toggle="tab">För PrivatPersoner</a></li>
+            </ul>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="Företag">
+
+                </div>
+                <div role="tabpanel" class="tab-pane" id="PrivatPersoner">
+                    <div class="ServiceContent">
+                        @*tillsvidare innehåll tills vi kommer på något bättre.*@
+                        <div class="row">
+                            <div class="ServiceHeader">
+                                <h1>Våra Tjänster</h1>
+                                <h3>Här är en lista över vad vi här på HBG Datorservice kan stå till tjänst med.</h3>
+                            </div>
 
 
 
-        <div class="ServiceInfo">
-            <h3><b>Felsökning av programvara</b></h3>
-            <p>Har du fått virus eller beter sig din dator konstigt?</p> @*dessa skulle också kunna vara knappar som sen tar en till specifika ställen om just det felet.*@
-            <div class="LinkToSpecificService">
+                            <div class="ServiceInfo">
+                                <h3><b>Felsökning av programvara</b></h3>
+                                <p>Har du fått virus eller beter sig din dator konstigt?</p> @*dessa skulle också kunna vara knappar som sen tar en till specifika ställen om just det felet.*@
+                                <div class="LinkToSpecificService">
 
-            </div>
-        </div>
+                                </div>
+                            </div>
 
-        <div class="ServiceInfo">
-            <h3><b>Reparation</b></h3>
-            <p>Har din dator eller något av dess tillbehör gått sönder?</p>
-            <div class="LinkToSpecificService">
+                            <div class="ServiceInfo">
+                                <h3><b>Reparation</b></h3>
+                                <p>Har din dator eller något av dess tillbehör gått sönder?</p>
+                                <div class="LinkToSpecificService">
 
-            </div>
-        </div>
+                                </div>
+                            </div>
 
-        <div class="ServiceInfo">
-            <h3><b>installation av ny hårdvara</b></h3>
-            <p>Vill du uppgradera din dator men du vet inte skälv hur man går till väga?</p>
-            <div class="LinkToSpecificService">
+                            <div class="ServiceInfo">
+                                <h3><b>installation av ny hårdvara</b></h3>
+                                <p>Vill du uppgradera din dator men du vet inte skälv hur man går till väga?</p>
+                                <div class="LinkToSpecificService">
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
 
             </div>
         </div>
     </div>
 </div>
-
 
