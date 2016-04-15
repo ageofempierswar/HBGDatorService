@@ -8,12 +8,13 @@ using System.Threading.Tasks;
 using HBGDatorServiceDAL.POCO;
 namespace HBGDatorServiceDAL
 {
-    public class HBGDatorServiceContextInitializer : DropCreateDatabaseAlways<HBGDatorServiceContext>
+    public class HBGDatorServiceContextInitializer : DropCreateDatabaseIfModelChanges<HBGDatorServiceContext>
     {
 
         private HBGDatorServiceContext context;
-        private List<About> abouts; //används inte.
-        private readonly List<User> users;
+        private List<About> abouts;
+
+        //private readonly List<User> users;
         //protected override void Seed(HBGDatorServiceContext context)
         //{
         //    context.Abouts.Add(new About("Header1", @"balblablalblablalbla",
@@ -40,12 +41,12 @@ namespace HBGDatorServiceDAL
 
         public HBGDatorServiceContextInitializer()
         {
-            users = new List<User>()
-            {
-                new User("admin", "admin",1, "teamnordahl123@gmail.com"),
-                new User("Test1", "admin", 2, "teamnordahl123@gmail.com"),
-                new User("Test2", "admin", 2, "teamnordahl123@gmail.com"),
-            };
+            //users = new List<User>()
+            //{
+            //    new User("admin", "admin",1, "teamnordahl123@gmail.com"),
+            //    new User("Test1", "admin", 2, "teamnordahl123@gmail.com"),
+            //    new User("Test2", "admin", 2, "teamnordahl123@gmail.com"),
+            //};
             abouts = new List<About>()
             {
 				//new About("Header1",@"balblablalblablalbla","Header2","heuheuehuehueheuheuhe", "fwqojfwq", "fijsedfiwqfwwq"),
@@ -63,7 +64,7 @@ namespace HBGDatorServiceDAL
         {
 
             abouts.ForEach(a => context.Abouts.Add(a));
-            users.ForEach(u => context.Users.Add(u));
+           // users.ForEach(u => context.Users.Add(u));
             base.InitializeDatabase(context);
         }
 
