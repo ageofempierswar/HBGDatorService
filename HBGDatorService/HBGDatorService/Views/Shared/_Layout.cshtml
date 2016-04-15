@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - HBGDatorService</title>   
+    <title>@ViewBag.Title - HBGDatorService</title>
     <link href="~/Content/Site.css" rel="stylesheet" />
     @RenderSection("Styles", required: false)
     @Styles.Render("~/Content/css")
@@ -27,11 +27,13 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         @HtmlHelpers.MenuItem("Home", "Index", "Home")
-                        @HtmlHelpers.MenuItem("Om oss", "About", "Home") 
+                        @HtmlHelpers.MenuItem("Om oss", "About", "Home")
                         @HtmlHelpers.MenuItem("Kontakta oss", "Index", "Contact")
                         @HtmlHelpers.MenuItem("Våra tjänster", "Index", "Service")
                     </ul>
+
                     @Html.Partial("_LoginPartial")
+
                 </div>
             </div>
         </div>

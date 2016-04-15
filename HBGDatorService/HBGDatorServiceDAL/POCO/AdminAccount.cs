@@ -5,7 +5,7 @@ using System.Web;
 
 namespace HBGDatorServiceDAL
 {
-    public class User
+    public class AdminAccount
     {
         public int ID { get; set; }
         public string Username { get; set; }
@@ -15,12 +15,12 @@ namespace HBGDatorServiceDAL
         public string Email { get; set; }
 
 
-        public User()
+        public AdminAccount()
         {
 
         }
 
-        public User(string username, string password, int adminLevel, string email)
+        public AdminAccount(string username, string password, int adminLevel, string email)
         {
             Username = username;
             Password = password;

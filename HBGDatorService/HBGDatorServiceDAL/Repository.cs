@@ -185,7 +185,7 @@ namespace HBGDatorServiceDAL
         {
             using (var context = new HBGDatorServiceContext())
             {
-                var newAdmin = new User()
+                var newAdmin = new AdminAccount()
                 {
                     Username = model.Username,
                     Email = model.Email,

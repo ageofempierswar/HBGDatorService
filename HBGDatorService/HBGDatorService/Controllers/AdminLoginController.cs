@@ -17,13 +17,13 @@ namespace HBGDatorService.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public ActionResult Login()
+        public ActionResult Login() //används inte.
         {
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(AdminLoginModel model)
+        public ActionResult Login(AdminLoginModel model) // ska ta en till adminvyn.
         {
 
             if (ModelState.IsValid)
@@ -33,17 +33,21 @@ namespace HBGDatorService.Controllers
                 {
 
                     FormsAuthentication.SetAuthCookie(Repository.GetAdminId(model.Username).ToString(), false);
+                    /* Denna kanske behövs. */
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Home"); 
+                    //just nu (om det funkat) logga in som admin, på localhost????/Admin, som sedan skickar tillbaka dig
+                    //till home med adminbehörighet
+                       
                 }
                 else
                 {
-                    return View(model);
+                    return View();
                 }
             }
             else
             {
-                return View(model);
+                return View();
             }
         }
     }

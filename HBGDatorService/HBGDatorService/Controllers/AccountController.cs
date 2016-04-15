@@ -42,26 +42,6 @@ namespace HBGDatorService.Controllers
                     ViewBag.Message = account.FirstName + " " + account.LastName + " successfully registerd";
                 }
             return View();
-            //{
-            //    // Attempt to register the user
-            //    MembershipCreateStatus createStatus;
-            //    Membership.CreateUser(account.Username, account.Password, account.Email,
-            //           "question", "answer", true, null, out
-            //           createStatus);
-            //    if (createStatus == MembershipCreateStatus.Success)
-            //    {
-            //        MigrateShoppingCart(account.Username);
-            //        FormsAuthentication.SetAuthCookie(account.Username, false /* createPersistentCookie */);
-            //        return RedirectToAction("Index", "Home");
-            //    }
-            //    else
-            //    {
-            //        //ModelState.AddModelError("", ErrorCodeToString(createStatus));
-            //        ModelState.AddModelError("", ErrorCodeToString(createStatus));
-            //    }
-            //}
-            //// If we got this far, something failed, redisplay form
-            //return View(account);
         }
 
         // LOGIN
@@ -79,19 +59,21 @@ namespace HBGDatorService.Controllers
                 {
                     Session["UserID"] = usr.UserID.ToString();
                     Session["Username"] = usr.Username.ToString();
-                    return RedirectToAction("Loggedin");
+                    ViewBag.FirstName = usr.FirstName;
+                    FormsAuthentication.SetAuthCookie(usr.Username, true);
+                    return RedirectToAction("Index","Home");
                 }
                 else
                 {
                     ModelState.AddModelError("", "The user name or password provided is incorrect.");
                 }
             }
-            return View(); //error, kommer inte in i LoggedIn efter inloggning.
+            return View();
         }
 
 
 
-        public ActionResult Loggedin()          //error, kommer inte in i LoggedIn efter inloggning.
+        public ActionResult Loggedin()
         {
             if (Session["UserID"] != null)
             {
@@ -102,6 +84,16 @@ namespace HBGDatorService.Controllers
                 return RedirectToAction("Login");
             }
         }
+
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+
+            return RedirectToAction("Index", "Home");
+        }
+
+
+
         #region Status Codes
         private static string ErrorCodeToString(MembershipCreateStatus createStatus)
         {

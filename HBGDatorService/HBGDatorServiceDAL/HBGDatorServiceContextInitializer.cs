@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 using HBGDatorServiceDAL.POCO;
 namespace HBGDatorServiceDAL
 {
-    public class HBGDatorServiceContextInitializer : DropCreateDatabaseAlways<HBGDatorServiceContext>
+    public class HBGDatorServiceContextInitializer : DropCreateDatabaseIfModelChanges<HBGDatorServiceContext>
     {
         private HBGDatorServiceContext context;
-        private List<About> abouts; //används inte.
+        private List<About> abouts; // behöves inte seed längre, ifall det inte går rent åt skogen.
 
         //protected override void Seed(HBGDatorServiceContext context)
         //{

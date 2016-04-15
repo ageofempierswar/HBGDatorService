@@ -16,12 +16,11 @@
     </div>
 </div>
 <p>
-    @if (User.Identity.IsAuthenticated && int.Parse(User.Identity.Name) < 2)
+    @if (User.Identity.IsAuthenticated)
     {
         <div class="btn-btn-default">
                 <input type="button" value="Edit SlideShow" onclick="location.href = '@Url.Action("UploadSlideshowFile", "EditSlideShowImages")'" />
-            </div> }
-        @Html.ActionLink("Edit SlideShow", "UploadSlideshowFile", "EditSlideShowImages")
+            </div> 
     }
 </p>
 <div class="row">

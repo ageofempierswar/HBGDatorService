@@ -10,6 +10,9 @@ namespace HBGDatorServiceDAL.POCO
     {
         [Key]
         public int UserID { get; set; }
+
+        public bool Admin { get; set; }
+
         [Required(ErrorMessage = "First name is required.")]
         public string FirstName { get; set; }
 

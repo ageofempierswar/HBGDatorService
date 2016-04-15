@@ -244,7 +244,7 @@
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Contact\Sent.cshtml" />
     <Content Include="Views\AdminLogin\Index.cshtml" />
-    <Content Include="Views\AdminLogin\Login.cshtml" />
+    <Content Include="Views\AdminLogin\AdminLogin.cshtml" />
     <Content Include="Views\ManageAdmins\Edit.cshtml" />
     <Content Include="Views\ManageAdmins\Index.cshtml" />
     <Content Include="Views\RegisterAdmin\Index.cshtml" />
