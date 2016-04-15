@@ -14,19 +14,19 @@ body {
     width: 100%;
 }
 
-.ServiceContent{
+.ServiceContent {
     padding-left: 20px;
-    padding-right:20px;
+    padding-right: 20px;
 }
 
-.ServiceHeader{
+.ServiceHeader {
     margin-bottom: 50px;
 }
 
-.ServiceInfo{
+.ServiceInfo {
     margin-top: 10px;
     margin-bottom: 10px;
-    font-size: 16px;   
+    font-size: 16px;
 }
 
 
