@@ -19,20 +19,20 @@
     @if (User.Identity.IsAuthenticated && int.Parse(User.Identity.Name) < 2)
     {
         <div class="btn-btn-default">
-                <input type="button" value="Edit SlideShow" onclick="location.href = '@Url.Action("UploadSlideshowFile", "EditSlideShowImages")'" />
-            </div> 
-        @Html.ActionLink("Edit SlideShow", "UploadSlideshowFile", "EditSlideShowImages")
+            <input type="button" value="Edit SlideShow" onclick="location.href = '@Url.Action("UploadSlideshowFile", "EditSlideShowImages")'" />
+        </div>
+            @Html.ActionLink("Edit SlideShow", "UploadSlideshowFile", "EditSlideShowImages")
     }
 </p>
 <div class="row">
     <div class="col-md-4">
 
-        <img src="~/Images/IMG_0210.JPG"width="400" height="400" />
-     
-    
+        <img src="~/Images/IMG_0210.JPG" width="400" height="400" />
+
+
     </div>
     <div class="col-md-4">
-       
+
     </div>
     <div class="col-md-4">
         <h2>Välkommen till Helsingborgs Datorservice</h2>
@@ -52,8 +52,13 @@
 
 
 @section Styles {
+    <link href="~/Content/Site.css" rel="stylesheet" />
     <link href="~/Content/owl.carousel.css" rel="stylesheet" />
-<link href="~/Content/Site.css" rel="stylesheet" />
+    <style>
+        body{
+            background-color:black;
+        }
+    </style>
 }
 
 @section Scripts {
