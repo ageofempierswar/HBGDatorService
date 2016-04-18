@@ -10,7 +10,7 @@ using HBGDatorServiceDAL.POCO;
 using HBGDatorServiceDAL;
 namespace HBGDatorService.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : Controller // här är alla användare, både vanliga och admins.
     {
         // GET: Account
         public ActionResult Index()
@@ -28,8 +28,6 @@ namespace HBGDatorService.Controllers
         [HttpPost]
         public ActionResult Register(UserAccount account)
         {
-
-
             if (ModelState.IsValid)
                 if (ModelState.IsValid)
                 {
@@ -52,26 +50,52 @@ namespace HBGDatorService.Controllers
         [HttpPost]
         public ActionResult Login(UserAccount user, string returnUrl)
         {
+
             using (HBGDatorServiceContext db = new HBGDatorServiceContext())
             {
                 var usr = db.UserAccount.Where(u => u.Username == user.Username && u.Password == user.Password).FirstOrDefault();
                 if (usr != null)
                 {
+                    Session["Admin"] = usr.Admin;
                     Session["UserID"] = usr.UserID.ToString();
                     Session["Username"] = usr.Username.ToString();
                     ViewBag.FirstName = usr.FirstName;
                     FormsAuthentication.SetAuthCookie(usr.Username, true);
-                    return RedirectToAction("Index","Home");
+
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
                     ModelState.AddModelError("", "The user name or password provided is incorrect.");
                 }
+
             }
             return View();
         }
+        public ActionResult Logout()
+        {
+            Session["Admin"] = null;
+            FormsAuthentication.SignOut();
 
+            return RedirectToAction("Index", "Home");
+        }
 
+        public ActionResult IsAdmin(UserAccount currentUser)
+        {
+            using (HBGDatorServiceContext db = new HBGDatorServiceContext())
+            {
+                var usr = db.UserAccount.Where(u => u.Username == currentUser.Username && u.Password == currentUser.Password).FirstOrDefault();
+                if (usr.Admin != true)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    //dosomething
+                }
+            }
+            return RedirectToAction("Index", "Home");
+        }
 
         public ActionResult Loggedin()
         {
@@ -85,17 +109,8 @@ namespace HBGDatorService.Controllers
             }
         }
 
-        public ActionResult Logout()
-        {
-            FormsAuthentication.SignOut();
-
-            return RedirectToAction("Index", "Home");
-        }
-
-
-
         #region Status Codes
-        private static string ErrorCodeToString(MembershipCreateStatus createStatus)
+        private static string ErrorCodeToString(MembershipCreateStatus createStatus) // olika failsaves för Register.
         {
             // See http://go.microsoft.com/fwlink/?LinkID=177550 for
             // a full list of status codes.

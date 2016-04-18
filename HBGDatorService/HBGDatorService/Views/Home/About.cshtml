@@ -3,7 +3,7 @@
 
 
 <p>
-    @if (User.Identity.IsAuthenticated && int.Parse(User.Identity.Name) < 2)
+    @if (User.Identity.IsAuthenticated)
     {
         @Html.ActionLink("Edit", "EditAbout", "EditAboutPage")
     }

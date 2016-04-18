@@ -10,7 +10,7 @@ using HBGDatorServiceDAL.Models;
 using HBGDatorService.Models;
 namespace HBGDatorService.Controllers
 {
-    public class AdminLoginController : Controller
+    public class AdminController : Controller // här har admin användare sina "powers".
     {
         public ActionResult Index()
         {

@@ -9,7 +9,7 @@ using HBGDatorServiceDAL;
 namespace HBGDatorService.Controllers
 {
     [Authorize]
-    public class ManageAdminsController : Controller
+    public class ManageAdminsController : Controller // denna controller används inte, men kan behövas senare.
     {
         // GET: ManageAdmins
         public ActionResult Index()
