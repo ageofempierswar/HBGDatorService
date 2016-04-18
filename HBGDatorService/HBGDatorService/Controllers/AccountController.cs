@@ -85,13 +85,9 @@ namespace HBGDatorService.Controllers
             using (HBGDatorServiceContext db = new HBGDatorServiceContext())
             {
                 var usr = db.UserAccount.Where(u => u.Username == currentUser.Username && u.Password == currentUser.Password).FirstOrDefault();
-                if (usr.Admin != true)
+                if (!(bool)Session["Admin"])
                 {
-                    return RedirectToAction("Index", "Home");
-                }
-                else
-                {
-                    //dosomething
+                    return RedirectToAction("Login", "Account");
                 }
             }
             return RedirectToAction("Index", "Home");
