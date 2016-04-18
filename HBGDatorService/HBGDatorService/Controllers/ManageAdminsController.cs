@@ -30,23 +30,6 @@ namespace HBGDatorService.Controllers
             {
                 return RedirectToAction("Index");
             }
-        }
-        public ActionResult Edit(int id)
-        {
-            var admin = Repository.GetAdminInformationForEditModel(id);
-            return View(admin);
-        }
-        [HttpPost, ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, EditAdminModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                Repository.UpdateAdminProfile(id, model);
-                return RedirectToAction("Index");
-            }
-            return View(model);
-        }
-
-
+        }       
     }
 }

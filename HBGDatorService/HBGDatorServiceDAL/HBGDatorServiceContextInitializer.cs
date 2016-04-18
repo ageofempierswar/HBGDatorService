@@ -9,6 +9,8 @@ using HBGDatorServiceDAL.POCO;
 namespace HBGDatorServiceDAL
 {
     public class HBGDatorServiceContextInitializer : DropCreateDatabaseIfModelChanges<HBGDatorServiceContext>
+        //Databasen MÅSTE vara IfModelChanges, på grund av att alla users och allt man gjort kommer försvinna när man tex bytar sida, 
+        //och det är ju inte jätte bra. (^_^)
     {
 
         private HBGDatorServiceContext context;

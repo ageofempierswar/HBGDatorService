@@ -14,16 +14,17 @@ namespace HBGDatorService.Controllers
     {
         public ActionResult Index()
         {
+            //return View(Repository.GetAllAdmins());
             return RedirectToAction("Index", "Home");
         }
 
-        public ActionResult Login() //används inte.
+        public ActionResult Login()
         {
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(AdminLoginModel model) // ska ta en till adminvyn.
+        public ActionResult Login(AdminLoginModel model)
         {
 
             if (ModelState.IsValid)
@@ -36,8 +37,6 @@ namespace HBGDatorService.Controllers
                     /* Denna kanske behövs. */
 
                     return RedirectToAction("Index", "Home"); 
-                    //just nu (om det funkat) logga in som admin, på localhost????/Admin, som sedan skickar tillbaka dig
-                    //till home med adminbehörighet
                        
                 }
                 else
@@ -49,6 +48,34 @@ namespace HBGDatorService.Controllers
             {
                 return View();
             }
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public ActionResult Register(RegisterAdminModel model) // behöves inte eftersom admin sätts i databasen, tog med den ändå.
+        {
+            if (ModelState.IsValid)
+            {
+                Repository.RegisterAdmin(model);
+                ModelState.Clear();
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
+        }
+
+        public ActionResult Edit(int id) // editera din adminprofil, kan man väll ha nytta av, fast admin är ju en "valig användare" så dem kan ha samma edit.
+        {
+            var admin = Repository.GetAdminInformationForEditModel(id);
+            return View(admin);
+        }
+        [HttpPost, ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, EditAdminModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                Repository.UpdateAdminProfile(id, model);
+                return RedirectToAction("Index");
+            }
+            return View(model);
         }
     }
 }

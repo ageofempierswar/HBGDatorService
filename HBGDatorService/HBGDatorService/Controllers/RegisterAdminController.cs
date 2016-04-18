@@ -20,17 +20,5 @@ namespace HBGDatorService.Controllers
         {
             return View();
         }
-
-        [HttpPost, ValidateAntiForgeryToken]
-        public ActionResult Register(RegisterAdminModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                Repository.RegisterAdmin(model);
-                ModelState.Clear();
-                return RedirectToAction("Index", "Home");
-            }
-            return View();
-        }
     }
 }
