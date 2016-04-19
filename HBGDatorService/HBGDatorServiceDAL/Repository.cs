@@ -219,6 +219,86 @@ namespace HBGDatorServiceDAL
             about.Textfield3 = model.Textfield3;
             return about;
         }
+
+
+
+
+
+
+
+
+        public static EditServiceModel GetLatestServiceInformation()
+        {
+            using (var context = new HBGDatorServiceContext())
+            {
+                var query =
+                    (from a in context.service
+                     orderby a.ID descending
+                     select
+                         new EditServiceModel()
+                         {
+                             ID = a.ID,
+                             Header1 = a.Header1,
+                             Header2 = a.Header2,
+                             Header3 = a.Header3,
+                             Header4 = a.Header4,
+                             Header5 = a.Header5,
+                             Header6 = a.Header6,
+                             Textfield1 = a.Textfield1,
+                             Textfield2 = a.Textfield2,
+                             Textfield3 = a.Textfield3,
+                             Textfield4 = a.Textfield4,
+                             Textfield5 = a.Textfield5,
+                             Textfield6 = a.Textfield6
+                         }).FirstOrDefault();
+
+                return query;
+            }
+        }
+        public static ServiceReadOnlyModel ServiceReadOnly()
+        {
+            using (var contex = new HBGDatorServiceContext())
+            {
+
+                return (from a in contex.service
+                        select new ServiceReadOnlyModel()
+                        {
+                            Header1 = a.Header1,
+                            Header2 = a.Header2,
+                            Header3 = a.Header3,
+                            Header4 = a.Header4,
+                            Header5 = a.Header5,
+                            Header6 = a.Header6,
+                            Textfield1 = a.Textfield1,
+                            Textfield2 = a.Textfield2,
+                            Textfield3 = a.Textfield3,
+                            Textfield4 = a.Textfield4,
+                            Textfield5 = a.Textfield5,
+                            Textfield6 = a.Textfield6
+                        }).ToList().LastOrDefault();
+
+            }
+        }
+        public static void UpdateService(Service service)
+        {
+            using (var context = new HBGDatorServiceContext())
+            {
+                context.Entry(service).State = EntityState.Modified;
+                context.SaveChanges();
+            }
+        }
+        public static Service GetLatestService()
+        {
+            using (var context = new HBGDatorServiceContext())
+            {
+                var query =
+                    (from a in context.service
+                     orderby a.ID descending
+                     select a).FirstOrDefault();
+
+                return query;
+            }
+        }
     }
 
 }
