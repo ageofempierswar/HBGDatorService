@@ -53,16 +53,16 @@ namespace HBGDatorServiceDAL
             }
         }
         public static int GetAdminId(string username)
-         {
-             using (var context = new HBGDatorServiceContext())
-             {
-                 return
-                     (from u in context.Users
-                      where u.Username == username
-                      select u.ID).FirstOrDefault();
-             }
- 
-         }
+        {
+            using (var context = new HBGDatorServiceContext())
+            {
+                return
+                    (from u in context.Users
+                     where u.Username == username
+                     select u.ID).FirstOrDefault();
+            }
+
+        }
         public static string GetAdminEmail()
         {
             using (var context = new HBGDatorServiceContext())
@@ -74,47 +74,15 @@ namespace HBGDatorServiceDAL
             }
         }
         public static bool AuthenticateAdminLogin(string username, string password)
-         {
-             using (var context = new HBGDatorServiceContext())
-             {
-                 return
-                     (from a in context.Users
-                      where a.Username == username && a.Password == password && a.IsActive
-                      select a).Any();
-             }
-         }
- 
-         public static EditAdminModel GetAdminInformationForEditModel(int id)
-         {
-             using (var context = new HBGDatorServiceContext())
-             {
-                 return (from u in context.Users
-                         where u.ID == id
-                         select new EditAdminModel
-                         {
-                             Email = u.Email
-                         }).FirstOrDefault();
-             }
-         }
-        public static AboutReadOnlyModel AboutReadOnly()
         {
-            using (var contex = new HBGDatorServiceContext())
+            using (var context = new HBGDatorServiceContext())
             {
-
-                return (from a in contex.Abouts
-                        select new AboutReadOnlyModel()
-                        {
-                            Header1 = a.Header1,
-                            Header2 = a.Header2,
-                            Header3 = a.Header3,
-                            Textfield1 = a.Textfield1,
-                            Textfield2 = a.Textfield2,
-                            Textfield3 = a.Textfield3
-                        }).ToList().LastOrDefault();
-
+                return
+                    (from a in context.Users
+                     where a.Username == username && a.Password == password && a.IsActive
+                     select a).Any();
             }
-        }
-
+        }     
         public static void UpdateAdminProfile(int adminId, EditAdminModel model)
         {
             using (var context = new HBGDatorServiceContext())
@@ -127,49 +95,6 @@ namespace HBGDatorServiceDAL
 
                 context.Entry(admin).State = EntityState.Modified;
                 context.SaveChanges();
-            }
-        }
-        public static void UpdateAbouts(About about)
-        {
-            using (var context = new HBGDatorServiceContext())
-            {
-                context.Entry(about).State = EntityState.Modified;
-                context.SaveChanges();
-            }
-        }
-        public static EditAboutModel GetLatestAboutInformation()
-        {
-            using (var context = new HBGDatorServiceContext())
-            {
-                var query =
-                    (from a in context.Abouts
-                     orderby a.ID descending
-                     select
-                         new EditAboutModel()
-                         {
-                             ID = a.ID,
-                             Header1 = a.Header1,
-                             Header2 = a.Header2,
-                             Header3 = a.Header3,
-                             Textfield1 = a.Textfield1,
-                             Textfield2 = a.Textfield2,
-                             Textfield3 = a.Textfield3
-                         }).FirstOrDefault();
-
-                return query;
-            }
-        }
-
-        public static About GetLatestAbout()
-        {
-            using (var context = new HBGDatorServiceContext())
-            {
-                var query =
-                    (from a in context.Abouts
-                     orderby a.ID descending
-                     select a).FirstOrDefault();
-
-                return query;
             }
         }
         public static void RemoveAdminByID(int id)
@@ -207,7 +132,6 @@ namespace HBGDatorServiceDAL
                         select new AdminModel { Username = a.Username, AdminLevel = a.AdminLevel, ID = a.ID }).ToList();
             }
         }
-
         public static About SetAboutValues(EditAboutModel model, About about)
         {
             about.ID = model.ID;
@@ -219,14 +143,6 @@ namespace HBGDatorServiceDAL
             about.Textfield3 = model.Textfield3;
             return about;
         }
-
-
-
-
-
-
-
-
         public static EditServiceModel GetLatestServiceInformation()
         {
             using (var context = new HBGDatorServiceContext())
@@ -293,6 +209,78 @@ namespace HBGDatorServiceDAL
             {
                 var query =
                     (from a in context.service
+                     orderby a.ID descending
+                     select a).FirstOrDefault();
+
+                return query;
+            }
+        }
+        public static EditAdminModel GetAdminInformationForEditModel(int id)
+        {
+            using (var context = new HBGDatorServiceContext())
+            {
+                return (from u in context.Users
+                        where u.ID == id
+                        select new EditAdminModel
+                        {
+                            Email = u.Email
+                        }).FirstOrDefault();
+            }
+        }
+        public static AboutReadOnlyModel AboutReadOnly()
+        {
+            using (var contex = new HBGDatorServiceContext())
+            {
+
+                return (from a in contex.Abouts
+                        select new AboutReadOnlyModel()
+                        {
+                            Header1 = a.Header1,
+                            Header2 = a.Header2,
+                            Header3 = a.Header3,
+                            Textfield1 = a.Textfield1,
+                            Textfield2 = a.Textfield2,
+                            Textfield3 = a.Textfield3
+                        }).ToList().LastOrDefault();
+
+            }
+        }
+        public static void UpdateAbouts(About about)
+        {
+            using (var context = new HBGDatorServiceContext())
+            {
+                context.Entry(about).State = EntityState.Modified;
+                context.SaveChanges();
+            }
+        }
+        public static EditAboutModel GetLatestAboutInformation()
+        {
+            using (var context = new HBGDatorServiceContext())
+            {
+                var query =
+                    (from a in context.Abouts
+                     orderby a.ID descending
+                     select
+                         new EditAboutModel()
+                         {
+                             ID = a.ID,
+                             Header1 = a.Header1,
+                             Header2 = a.Header2,
+                             Header3 = a.Header3,
+                             Textfield1 = a.Textfield1,
+                             Textfield2 = a.Textfield2,
+                             Textfield3 = a.Textfield3
+                         }).FirstOrDefault();
+
+                return query;
+            }
+        }
+        public static About GetLatestAbout()
+        {
+            using (var context = new HBGDatorServiceContext())
+            {
+                var query =
+                    (from a in context.Abouts
                      orderby a.ID descending
                      select a).FirstOrDefault();
 
