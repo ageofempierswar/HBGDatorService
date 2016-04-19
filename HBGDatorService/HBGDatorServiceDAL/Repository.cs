@@ -132,16 +132,35 @@ namespace HBGDatorServiceDAL
                         select new AdminModel { Username = a.Username, AdminLevel = a.AdminLevel, ID = a.ID }).ToList();
             }
         }
-        public static About SetAboutValues(EditAboutModel model, About about)
+        public static EditAdminModel GetAdminInformationForEditModel(int id)
         {
-            about.ID = model.ID;
-            about.Header1 = model.Header1;
-            about.Header2 = model.Header2;
-            about.Header3 = model.Header3;
-            about.Textfield1 = model.Textfield1;
-            about.Textfield2 = model.Textfield2;
-            about.Textfield3 = model.Textfield3;
-            return about;
+            using (var context = new HBGDatorServiceContext())
+            {
+                return (from u in context.Users
+                        where u.ID == id
+                        select new EditAdminModel
+                        {
+                            Email = u.Email
+                        }).FirstOrDefault();
+            }
+        }
+
+        public static Service SetServiceValues(EditServiceModel model, Service service)
+        {
+            service.ID = model.ID;
+            service.Header1 = model.Header1;
+            service.Header2 = model.Header2;
+            service.Header3 = model.Header3;
+            service.Header4 = model.Header4;
+            service.Header5 = model.Header5;
+            service.Header6 = model.Header6;
+            service.Textfield1 = model.Textfield1;
+            service.Textfield2 = model.Textfield2;
+            service.Textfield3 = model.Textfield3;
+            service.Textfield4 = model.Textfield4;
+            service.Textfield5 = model.Textfield5;
+            service.Textfield6 = model.Textfield6;
+            return service;
         }
         public static EditServiceModel GetLatestServiceInformation()
         {
@@ -215,18 +234,8 @@ namespace HBGDatorServiceDAL
                 return query;
             }
         }
-        public static EditAdminModel GetAdminInformationForEditModel(int id)
-        {
-            using (var context = new HBGDatorServiceContext())
-            {
-                return (from u in context.Users
-                        where u.ID == id
-                        select new EditAdminModel
-                        {
-                            Email = u.Email
-                        }).FirstOrDefault();
-            }
-        }
+       
+
         public static AboutReadOnlyModel AboutReadOnly()
         {
             using (var contex = new HBGDatorServiceContext())
@@ -286,6 +295,17 @@ namespace HBGDatorServiceDAL
 
                 return query;
             }
+        }
+        public static About SetAboutValues(EditAboutModel model, About about)
+        {
+            about.ID = model.ID;
+            about.Header1 = model.Header1;
+            about.Header2 = model.Header2;
+            about.Header3 = model.Header3;
+            about.Textfield1 = model.Textfield1;
+            about.Textfield2 = model.Textfield2;
+            about.Textfield3 = model.Textfield3;
+            return about;
         }
     }
 

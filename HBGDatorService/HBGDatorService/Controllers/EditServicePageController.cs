@@ -13,15 +13,15 @@ namespace HBGDatorService.Controllers
         // GET: EditServicePage
         public ActionResult EditService()
         {
-            var currentAboutInfo = Repository.GetLatestAboutInformation();
-            return View(currentAboutInfo);
+            var currentServiceInfo = Repository.GetLatestServiceInformation();
+            return View(currentServiceInfo);
         }
         [HttpPost]
         public ActionResult EditAbout(EditServiceModel model)
         {
             if (ModelState.IsValid)
             {
-                var about = Repository.GetLatestAbout();
+                var about = Repository.GetLatestService();
                 Repository.UpdateAbouts(Repository.SetAboutValues(model, about));
                 return RedirectToAction("Index", "About");
             }
