@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 namespace HBGDatorServiceDAL.Models
 {
-    class ServiceReadOnlyModel
+    public class ServiceReadOnlyModel
     {
         public string Header1 { get; set; }
         public string Header2 { get; set; }
