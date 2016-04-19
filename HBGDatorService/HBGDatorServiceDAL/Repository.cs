@@ -52,6 +52,7 @@ namespace HBGDatorServiceDAL
                 context.SaveChanges();
             }
         }
+
         public static int GetAdminId(string username)
         {
             using (var context = new HBGDatorServiceContext())
