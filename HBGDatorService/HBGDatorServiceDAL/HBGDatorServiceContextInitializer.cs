@@ -66,6 +66,10 @@ namespace HBGDatorServiceDAL
         public override void InitializeDatabase(HBGDatorServiceContext context)
         {
 
+            //abouts.ForEach(a => context.Abouts.Add(a));
+            //services.ForEach(s => context.Services.Add(s));
+            //Ska tästa om det funkar där efter som  protected override void Seed(HBGDatorServiceContext context) ska inte finnas efter som hela den funktionen görs på automatik av "public override void InitializeDatabase(HBGDatorServiceContext context)"
+
 
             // users.ForEach(u => context.Users.Add(u));
             base.InitializeDatabase(context);

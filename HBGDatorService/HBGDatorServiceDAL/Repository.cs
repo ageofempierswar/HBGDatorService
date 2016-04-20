@@ -75,6 +75,8 @@ namespace HBGDatorServiceDAL
             throw new NotImplementedException();
         }
 
+        //------------------------------------------------------------------------------------------------------- Service
+
         public static ServiceReadOnlyModel ServiceReadOnly(int nrToShow)
         {
             using (var contex = new HBGDatorServiceContext())
@@ -116,6 +118,8 @@ namespace HBGDatorServiceDAL
             service.Textfield = model.Textfield;
             return service;
         }
+
+        //------------------------------------------------------------------------------------------------------- About
 
         public static AboutReadOnlyModel AboutReadOnly()
         {
