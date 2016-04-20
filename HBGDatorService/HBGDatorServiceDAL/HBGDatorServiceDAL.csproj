@@ -65,7 +65,6 @@
     <Compile Include="Models\AdminModel.cs" />
     <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Models\EditAboutModel.cs" />
-    <Compile Include="Models\EditAdminModel.cs" />
     <Compile Include="Models\EditServiceModel.cs" />
     <Compile Include="Models\ErrorModel.cs" />
     <Compile Include="Models\ImageModel.cs" />

@@ -9,37 +9,21 @@ using HBGDatorServiceDAL.POCO;
 namespace HBGDatorServiceDAL
 {
     public class HBGDatorServiceContextInitializer : DropCreateDatabaseIfModelChanges<HBGDatorServiceContext>
-        //Databasen MÅSTE vara IfModelChanges, på grund av att alla users och allt man gjort kommer försvinna när man tex bytar sida, 
-        //och det är ju inte jätte bra. (^_^)
+    //Databasen MÅSTE vara IfModelChanges, på grund av att alla users och allt man gjort kommer försvinna när man tex bytar sida, 
+    //och det är ju inte jätte bra. (^_^)
     {
 
         private HBGDatorServiceContext context;
         private List<About> abouts;
-
+        private List<Service> services;
         //private readonly List<User> users;
-        //protected override void Seed(HBGDatorServiceContext context)
-        //{
-        //    context.Abouts.Add(new About("Header1", @"balblablalblablalbla",
-        //        "Header2", "heuheuehuehueheuheuhe", "fwqojfwq", "fijsedfiwqfwwq"));
-        //    context.SaveChanges();
 
-        //    //context.Abouts.Add(new About("Team Nordahl","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et enim quis sem blandit mollis eu sed nibh. Pellentesque eu neque erat. Nullam tempus purus velit, sed ullamcorper est suscipit ac. Aenean molestie odio ut purus tristique tempus. Suspendisse sed purus eget augue vulputate dignissim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel fermentum nunc. Nam nec dapibus tortor. Cras tellus nibh, fringilla ut facilisis et, fringilla sit amet erat. In tem...(line truncated)...",
-        //    //              "Camargue","Maecenas finibus viverra tincidunt. Praesent vitae est sed sem pharetra consequat. Phasellus facilisis lacus velit, id lacinia elit facilisis sit amet. Nullam luctus, nisi sit amet bibendum convallis, justo felis sodales eros, nec rutrum tellus sapien ornare ex. Morbi fermentum tristique magna ut hendrerit. Mauris tincidunt ante ut libero mollis, eu pulvinar nunc dapibus. Fusce vestibulum nibh dui, ut blandit nisl pellentesque eu. In id sapien eget neque suscipit sollicitudin...(line truncated)...",
-        //    //              "Our Ranch",
-        //    //              "In congue, quam sed luctus aliquam, neque ipsum ultricies quam, at blandit magna sem a orci. Nulla leo quam, tempor nec lacus vitae, feugiat elementum lectus. Phasellus pellentesque rhoncus est quis luctus. Fusce imperdiet, eros quis volutpat ultricies, nulla nulla tincidunt purus, et varius urna libero in velit. Morbi vulputate convallis leo. Ut venenatis odio sit amet nisi condimentum semper. Etiam nunc tellus, mattis nec turpis eget, eleifend rhoncus tortor. Aenean id sem ...(line truncated)...)"));
-        //    //context.SaveChanges(); vill testa hur det ser ut med denna texten men fick ej det att funka
-
-
-        //}
-        //public HBGDatorServiceContextInitializer(HBGDatorServiceContext h)
-        //{
-        //    this.context = h;
-        //    Seed(context);
-
-        //}
-
-
-
+        protected override void Seed(HBGDatorServiceContext context)
+        {
+            abouts.ForEach(a => context.Abouts.Add(a));
+            services.ForEach(s => context.Services.Add(s));
+            context.SaveChanges();
+        }
 
         public HBGDatorServiceContextInitializer()
         {
@@ -49,15 +33,32 @@ namespace HBGDatorServiceDAL
             //    new User("Test1", "admin", 2, "teamnordahl123@gmail.com"),
             //    new User("Test2", "admin", 2, "teamnordahl123@gmail.com"),
             //};
+
+            //this.context = h;
+            //Seed(context);
+
+
             abouts = new List<About>()
             {
-				//new About("Header1",@"balblablalblablalbla","Header2","heuheuehuehueheuheuhe", "fwqojfwq", "fijsedfiwqfwwq"),
-				new About("Team Nordahl",
-                          @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et enim quis sem blandit mollis eu sed nibh. Pellentesque eu neque erat. Nullam tempus purus velit, sed ullamcorper est suscipit ac. Aenean molestie odio ut purus tristique tempus. Suspendisse sed purus eget augue vulputate dignissim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel fermentum nunc. Nam nec dapibus tortor. Cras tellus nibh, fringilla ut facilisis et, fringilla sit amet erat. In tempor bibendum turpis eget sollicitudin. Praesent pharetra rhoncus metus, a cursus massa consectetur pharetra. Nulla pulvinar nisi quis sem molestie, in luctus mi scelerisque. Nulla facilisi. Duis sit amet volutpat diam. Proin vitae auctor lectus.",
-                          "Camargue",
-                          @"Maecenas finibus viverra tincidunt. Praesent vitae est sed sem pharetra consequat. Phasellus facilisis lacus velit, id lacinia elit facilisis sit amet. Nullam luctus, nisi sit amet bibendum convallis, justo felis sodales eros, nec rutrum tellus sapien ornare ex. Morbi fermentum tristique magna ut hendrerit. Mauris tincidunt ante ut libero mollis, eu pulvinar nunc dapibus. Fusce vestibulum nibh dui, ut blandit nisl pellentesque eu. In id sapien eget neque suscipit sollicitudin at quis augue. Quisque ac eleifend leo, in porta dolor. Pellentesque luctus lectus sapien, a pulvinar velit faucibus quis. Curabitur a mattis eros. In congue, quam sed luctus aliquam, neque ipsum ultricies quam, at blandit magna sem a orci. Nulla leo quam, tempor nec lacus vitae, feugiat elementum lectus. Phasellus pellentesque rhoncus est quis luctus. Fusce imperdiet, eros quis volutpat ultricies, nulla nulla tincidunt purus, et varius urna libero in velit. Morbi vulputate convallis leo. Ut venenatis odio sit amet nisi condimentum semper. Etiam nunc tellus, mattis nec turpis eget, eleifend rhoncus tortor. Aenean id sem sodales quam lobortis porttitor. Pellentesque rhoncus tellus quis est bibendum vestibulum. Sed gravida imperdiet tincidunt. Sed mollis est nunc, id faucibus orci aliquet ut. Nulla facilisi. Morbi sit amet felis ipsum. Suspendisse ut diam posuere, euismod mauris vitae, maximus urna. Aenean lorem turpis, accumsan nec consequat in, tincidunt vitae velit. Nulla quis tellus convallis, ullamcorper purus at, pellentesque ligula.",
-                          "Our Ranch",
-                          @"In congue, quam sed luctus aliquam, neque ipsum ultricies quam, at blandit magna sem a orci. Nulla leo quam, tempor nec lacus vitae, feugiat elementum lectus. Phasellus pellentesque rhoncus est quis luctus. Fusce imperdiet, eros quis volutpat ultricies, nulla nulla tincidunt purus, et varius urna libero in velit. Morbi vulputate convallis leo. Ut venenatis odio sit amet nisi condimentum semper. Etiam nunc tellus, mattis nec turpis eget, eleifend rhoncus tortor. Aenean id sem sodales quam lobortis porttitor. Pellentesque rhoncus tellus quis est bibendum vestibulum. Sed gravida imperdiet tincidunt. Sed mollis est nunc, id faucibus orci aliquet ut. Nulla facilisi. Morbi sit amet felis ipsum. Suspendisse ut diam posuere, euismod mauris vitae, maximus urna.")
+                new About { Header = "Team Nordahl",
+                            Textfield = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et enim quis sem blandit mollis eu sed nibh. Pellentesque eu neque erat. Nullam tempus purus velit, sed ullamcorper est suscipit ac. Aenean molestie odio ut purus tristique tempus. Suspendisse sed purus eget augue vulputate dignissim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel fermentum nunc. Nam nec dapibus tortor. Cras tellus nibh, fringilla ut facilisis et, fringilla sit amet erat. In tempor bibendum turpis eget sollicitudin. Praesent pharetra rhoncus metus, a cursus massa consectetur pharetra. Nulla pulvinar nisi quis sem molestie, in luctus mi scelerisque. Nulla facilisi. Duis sit amet volutpat diam. Proin vitae auctor lectus." },
+                         new About { Header = "Team Nordahl",
+                            Textfield = "Lorem ipsum dolor sit amet, fermentum nunc. Nam nec dapibus tortor. Cras tellus nibh, fringilla ut facilisis et, fringilla sit amet erat. In tempor . Duis sit amet volutpat diam. Proin vitae auctor lectus." },
+
+                        new About { Header = "Team Nordahl",
+                            Textfield = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et enim quis sem blandit mollis eu sed nibh. Pellentesque eu neque erat. Nullam tempus purus velit, sed ullamcorper est suscipit ac. Aenean molestie odio ut purus tristique tempus. Suspendisse sed purus eget augue vulputate tur pharetra. Nulla pulvinar nisi quis sem molestie, in luctus mi scelerisque. Nulla facilisi. Duis sit amet volutpat diam. Proin vitae auctor lectus." }
+
+            };
+
+            services = new List<Service>()
+            {
+                new Service { Header = "Lagning", Textfield = "Fixa Datorn" },
+                new Service { Header = "Felsök", Textfield = "Vi Felsöker" },
+                new Service { Header = "Byte", Textfield = "Bytar" },
+                new Service { Header = "Uppdatering", Textfield = "Uppdaterar windows" },
+                new Service { Header = "Bygg", Textfield = "Bygger laptops" },
+                new Service { Header = "Demontering", Textfield = "Plockar isär" }
+
 
             };
         }
@@ -65,8 +66,8 @@ namespace HBGDatorServiceDAL
         public override void InitializeDatabase(HBGDatorServiceContext context)
         {
 
-            abouts.ForEach(a => context.Abouts.Add(a));
-           // users.ForEach(u => context.Users.Add(u));
+
+            // users.ForEach(u => context.Users.Add(u));
             base.InitializeDatabase(context);
         }
 

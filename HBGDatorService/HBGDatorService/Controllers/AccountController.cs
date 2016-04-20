@@ -80,7 +80,7 @@ namespace HBGDatorService.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public ActionResult IsAdmin(UserAccount currentUser) //om user inte är admin, neka andvänding av adminfuntioner???
+        public ActionResult IsAdmin(UserAccount currentUser) //kolla om användaren är en admin, är han det så gör något.
         {
             using (HBGDatorServiceContext db = new HBGDatorServiceContext())
             {

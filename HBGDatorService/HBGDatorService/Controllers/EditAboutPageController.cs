@@ -15,19 +15,13 @@ namespace HBGDatorService.Controllers
         // GET: EditAboutPage
         public ActionResult EditAbout()
         {
-            var currentAboutInfo = Repository.GetLatestAboutInformation();
+            var currentAboutInfo = Repository.GetLatestAbouts();
             return View(currentAboutInfo);
         }
         [HttpPost]
         public ActionResult EditAbout(EditAboutModel model)
         {
-            if (ModelState.IsValid)
-            {
-                var about = Repository.GetLatestAbout();
-                Repository.UpdateAbouts(Repository.SetAboutValues(model, about));
-                return RedirectToAction("Index", "About");
-            }
-            return View(model);
+            throw new NotImplementedException();
         }
     }
 }

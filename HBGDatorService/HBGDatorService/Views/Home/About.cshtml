@@ -1,40 +1,20 @@
 ﻿@model HBGDatorServiceDAL.Models.AboutReadOnlyModel
 @using HBGDatorServiceDAL.Models
 
-
 <p>
-    @if (User.Identity.IsAuthenticated)
+    @if (Session["Admin"] != null && (bool)Session["Admin"])
     {
         @Html.ActionLink("Edit", "EditAbout", "EditAboutPage")
     }
 </p>
 
 <div class="AboutContent">
-    <div class="AboutInfoBox">
-        <h1>@Model.Header1</h1> 
-        <p>@Model.Textfield1</p>
-        <hr />
-    </div>
-
-    <div class="AboutInfoBox">
-        <h1>@Model.Header2</h1>
-        <p>@Model.Textfield2</p>
-        <hr />
-    </div>
-
-    <div class="AboutInfoBox">
-        <h1>@Model.Header3</h1>
-        <p>@Model.Textfield3</p>
-    </div>
+    @foreach (var about in Model.About)
+    {
+        <div class="AboutInfoBox">
+            <h1>@about.Header</h1>
+            <p>@about.Textfield</p>
+            <hr />
+        </div>
+    }
 </div>
-<p>
-    Vi är ett företag som varit verksamt i Helsingborg i 2 år med butik och tillhörande datorverkstad i Helsingborgs City. Vi arbetar med små & medelstora företag genom service avtal och privatpersoner.
-    Vi har 20 års erfarenhet av datorer, reparationer, service och säkerhet.
-
-    - Helsingborgs datorservice är verkligen en trygg hand att hålla i. Snabba och effektiva är dom också. Kommer i stort sett direkt och svarar alltid i telefon.
-
-    Christer Fåke: Stjärnurmakarna / Guldsmycket i Helsingborg
-    Helsingborgs Datorservice har teknisk kompetens, både egen och förstärkt med IT konsulter, som kan komma med kreativa lösningar på svårare problem.
-
-    Vi kan service och säkerhet.
-</p>

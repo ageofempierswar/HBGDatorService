@@ -17,7 +17,8 @@ namespace HBGDatorServiceDAL
         //    */
 
         //    // Denna kör seed också, men ändrar inte databasen.
-        //    Database.SetInitializer(new HBGDatorServiceContextInitializer(this)); 
+        //Database.SetInitializer<myDB>(new DropCreateDatabaseIfModelChanges<myDB>());
+         //Database.SetInitializer(new HBGDatorServiceContextInitializer(this)); 
         //Om vi får about fel, ta bort kommentaren på koden framför, kör projektet en gång, stäng och kommentera ut det igen.
         //                                                                          /*
         //                                                                          Vet ej om SetInitializer behövs efter nästa förändring av modellen, eller om Seed kickas igång av den ovan.
@@ -29,6 +30,6 @@ namespace HBGDatorServiceDAL
         public DbSet<SlideShowImage> SlideShowImages { get; set; }
         public DbSet<About> Abouts { get; set; }
         public DbSet<UserAccount> UserAccount { get; set; }
-        public DbSet<Service> service { get; set; }
+        public DbSet<Service> Services { get; set; }
     }
 }

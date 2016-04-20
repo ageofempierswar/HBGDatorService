@@ -167,7 +167,6 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
@@ -176,9 +175,6 @@
     <Compile Include="Controllers\EditSlideShowImagesController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManageAdminsController.cs" />
-    <Compile Include="Controllers\RegisterAdminController.cs" />
-    <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -240,12 +236,9 @@
     <Content Include="Views\EditSlideShowImages\SliderGallery.cshtml" />
     <Content Include="Views\EditSlideShowImages\UploadSlideshowFile.cshtml" />
     <Content Include="Views\Error\Error.cshtml" />
-    <Content Include="Views\About\Index.cshtml" />
     <Content Include="Views\EditAboutPage\EditAbout.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Contact\Sent.cshtml" />
-    <Content Include="Views\AdminLogin\Index.cshtml" />
-    <Content Include="Views\AdminLogin\AdminLogin.cshtml" />
     <Content Include="Views\ManageAdmins\Edit.cshtml" />
     <Content Include="Views\ManageAdmins\Index.cshtml" />
     <Content Include="Views\RegisterAdmin\Index.cshtml" />
@@ -255,7 +248,7 @@
     <Content Include="Views\Account\Loggedin.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Service\Index.cshtml" />
+    <Content Include="Views\Home\Service.cshtml" />
     <Content Include="Views\EditServicePage\EditService.cshtml" />
   </ItemGroup>
   <ItemGroup>

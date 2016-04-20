@@ -1,43 +1,31 @@
-﻿@model HBGDatorServiceDAL.Models.EditServiceModel
+﻿@model HBGDatorServiceDAL.Models.ServiceReadOnlyModel
 @using HBGDatorServiceDAL.Models
 
 <p>
-    @if (User.Identity.IsAuthenticated)
+    @if (Session["Admin"] != null && (bool)Session["Admin"])
     {
-        @Html.ActionLink("Edit", "EditService", "EditServicePage")
+      @Html.ActionLink("Edit", "EditService", "EditServicePage")
     }
 </p>
 
-<div class="SerivceContent">
-    <div class="ServiceInfoBox">
-        <h1>@Model.Header1</h1>
-        <p>@Model.Textfield1</p>
-        <hr />
-    </div>
+<div class="ServiceContent">
+    @foreach (var service in Model.services)
+    {
 
-    <div class="ServiceInfoBox">
-        <h1>@Model.Header2</h1>
-        <p>@Model.Textfield2</p>
-        <hr />
-    </div>
+        <div class="ServiceInfoBox">
+            <h1>@service.Header</h1>
+            <p>@service.Textfield</p>
+            <hr />
+        </div>
 
-    <div class="ServiceInfoBox">
-        <h1>@Model.Header3</h1>
-        <p>@Model.Textfield3</p>
-    </div>
-    <div class="ServiceInfoBox">
-        <h1>@Model.Header4</h1>
-        <p>@Model.Textfield4</p>
-    </div>
-    <div class="ServiceInfoBox">
-        <h1>@Model.Header5</h1>
-        <p>@Model.Textfield5</p>
-    </div>
-    <div class="ServiceInfoBox">
-        <h1>@Model.Header6</h1>
-        <p>@Model.Textfield6</p>
-    </div>
+    }
 </div>
+
+            
+            
+
+
+
 
 
 <div class="tabsIfoboxes">
@@ -89,8 +77,6 @@
 
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>

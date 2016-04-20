@@ -23,7 +23,7 @@ namespace HBGDatorService.Controllers
         {
             if (ModelState.IsValid)
             {
-                var email = Repository.GetAdminEmail();
+                var email = "";
                 var body = "<p>Email From: {0} (Subject: {1})</p><p>Message:</p><p>{2}</p>";
                 var message = new MailMessage();
                 message.To.Add(new MailAddress(email));

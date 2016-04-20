@@ -10,10 +10,10 @@ namespace HBGDatorService.Controllers
 {
     public class EditServicePageController : Controller
     {
-        // GET: EditServicePage
+        //GET: EditServicePage
         public ActionResult EditService()
         {
-            var currentServiceInfo = Repository.GetLatestServiceInformation();
+            var currentServiceInfo = Repository.GetLatestService();
             return View(currentServiceInfo);
         }
         [HttpPost]
@@ -22,8 +22,8 @@ namespace HBGDatorService.Controllers
             if (ModelState.IsValid)
             {
                 var service = Repository.GetLatestService();
-                Repository.UpdateService(Repository.SetServiceValues(model, service)); 
-                return RedirectToAction("Index", "About");
+                Repository.UpdateService(Repository.SetServiceValues(model, service));
+                return RedirectToAction("Index", "Service");
             }
             return View(model);
         }

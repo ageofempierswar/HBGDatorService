@@ -53,52 +53,14 @@ namespace HBGDatorServiceDAL
             }
         }
 
-        public static int GetAdminId(string username)
-        {
-            using (var context = new HBGDatorServiceContext())
-            {
-                return
-                    (from u in context.Users
-                     where u.Username == username
-                     select u.ID).FirstOrDefault();
-            }
+        //------------------------------------------------------------------------------------------------------- Users/Admins
 
+        public static void UpdateUserProfile()
+        {
+            throw new NotImplementedException();
         }
-        public static string GetAdminEmail()
-        {
-            using (var context = new HBGDatorServiceContext())
-            {
-                return
-                    (from u in context.Users
-                     where u.AdminLevel == 1
-                     select u.Email).FirstOrDefault();
-            }
-        }
-        public static bool AuthenticateAdminLogin(string username, string password)
-        {
-            using (var context = new HBGDatorServiceContext())
-            {
-                return
-                    (from a in context.Users
-                     where a.Username == username && a.Password == password && a.IsActive
-                     select a).Any();
-            }
-        }     
-        public static void UpdateAdminProfile(int adminId, EditAdminModel model)
-        {
-            using (var context = new HBGDatorServiceContext())
-            {
 
-                var admin = context.Users.Find(adminId);
-                admin.Email = model.Email;
-                admin.Password = model.Password;
-
-
-                context.Entry(admin).State = EntityState.Modified;
-                context.SaveChanges();
-            }
-        }
-        public static void RemoveAdminByID(int id)
+        public static void RemoveUserByID(int id)
         {
             using (var context = new HBGDatorServiceContext())
             {
@@ -107,114 +69,22 @@ namespace HBGDatorServiceDAL
                 context.SaveChanges();
             }
         }
-        public static void RegisterAdmin(RegisterAdminModel model)
-        {
-            using (var context = new HBGDatorServiceContext())
-            {
-                var newAdmin = new AdminAccount()
-                {
-                    Username = model.Username,
-                    Email = model.Email,
-                    Password = model.Password,
-                    AdminLevel = model.AdminLevel,
-                    IsActive = true,
-                };
 
-                context.Users.Add(newAdmin);
-                context.SaveChanges();
-            }
-        }
-        public static List<AdminModel> GetAllAdmins()
+        public static List<AdminModel> GetAllUsers()
         {
-            using (var context = new HBGDatorServiceContext())
-            {
-                return (from a in context.Users
-                        where a.IsActive == true
-                        select new AdminModel { Username = a.Username, AdminLevel = a.AdminLevel, ID = a.ID }).ToList();
-            }
-        }
-        public static EditAdminModel GetAdminInformationForEditModel(int id)
-        {
-            using (var context = new HBGDatorServiceContext())
-            {
-                return (from u in context.Users
-                        where u.ID == id
-                        select new EditAdminModel
-                        {
-                            Email = u.Email
-                        }).FirstOrDefault();
-            }
+            throw new NotImplementedException();
         }
 
-        public static Service SetServiceValues(EditServiceModel model, Service service)
-        {
-            service.ID = model.ID;
-            service.Header1 = model.Header1;
-            service.Header2 = model.Header2;
-            service.Header3 = model.Header3;
-            service.Header4 = model.Header4;
-            service.Header5 = model.Header5;
-            service.Header6 = model.Header6;
-            service.Textfield1 = model.Textfield1;
-            service.Textfield2 = model.Textfield2;
-            service.Textfield3 = model.Textfield3;
-            service.Textfield4 = model.Textfield4;
-            service.Textfield5 = model.Textfield5;
-            service.Textfield6 = model.Textfield6;
-            return service;
-        }
-        public static EditServiceModel GetLatestServiceInformation()
-        {
-            using (var context = new HBGDatorServiceContext())
-            {
-                var query =
-                    (from a in context.service
-                     orderby a.ID descending
-                     select
-                         new EditServiceModel()
-                         {
-                             ID = a.ID,
-                             Header1 = a.Header1,
-                             Header2 = a.Header2,
-                             Header3 = a.Header3,
-                             Header4 = a.Header4,
-                             Header5 = a.Header5,
-                             Header6 = a.Header6,
-                             Textfield1 = a.Textfield1,
-                             Textfield2 = a.Textfield2,
-                             Textfield3 = a.Textfield3,
-                             Textfield4 = a.Textfield4,
-                             Textfield5 = a.Textfield5,
-                             Textfield6 = a.Textfield6
-                         }).FirstOrDefault();
-
-                return query;
-            }
-        }
-        public static ServiceReadOnlyModel ServiceReadOnly()
+        public static ServiceReadOnlyModel ServiceReadOnly(int nrToShow)
         {
             using (var contex = new HBGDatorServiceContext())
             {
-
-                return (from a in contex.service
-                        select new ServiceReadOnlyModel()
-                        {
-                            Header1 = a.Header1,
-                            Header2 = a.Header2,
-                            Header3 = a.Header3,
-                            Header4 = a.Header4,
-                            Header5 = a.Header5,
-                            Header6 = a.Header6,
-                            Textfield1 = a.Textfield1,
-                            Textfield2 = a.Textfield2,
-                            Textfield3 = a.Textfield3,
-                            Textfield4 = a.Textfield4,
-                            Textfield5 = a.Textfield5,
-                            Textfield6 = a.Textfield6
-                        }).ToList().LastOrDefault();
-
+                ServiceReadOnlyModel s = new ServiceReadOnlyModel();
+                s.services = contex.Services.Take(nrToShow).ToList();
+                return s;
             }
         }
+
         public static void UpdateService(Service service)
         {
             using (var context = new HBGDatorServiceContext())
@@ -223,38 +93,43 @@ namespace HBGDatorServiceDAL
                 context.SaveChanges();
             }
         }
+
         public static Service GetLatestService()
         {
             using (var context = new HBGDatorServiceContext())
             {
-                var query =
-                    (from a in context.service
-                     orderby a.ID descending
-                     select a).FirstOrDefault();
+                EditServiceModel e = new EditServiceModel();
+                Service a = context.Services.OrderByDescending(x => x.ID).FirstOrDefault();
 
-                return query;
+                e.Header = a.Header;
+                e.ID = a.ID;
+                e.Textfield = a.Textfield;
+
+                return a;
             }
         }
-       
+
+        public static Service SetServiceValues(EditServiceModel model, Service service)
+        {
+            service.ID = model.ID;
+            service.Header = model.Header;
+            service.Textfield = model.Textfield;
+            return service;
+        }
 
         public static AboutReadOnlyModel AboutReadOnly()
         {
             using (var contex = new HBGDatorServiceContext())
             {
 
-                return (from a in contex.Abouts
-                        select new AboutReadOnlyModel()
-                        {
-                            Header1 = a.Header1,
-                            Header2 = a.Header2,
-                            Header3 = a.Header3,
-                            Textfield1 = a.Textfield1,
-                            Textfield2 = a.Textfield2,
-                            Textfield3 = a.Textfield3
-                        }).ToList().LastOrDefault();
+                AboutReadOnlyModel a = new AboutReadOnlyModel();
+                a.About = contex.Abouts.Take(3).ToList();
+
+                return a;
 
             }
         }
+
         public static void UpdateAbouts(About about)
         {
             using (var context = new HBGDatorServiceContext())
@@ -263,49 +138,28 @@ namespace HBGDatorServiceDAL
                 context.SaveChanges();
             }
         }
-        public static EditAboutModel GetLatestAboutInformation()
+
+        public static EditAboutModel GetLatestAbouts()
         {
             using (var context = new HBGDatorServiceContext())
             {
-                var query =
-                    (from a in context.Abouts
-                     orderby a.ID descending
-                     select
-                         new EditAboutModel()
-                         {
-                             ID = a.ID,
-                             Header1 = a.Header1,
-                             Header2 = a.Header2,
-                             Header3 = a.Header3,
-                             Textfield1 = a.Textfield1,
-                             Textfield2 = a.Textfield2,
-                             Textfield3 = a.Textfield3
-                         }).FirstOrDefault();
+                EditAboutModel e = new EditAboutModel();
+                About a = context.Abouts.OrderByDescending(x => x.ID).FirstOrDefault();
 
-                return query;
+                e.Header = a.Header;
+                e.ID = a.ID;
+                e.Textfield = a.Textfield;
+
+
+                return e;
             }
         }
-        public static About GetLatestAbout()
-        {
-            using (var context = new HBGDatorServiceContext())
-            {
-                var query =
-                    (from a in context.Abouts
-                     orderby a.ID descending
-                     select a).FirstOrDefault();
 
-                return query;
-            }
-        }
         public static About SetAboutValues(EditAboutModel model, About about)
         {
             about.ID = model.ID;
-            about.Header1 = model.Header1;
-            about.Header2 = model.Header2;
-            about.Header3 = model.Header3;
-            about.Textfield1 = model.Textfield1;
-            about.Textfield2 = model.Textfield2;
-            about.Textfield3 = model.Textfield3;
+            about.Header = model.Header;
+            about.Textfield = model.Textfield;
             return about;
         }
     }
