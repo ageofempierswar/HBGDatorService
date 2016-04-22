@@ -9,16 +9,15 @@ using HBGDatorServiceDAL.POCO;
 namespace HBGDatorServiceDAL
 {
     public class HBGDatorServiceContextInitializer : DropCreateDatabaseIfModelChanges<HBGDatorServiceContext>
-    //Databasen MÅSTE vara IfModelChanges, på grund av att alla users och allt man gjort kommer försvinna när man tex bytar sida, 
-    //och det är ju inte jätte bra. (^_^)
+    //Modelchanges är standard i de flesta projekt som är större än en 5min lösning till skoluppgifter med tanke på hur stor en riktig lösning är, tex, den vi jobbar med nu.
     {
 
         private HBGDatorServiceContext context;
         private List<About> abouts;
         private List<Service> services;
-        //private readonly List<User> users;
 
         protected override void Seed(HBGDatorServiceContext context)
+        // Seed är det som lägger till våra ändringar/tillägg till databasen, som vi har i vår Initializer under denna, alla listor och saker vi adderar eller tar bort har vi här, som sedan läggs in i databasen av InitializeDatabase, det vi hade inann funkade, men vi hade inte savechanges så inget hände, därför det krashade hela tiden vad vi än gjorde.
         {
             abouts.ForEach(a => context.Abouts.Add(a));
             services.ForEach(s => context.Services.Add(s));
@@ -27,30 +26,22 @@ namespace HBGDatorServiceDAL
 
         public HBGDatorServiceContextInitializer()
         {
-            //users = new List<User>()
-            //{
-            //    new User("admin", "admin",1, "teamnordahl123@gmail.com"),
-            //    new User("Test1", "admin", 2, "teamnordahl123@gmail.com"),
-            //    new User("Test2", "admin", 2, "teamnordahl123@gmail.com"),
-            //};
-
-            //this.context = h;
-            //Seed(context);
-
 
             abouts = new List<About>()
             {
                 new About { Header = "Team Nordahl",
-                            Textfield = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et enim quis sem blandit mollis eu sed nibh. Pellentesque eu neque erat. Nullam tempus purus velit, sed ullamcorper est suscipit ac. Aenean molestie odio ut purus tristique tempus. Suspendisse sed purus eget augue vulputate dignissim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel fermentum nunc. Nam nec dapibus tortor. Cras tellus nibh, fringilla ut facilisis et, fringilla sit amet erat. In tempor bibendum turpis eget sollicitudin. Praesent pharetra rhoncus metus, a cursus massa consectetur pharetra. Nulla pulvinar nisi quis sem molestie, in luctus mi scelerisque. Nulla facilisi. Duis sit amet volutpat diam. Proin vitae auctor lectus." },
-                         new About { Header = "Team Nordahl",
+                            Textfield = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et enim quis sem blandit mollis eu sed nibh. Pellentesque eu neque erat. Nullam tempus purus velit, sed ullamcorper est suscipit ac Proin vitae auctor lectus." },
+
+                new About { Header = "Team Nordahl",
                             Textfield = "Lorem ipsum dolor sit amet, fermentum nunc. Nam nec dapibus tortor. Cras tellus nibh, fringilla ut facilisis et, fringilla sit amet erat. In tempor . Duis sit amet volutpat diam. Proin vitae auctor lectus." },
 
-                        new About { Header = "Team Nordahl",
+                new About { Header = "Team Nordahl",
                             Textfield = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et enim quis sem blandit mollis eu sed nibh. Pellentesque eu neque erat. Nullam tempus purus velit, sed ullamcorper est suscipit ac. Aenean molestie odio ut purus tristique tempus. Suspendisse sed purus eget augue vulputate tur pharetra. Nulla pulvinar nisi quis sem molestie, in luctus mi scelerisque. Nulla facilisi. Duis sit amet volutpat diam. Proin vitae auctor lectus." }
 
             };
 
-            services = new List<Service>()
+            services = new List<Service>() 
+            // som du säkert såg i många av våra klasser, så gjorde vi typ header1-6 och textfield1-6, som är rent sagt rätt åt helvete, istället gör man en ny tex service för varje inlägg. Man gör tabeller på höjden, inte bredden, detta gör det också lättare för oss att ha add och remove metoder för inlägg i service eller about eller vad som, istället för att dem är permanenta skrivfält. (^.^)
             {
                 new Service { Header = "Lagning", Textfield = "Fixa Datorn" },
                 new Service { Header = "Felsök", Textfield = "Vi Felsöker" },
@@ -65,9 +56,6 @@ namespace HBGDatorServiceDAL
 
         public override void InitializeDatabase(HBGDatorServiceContext context)
         {
-
-
-            // users.ForEach(u => context.Users.Add(u));
             base.InitializeDatabase(context);
         }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HBGDatorServiceDAL.POCO
 {
-   public class Service
+    public class Service
     {
         public int ID { get; set; }
         public string Header { get; set; }
@@ -16,10 +16,10 @@ namespace HBGDatorServiceDAL.POCO
         {
 
         }
- 
+
         public Service(string Header, string Textfield)
         {
-           this.Header = Header;
+            this.Header = Header;
             this.Textfield = Textfield;
         }
     }

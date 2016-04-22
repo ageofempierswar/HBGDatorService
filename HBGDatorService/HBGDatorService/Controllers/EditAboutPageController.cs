@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.UI.WebControls.WebParts;
 using HBGDatorServiceDAL;
 using HBGDatorServiceDAL.Models;
+using HBGDatorServiceDAL.POCO;
 
 namespace HBGDatorService.Controllers
 {
@@ -21,7 +22,13 @@ namespace HBGDatorService.Controllers
         [HttpPost]
         public ActionResult EditAbout(EditAboutModel model)
         {
-            throw new NotImplementedException();
+            if (ModelState.IsValid)
+            {
+                var about = Repository.GetLatestAbouts();
+                Repository.UpdateAbouts(Repository.SetAboutValues(model, about));
+                return RedirectToAction("Index", "About");
+            }
+            return View(model);
         }
     }
 }

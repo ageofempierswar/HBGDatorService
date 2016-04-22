@@ -72,7 +72,7 @@ namespace HBGDatorService.Controllers
             }
             return View();
         }
-        public ActionResult Logout()
+        public ActionResult Logout() // sätt admin till null, logga ut andvändaren och skicka dem till Home.
         {
             Session["Admin"] = null;
             FormsAuthentication.SignOut();
@@ -80,7 +80,8 @@ namespace HBGDatorService.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public ActionResult IsAdmin(UserAccount currentUser) //kolla om användaren är en admin, är han det så gör något.
+        public ActionResult IsAdmin(UserAccount currentUser)
+        //kolla om användaren är en admin eller inte när dem försöker använda funktioner, är dem inte admin säger sidan att dem inte är det och dem skickas tillbaka till login.
         {
             using (HBGDatorServiceContext db = new HBGDatorServiceContext())
             {

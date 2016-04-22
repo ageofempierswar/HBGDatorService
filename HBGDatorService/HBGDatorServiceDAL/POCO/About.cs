@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 namespace HBGDatorServiceDAL.POCO
 {
      public class About
@@ -11,7 +12,6 @@ namespace HBGDatorServiceDAL.POCO
         public string Header { get; set; }
         public string Textfield { get; set; }
 
-
         public About()
         {
 
@@ -19,8 +19,7 @@ namespace HBGDatorServiceDAL.POCO
 
         public About(string header, string textfield)
         {
-            Header = header;
-   
+            Header = header; 
             Textfield = textfield;
         }
     }

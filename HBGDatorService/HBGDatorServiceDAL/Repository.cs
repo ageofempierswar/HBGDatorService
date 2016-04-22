@@ -14,6 +14,9 @@ namespace HBGDatorServiceDAL
 {
     public static class Repository
     {
+
+        //------------------------------------------------------------------------------------------------------- SlideShow
+
         public static List<ImageModel> GetAllSlideShowImages()
         {
             using (var context = new HBGDatorServiceContext())
@@ -75,6 +78,8 @@ namespace HBGDatorServiceDAL
             throw new NotImplementedException();
         }
 
+        //------------------------------------------------------------------------------------------------------- Service
+
         public static ServiceReadOnlyModel ServiceReadOnly(int nrToShow)
         {
             using (var contex = new HBGDatorServiceContext())
@@ -117,6 +122,8 @@ namespace HBGDatorServiceDAL
             return service;
         }
 
+        //------------------------------------------------------------------------------------------------------- About
+
         public static AboutReadOnlyModel AboutReadOnly()
         {
             using (var contex = new HBGDatorServiceContext())
@@ -139,7 +146,7 @@ namespace HBGDatorServiceDAL
             }
         }
 
-        public static EditAboutModel GetLatestAbouts()
+        public static About GetLatestAbouts()
         {
             using (var context = new HBGDatorServiceContext())
             {
@@ -151,7 +158,7 @@ namespace HBGDatorServiceDAL
                 e.Textfield = a.Textfield;
 
 
-                return e;
+                return a;
             }
         }
 
@@ -163,5 +170,4 @@ namespace HBGDatorServiceDAL
             return about;
         }
     }
-
 }
