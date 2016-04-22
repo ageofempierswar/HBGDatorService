@@ -15,7 +15,7 @@ namespace HBGDatorServiceDAL
         private HBGDatorServiceContext context;
         private List<About> abouts;
         private List<Service> services;
-
+       
         protected override void Seed(HBGDatorServiceContext context)
         // Seed är det som lägger till våra ändringar/tillägg till databasen, som vi har i vår Initializer under denna, alla listor och saker vi adderar eller tar bort har vi här, som sedan läggs in i databasen av InitializeDatabase, det vi hade inann funkade, men vi hade inte savechanges så inget hände, därför det krashade hela tiden vad vi än gjorde.
         {
@@ -49,8 +49,6 @@ namespace HBGDatorServiceDAL
                 new Service { Header = "Uppdatering", Textfield = "Uppdaterar windows" },
                 new Service { Header = "Bygg", Textfield = "Bygger laptops" },
                 new Service { Header = "Demontering", Textfield = "Plockar isär" }
-
-
             };
         }
 
@@ -58,6 +56,5 @@ namespace HBGDatorServiceDAL
         {
             base.InitializeDatabase(context);
         }
-
     }
 }

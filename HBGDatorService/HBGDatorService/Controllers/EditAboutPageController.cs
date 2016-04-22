@@ -28,6 +28,7 @@ namespace HBGDatorService.Controllers
                 Repository.UpdateAbouts(Repository.SetAboutValues(model, about));
                 return RedirectToAction("Index", "About");
             }
+
             return View(model);
         }
     }

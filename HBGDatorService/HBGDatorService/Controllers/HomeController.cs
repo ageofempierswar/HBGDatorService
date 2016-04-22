@@ -21,6 +21,7 @@ namespace HBGDatorService.Controllers
             {
                 list.Add(SlideImage.ImagePath);
             }
+
             return View(list);
         }
 
@@ -39,7 +40,6 @@ namespace HBGDatorService.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }
