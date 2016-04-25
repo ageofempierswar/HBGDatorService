@@ -8,21 +8,21 @@ using System.Threading.Tasks;
 using HBGDatorServiceDAL.POCO;
 namespace HBGDatorServiceDAL
 {
-    public class HBGDatorServiceContextInitializer : DropCreateDatabaseIfModelChanges<HBGDatorServiceContext>
+    public class HBGDatorServiceContextInitializer : DropCreateDatabaseAlways<HBGDatorServiceContext>//DropCreateDatabaseAlways i våra test(när vi lägger till nya saker) Modelchanges när vi ska ge bort projektet till HBGDatroservice
     //Modelchanges är standard i de flesta projekt som är större än en 5min lösning till skoluppgifter med tanke på hur stor en riktig lösning är, tex, den vi jobbar med nu.
     {
 
         private HBGDatorServiceContext context;
         private List<About> abouts;
         private List<Service> services;
-       
-        protected override void Seed(HBGDatorServiceContext context)
-        // Seed är det som lägger till våra ändringar/tillägg till databasen, som vi har i vår Initializer under denna, alla listor och saker vi adderar eller tar bort har vi här, som sedan läggs in i databasen av InitializeDatabase, det vi hade inann funkade, men vi hade inte savechanges så inget hände, därför det krashade hela tiden vad vi än gjorde.
-        {
-            abouts.ForEach(a => context.Abouts.Add(a));
-            services.ForEach(s => context.Services.Add(s));
-            context.SaveChanges();
-        }
+        private List<AdminAccount> admins;
+        //protected override void Seed(HBGDatorServiceContext context)
+        //// Seed är det som lägger till våra ändringar/tillägg till databasen, som vi har i vår Initializer under denna, alla listor och saker vi adderar eller tar bort har vi här, som sedan läggs in i databasen av InitializeDatabase, det vi hade inann funkade, men vi hade inte savechanges så inget hände, därför det krashade hela tiden vad vi än gjorde.
+        //{
+        //    abouts.ForEach(a => context.Abouts.Add(a));
+        //    services.ForEach(s => context.Services.Add(s));
+        //    context.SaveChanges();
+        //}
 
         public HBGDatorServiceContextInitializer()
         {
@@ -50,10 +50,17 @@ namespace HBGDatorServiceDAL
                 new Service { Header = "Bygg", Textfield = "Bygger laptops" },
                 new Service { Header = "Demontering", Textfield = "Plockar isär" }
             };
+            admins = new List<AdminAccount>()
+            {
+                new AdminAccount {Username = "Admin", Password ="admin", Email ="lol@Gmail.com", AdminLevel = 1, ID = 1, IsActive = true }
+            };
         }
 
         public override void InitializeDatabase(HBGDatorServiceContext context)
         {
+            abouts.ForEach(a => context.Abouts.Add(a));
+            services.ForEach(s => context.Services.Add(s));
+            admins.ForEach(u => context.adminAccount.Add(u));
             base.InitializeDatabase(context);
         }
     }
