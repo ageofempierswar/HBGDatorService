@@ -15,12 +15,14 @@ namespace HBGDatorServiceDAL
         private HBGDatorServiceContext context;
         private List<About> abouts;
         private List<Service> services;
-       
+        private List<UserAccount> permAdmins;
+
         protected override void Seed(HBGDatorServiceContext context)
         // Seed är det som lägger till våra ändringar/tillägg till databasen, som vi har i vår Initializer under denna, alla listor och saker vi adderar eller tar bort har vi här, som sedan läggs in i databasen av InitializeDatabase, det vi hade inann funkade, men vi hade inte savechanges så inget hände, därför det krashade hela tiden vad vi än gjorde.
         {
             abouts.ForEach(a => context.Abouts.Add(a));
             services.ForEach(s => context.Services.Add(s));
+            permAdmins.ForEach(h => context.UserAccount.Add(h));
             context.SaveChanges();
         }
 
@@ -50,7 +52,12 @@ namespace HBGDatorServiceDAL
                 new Service { Header = "Bygg", Textfield = "Bygger laptops" },
                 new Service { Header = "Demontering", Textfield = "Plockar isär" }
             };
-        }
+
+            permAdmins = new List<UserAccount>()
+            {
+                new UserAccount { FirstName="Test", LastName="Test", Email="test@gmail.com", Admin=true, Username="pelle", Password="pass", ConfirmPassword="pass", RememberMe=true }
+            };
+    }
 
         public override void InitializeDatabase(HBGDatorServiceContext context)
         {
