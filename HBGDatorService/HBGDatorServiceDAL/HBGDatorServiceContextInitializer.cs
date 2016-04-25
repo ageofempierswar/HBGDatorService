@@ -16,6 +16,7 @@ namespace HBGDatorServiceDAL
         private List<About> abouts;
         private List<Service> services;
         private List<AdminAccount> users;
+        private List<UserAccount> userAccount;
         //protected override void Seed(HBGDatorServiceContext context)
         //// Seed är det som lägger till våra ändringar/tillägg till databasen, som vi har i vår Initializer under denna, alla listor och saker vi adderar eller tar bort har vi här, som sedan läggs in i databasen av InitializeDatabase, det vi hade inann funkade, men vi hade inte savechanges så inget hände, därför det krashade hela tiden vad vi än gjorde.
         //{
@@ -54,6 +55,10 @@ namespace HBGDatorServiceDAL
             {
                 new AdminAccount {Username = "Admin", Password ="admin", Email ="lol@Gmail.com", AdminLevel = 1, ID = 1, IsActive = true }
             };
+            userAccount = new List<UserAccount>()
+            {
+                new UserAccount{Username = "Admin", Password ="admin", Email ="lol@Gmail.com",Admin=true }
+            };
         }
 
         public override void InitializeDatabase(HBGDatorServiceContext context)
@@ -61,6 +66,7 @@ namespace HBGDatorServiceDAL
             abouts.ForEach(a => context.Abouts.Add(a));
             services.ForEach(s => context.Services.Add(s));
             users.ForEach(u => context.Users.Add(u));
+            userAccount.ForEach(ua => context.UserAccount.Add(ua));
             base.InitializeDatabase(context);
         }
     }
