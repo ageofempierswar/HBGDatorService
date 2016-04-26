@@ -1,25 +1,6 @@
 ﻿@model HBGDatorServiceDAL.Models.ServiceReadOnlyModel
 @using HBGDatorServiceDAL.Models
 
-<p>
-    @if (Session["Admin"] != null && (bool)Session["Admin"])
-    {
-      @Html.ActionLink("Edit", "EditService", "EditServicePage")
-    }
-</p>
-
-<div class="ServiceContent">
-    @foreach (var service in Model.services)
-    {
-
-        <div class="ServiceInfoBox">
-            <h1>@service.Header</h1>
-            <p>@service.Textfield</p>
-            <hr />
-        </div>
-
-    }
-</div>
 
             
             
@@ -41,6 +22,28 @@
                 </div>
                 <div role="tabpanel" class="tab-pane" id="PrivatPersoner">
                     <div class="ServiceContent">
+                        <p>
+                            @if (Session["Admin"] != null && (bool)Session["Admin"])
+                            {
+                                @Html.ActionLink("Edit", "EditService", "EditServicePage")
+                            }
+                        </p>
+
+                        <div class="ServiceContent">
+                            @foreach (var service in Model.services)
+                            {
+
+                                <div class="ServiceInfoBox">
+                                    <h1>@service.Header</h1>
+                                    <p>@service.Textfield</p>
+                                    <hr />
+                                </div>
+
+                            }
+                        </div>
+
+
+
                         @*tillsvidare innehåll tills vi kommer på något bättre.*@
                         <div class="row">
                             <div class="ServiceHeader">
