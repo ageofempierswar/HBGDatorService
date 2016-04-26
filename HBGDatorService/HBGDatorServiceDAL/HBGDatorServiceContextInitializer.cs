@@ -8,18 +8,20 @@ using System.Threading.Tasks;
 using HBGDatorServiceDAL.POCO;
 namespace HBGDatorServiceDAL
 {
-    public class HBGDatorServiceContextInitializer : DropCreateDatabaseAlways<HBGDatorServiceContext>
+    public class HBGDatorServiceContextInitializer : DropCreateDatabaseAlways<HBGDatorServiceContext>//DropCreateDatabaseAlways i våra test(när vi lägger till nya saker) Modelchanges när vi ska ge bort projektet till HBGDatroservice
     //Modelchanges är standard i de flesta projekt som är större än en 5min lösning till skoluppgifter med tanke på hur stor en riktig lösning är, tex, den vi jobbar med nu.
     {
+
+        private HBGDatorServiceContext context;
         private List<About> abouts;
         private List<Service> services;
         private List<UserAccount> permAdmins;
 
         protected override void Seed(HBGDatorServiceContext context)
-        // Seed är det som lägger till våra ändringar/tillägg till databasen, som vi har i vår Initializer under denna, alla listor och saker vi adderar eller tar bort har vi här, som sedan läggs in i databasen av InitializeDatabase, det vi hade inann funkade, men vi hade inte savechanges så inget hände, därför det krashade hela tiden vad vi än gjorde.
+        // Seed är det som lägger till våra ändringar/tillägg till databasen, som vi har i vår Initializer under denna, alla listor och saker vi adderar eller tar bort har vi här, som sedan läggs in i databasen av InitializeDatabase, det vi hade inann funkade, men vi hade inte savechanges så inget hände, därför det krashade hela tiden vad vi än gjorde. Dåck detta stämmer inte eftersom SaveChanges ska inte vehövas när man har public override void InitializeDatabase(HBGDatorServiceContext context)
         {
-            abouts.ForEach(a => context.Abouts.Add(a));
-            services.ForEach(s => context.Services.Add(s));
+            //abouts.ForEach(a => context.Abouts.Add(a));
+            //services.ForEach(s => context.Services.Add(s));
             permAdmins.ForEach(h => context.UserAccount.Add(h));
             context.SaveChanges();
         }
@@ -59,6 +61,9 @@ namespace HBGDatorServiceDAL
 
         public override void InitializeDatabase(HBGDatorServiceContext context)
         {
+            abouts.ForEach(a => context.Abouts.Add(a));
+            services.ForEach(s => context.Services.Add(s));
+            //permAdmins.ForEach(h => context.UserAccount.Add(h));
             base.InitializeDatabase(context);
         }
     }
