@@ -8,11 +8,9 @@ using System.Threading.Tasks;
 using HBGDatorServiceDAL.POCO;
 namespace HBGDatorServiceDAL
 {
-    public class HBGDatorServiceContextInitializer : DropCreateDatabaseIfModelChanges<HBGDatorServiceContext>
+    public class HBGDatorServiceContextInitializer : DropCreateDatabaseAlways<HBGDatorServiceContext>
     //Modelchanges är standard i de flesta projekt som är större än en 5min lösning till skoluppgifter med tanke på hur stor en riktig lösning är, tex, den vi jobbar med nu.
     {
-
-        private HBGDatorServiceContext context;
         private List<About> abouts;
         private List<Service> services;
         private List<UserAccount> permAdmins;
