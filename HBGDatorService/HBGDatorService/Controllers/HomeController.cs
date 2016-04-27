@@ -36,11 +36,5 @@ namespace HBGDatorService.Controllers
             var model = Repository.ServiceReadOnly(10);
             return View(model);
         }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-            return View();
-        }
     }
 }

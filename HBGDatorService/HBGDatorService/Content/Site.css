@@ -4,11 +4,10 @@
 body {
     padding-top: 50px;
     padding-bottom: 20px;
-    background-color: black;
+    background-color: #F1F1F1;
     /*background-image:url("Images/mass_effect_shepard_female_graphics_gun_1366x768_hd-wallpaper-15574.jpg");*/
     -webkit-box-shadow: inset 0 0 100px 1px #ff6a00;
-    box-shadow: inset 0 0 100px 1px #ff6a00;
-    padding-top: 50px;
+    box-shadow: inset 0 0 100px 1px black;
     background-size: cover;
     height: 100%;
     width: 100%;
@@ -121,14 +120,16 @@ textarea {
 
 
 footer {
-    height: 100%;
-    max-width: 1024px;
-    background-color: gray;
-    min-height: 100px;
+    background-color: #F1F1F1;
+    width: 100%;
+    height:100%;
     overflow: auto;
-    -webkit-box-shadow: inset 0 0 100px 1px #000000;
-    box-shadow: inset 0 0 100px 1px #000000;
+    box-shadow: 
+        inset 0px 10px 10px -5px grey,
+        inset 0px -10px 10px -5px grey; 
     padding-top: 50px;
+    color: black;
+    padding: 20px;
 }
 
     footer ul {
@@ -147,6 +148,11 @@ footer {
             background-color: transparent;
             text-decoration: none;
         }
+
+        footer p {
+        color: black;
+        font-family: 'Oswald', sans-serif;
+    }
 
 .Error {
     background-color: aqua;
