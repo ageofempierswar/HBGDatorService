@@ -1,0 +1,4 @@
+1. Fixa Edit
+2. legatil Add och Delet.
+3. Se till så att Email Funkar.
+4. 
