@@ -19,7 +19,7 @@ namespace HBGDatorServiceDAL.POCO
                 using (SqlCommand command = connection.CreateCommand())
                 {
                     command.CommandText = @"SELECT [ID],[Header],[Textfield], FROM
-                                                   [HBGDatorServiceDB].[dbo].[Person] WHERE  [ID] ={0}";
+                                                   [HBGDatorServiceDB].[dbo].[Abouts] WHERE  [ID] ={0}";
                     command.CommandText = string.Format(command.CommandText, ID);
                     SqlDataReader reader = command.ExecuteReader();
                     if (reader.Read())
@@ -35,7 +35,7 @@ namespace HBGDatorServiceDAL.POCO
         {
             using (var connection = DB.GetSqlConnection())
             {
-                var sqlQuery = new StringBuilder(@"UPDATE [dbo].[HBGDatorServiceDB] ");
+                var sqlQuery = new StringBuilder(@"UPDATE [dbo].[Abouts] ");
                 sqlQuery.Append("SET [Header] = @Header, [Textfield] = @Textfield");
                 sqlQuery.Append("WHERE [ID] = @ID ");
                 using (var command = new SqlCommand(sqlQuery.ToString(), connection))
@@ -54,7 +54,7 @@ namespace HBGDatorServiceDAL.POCO
         {
             using (var conn = DB.GetSqlConnection())
             {
-                var sqlQuery = new StringBuilder(@"DELETE FROM [HBGDatorServiceDB].[dbo].[Person] WHERE [ID] = @ ID");
+                var sqlQuery = new StringBuilder(@"DELETE FROM [HBGDatorServiceDB].[dbo].[Abouts] WHERE [ID] = @ ID");
                 using (var command = new SqlCommand(sqlQuery.ToString(), conn))
                 {
                     command.Parameters.Add("ID", SqlDbType.BigInt).Value = ID;
@@ -65,7 +65,7 @@ namespace HBGDatorServiceDAL.POCO
         }
         public int InsertPerson(About person)
         {
-            var sqlQuery = new StringBuilder(@"INSERT INTO [dbo].[HBGDatorServiceDB] ([Header] ,[Textfield],[Email]) ");
+            var sqlQuery = new StringBuilder(@"INSERT INTO [dbo].[Abouts] ([Header] ,[Textfield],[Email]) ");
             sqlQuery.Append("VALUES (@Header, @Textfield, @Email)");
             using (var connection = DB.GetSqlConnection())
             {
