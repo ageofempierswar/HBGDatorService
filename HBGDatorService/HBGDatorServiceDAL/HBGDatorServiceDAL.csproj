@@ -49,6 +49,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Entity.Design" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -73,6 +75,8 @@
     <Compile Include="Models\SlideShowImgModel.cs" />
     <Compile Include="Models\UploadFileModel.cs" />
     <Compile Include="POCO\About.cs" />
+    <Compile Include="POCO\DB.cs" />
+    <Compile Include="POCO\Disconnected.cs" />
     <Compile Include="POCO\Service.cs" />
     <Compile Include="POCO\SlideShowImage.cs" />
     <Compile Include="POCO\AdminAccount.cs" />
