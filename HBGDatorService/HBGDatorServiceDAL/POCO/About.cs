@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Configuration;
+using System.Data.SqlClient;
+using System.Data;
 namespace HBGDatorServiceDAL.POCO
 {
      public class About
@@ -21,6 +23,17 @@ namespace HBGDatorServiceDAL.POCO
         {
             Header = header; 
             Textfield = textfield;
+        }
+        public override string ToString()
+        {
+            return string.Format("ID:{0}, Header:{1} Textfield:{2}", ID, Header, Textfield);
+        }
+
+        public void Load(SqlDataReader reader)
+        {
+            ID = int.Parse(reader["ID"].ToString());
+            Header = reader["Header"].ToString();
+            Textfield = reader["Textfield"].ToString();
         }
     }
 }
