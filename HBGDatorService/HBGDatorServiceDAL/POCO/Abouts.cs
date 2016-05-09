@@ -65,8 +65,8 @@ namespace HBGDatorServiceDAL.POCO
         }
         public int InsertPerson(About person)
         {
-            var sqlQuery = new StringBuilder(@"INSERT INTO [dbo].[Abouts] ([Header] ,[Textfield],[Email]) ");
-            sqlQuery.Append("VALUES (@Header, @Textfield, @Email)");
+            var sqlQuery = new StringBuilder(@"INSERT INTO [dbo].[Abouts] ([Header] ,[Textfield]) ");
+            sqlQuery.Append("VALUES (@Header, @Textfield)");
             using (var connection = DB.GetSqlConnection())
             {
 
