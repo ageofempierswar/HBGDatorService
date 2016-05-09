@@ -7,7 +7,8 @@ using System.Web.UI.WebControls.WebParts;
 using HBGDatorServiceDAL;
 using HBGDatorServiceDAL.Models;
 using HBGDatorServiceDAL.POCO;
-
+using System.Configuration;
+using System.Data.SqlClient;
 namespace HBGDatorService.Controllers
 {
     [Authorize]
@@ -30,6 +31,46 @@ namespace HBGDatorService.Controllers
             }
 
             return View(model);
+        }
+
+        public ActionResult AddEditAbout()
+        {
+            try
+            {
+                //Abouts abouts = new Abouts();
+                //About about    = new About(textBoxFirstName.Text, textBoxLastName.Text, textBoxEmail.Text, int.Parse(textBoxPersonID.Text));
+                //abouts.InsertPerson(about);
+            }
+            catch (Exception exception)
+            {
+           
+            }
+        }
+        public ActionResult UpdateEditAbout()
+        {
+            try
+            {
+                //Abouts abouts = new Abouts();
+                //About about    = new About(textBoxFirstName.Text, textBoxLastName.Text, textBoxEmail.Text, int.Parse(textBoxPersonID.Text));
+                //abouts.UpdatePerson(about);
+            }
+            catch (Exception exception)
+            {
+                
+            }
+        }
+        public ActionResult DeleteEditAbout()
+        {
+            try
+            {
+                //Abouts abouts = new Abouts();
+                //About about    = new About(textBoxFirstName.Text, textBoxLastName.Text, textBoxEmail.Text);
+
+            }
+            catch (Exception exception)
+            {
+            
+            }
         }
     }
 }
