@@ -58,9 +58,13 @@ namespace HBGDatorServiceDAL
 
         //------------------------------------------------------------------------------------------------------- Users/Admins
 
-        public static void UpdateUserProfile()
+        public static void UpdateUserProfile(UserAccount user)
         {
-            throw new NotImplementedException();
+            using (var context = new HBGDatorServiceContext())
+            {
+                context.Entry(user).State = EntityState.Modified;
+                context.SaveChanges();
+            }
         }
 
         public static void RemoveUserByID(int id)
@@ -73,9 +77,19 @@ namespace HBGDatorServiceDAL
             }
         }
 
-        public static List<AdminModel> GetAllUsers()
+        public static List<UserAccount> GetAllUsers()
         {
-            throw new NotImplementedException();
+            using (var context = new HBGDatorServiceContext())
+            {
+                return (from i in context.UserAccount
+                        where i.FirstName != null
+                        select (new UserAccount
+                        {
+                            FirstName = i.FirstName,
+                            LastName = i.LastName,
+                            Email = i.Email
+                        })).ToList();
+            }
         }
 
         //------------------------------------------------------------------------------------------------------- Service

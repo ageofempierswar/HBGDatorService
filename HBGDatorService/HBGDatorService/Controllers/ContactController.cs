@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using HBGDatorServiceDAL;
 using HBGDatorServiceDAL.Models;
+using System.Net;
 
 namespace HBGDatorService.Controllers
 {
@@ -23,25 +24,26 @@ namespace HBGDatorService.Controllers
         {
             if (ModelState.IsValid)
             {
-                var email = "";
+                var email = "linusekdahl@gmail.com";
+
                 var body = "<p>Email From: {0} (Subject: {1})</p><p>Message:</p><p>{2}</p>";
                 var message = new MailMessage();
                 message.To.Add(new MailAddress(email));
                 message.Subject = model.Subject;
+                message.From = new MailAddress(model.EmailAdress);
                 message.Body = string.Format(body, model.EmailAdress, model.Subject, model.Message);
                 message.IsBodyHtml = true;
 
-                if (model.ValidationNumber == "gHft3")
+                using (var client = new SmtpClient())
                 {
-                    using (var smtp = new SmtpClient())
-                    {
-                        await smtp.SendMailAsync(message);
-                        return RedirectToAction("Sent");
-                    }
-                }
-                else
-                {
-                    ViewBag.WrongAnswer = "Wrong answer. Please try again and this time make sure you've spelled it right.";
+                    client.Host = "smtp.gmail.com";
+                    client.Port = 587;
+                    client.EnableSsl = true;
+                    client.Credentials = new NetworkCredential("linusekdahl@gmail.com", "Monaghan5");
+
+
+                    await client.SendMailAsync(message);
+                    return RedirectToAction("Index");
                 }
 
             }
