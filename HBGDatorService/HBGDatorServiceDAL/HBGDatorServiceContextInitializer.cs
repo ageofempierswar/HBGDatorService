@@ -55,7 +55,8 @@ namespace HBGDatorServiceDAL
 
             permAdmins = new List<UserAccount>()
             {
-                new UserAccount { FirstName="Test", LastName="Test", Email="test@gmail.com", Admin=true, Username="pelle", Password="pass", ConfirmPassword="pass", RememberMe=true }
+                new UserAccount { FirstName="Test", LastName="Test", Email="test@gmail.com", Admin=true, Username="pelle", Password="pass", ConfirmPassword="pass", RememberMe=true },
+                new UserAccount { FirstName="Test", LastName="Test", Email="test@gmail.com", Admin=true, Username="admin", Password="admin", ConfirmPassword="admin", RememberMe=true }
             };
     }
 
