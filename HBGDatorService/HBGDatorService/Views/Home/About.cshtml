@@ -2,10 +2,9 @@
 @using HBGDatorServiceDAL.Models
 
 <p>
-    @if (Session["Admin"] != null && (bool)Session["Admin"])
-    {
-        @Html.ActionLink("Edit", "EditAbout", "EditAboutPage")
-    }
+   
+       @Html.ActionLink("Edit", "EditAbout", "EditAboutPage")
+    
 </p>
 
 <div class="AboutContent">

@@ -146,28 +146,66 @@ namespace HBGDatorServiceDAL
             }
         }
 
-        public static About GetLatestAbouts()
+        //public static About GetLatestAbouts()
+        //{
+        //    using (var context = new HBGDatorServiceContext())
+        //    {
+        //        EditAboutModel e = new EditAboutModel();
+        //        About a = context.Abouts.OrderByDescending(x => x.ID).FirstOrDefault();
+
+        //        e.Header = a.Header;
+        //        e.ID = a.ID;
+        //        e.Textfield = a.Textfield;
+
+
+        //        return a;
+        //    }
+        //}
+        public static About GetLatestAbout()
         {
             using (var context = new HBGDatorServiceContext())
             {
-                EditAboutModel e = new EditAboutModel();
-                About a = context.Abouts.OrderByDescending(x => x.ID).FirstOrDefault();
+                var query =
+                    (from a in context.Abouts
+                     orderby a.ID descending
+                     select a).FirstOrDefault();
 
-                e.Header = a.Header;
-                e.ID = a.ID;
-                e.Textfield = a.Textfield;
-
-
-                return a;
+                return query;
             }
         }
-
         public static About SetAboutValues(EditAboutModel model, About about)
         {
             about.ID = model.ID;
-            about.Header = model.Header;
-            about.Textfield = model.Textfield;
+            about.Header=model.Header;
+            about.Textfield=model.Textfield;
             return about;
         }
+        public static EditAboutModel GetLatestAboutInformation()
+        {
+            using (var context = new HBGDatorServiceContext())
+            {
+                var query =
+                    (from a in context.Abouts
+                     orderby a.ID descending
+                     select
+                         new EditAboutModel()
+                         {
+                             ID = a.ID,
+                             Header = a.Header,
+                             
+                             Textfield = a.Textfield,
+                            
+                         }).FirstOrDefault();
+
+                return query;
+            }
+        }
+        //public static About SetAboutValues(EditAboutModel model, About about)
+        //{
+        //    about.ID = model.ID;
+        //    about.Header = model.Header;
+        //    about.Textfield = model.Textfield;
+        //    return about;
+        //}
     }
 }

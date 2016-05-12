@@ -17,7 +17,7 @@ namespace HBGDatorService.Controllers
         // GET: EditAboutPage
         public ActionResult EditAbout()
         {
-            var currentAboutInfo = Repository.GetLatestAbouts();
+            var currentAboutInfo = Repository.GetLatestAboutInformation();
             return View(currentAboutInfo);
         }
         [HttpPost]
@@ -25,11 +25,10 @@ namespace HBGDatorService.Controllers
         {
             if (ModelState.IsValid)
             {
-                var about = Repository.GetLatestAbouts();
+                var about = Repository.GetLatestAbout();
                 Repository.UpdateAbouts(Repository.SetAboutValues(model, about));
                 return RedirectToAction("Index", "About");
             }
-
             return View(model);
         }
 
@@ -43,7 +42,7 @@ namespace HBGDatorService.Controllers
         //    }
         //    catch (Exception exception)
         //    {
-           
+
         //    }
         //}
         //public ActionResult UpdateEditAbout()
@@ -56,7 +55,7 @@ namespace HBGDatorService.Controllers
         //    }
         //    catch (Exception exception)
         //    {
-                
+
         //    }
         //}
         //public ActionResult DeleteEditAbout()
@@ -69,7 +68,7 @@ namespace HBGDatorService.Controllers
         //    }
         //    catch (Exception exception)
         //    {
-            
+
         //    }
         //}
     }

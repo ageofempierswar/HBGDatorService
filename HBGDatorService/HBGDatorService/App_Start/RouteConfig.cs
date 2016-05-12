@@ -24,17 +24,13 @@ namespace HBGDatorService
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
 
-            routes.MapRoute(
-                name: "EditService",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "EditServicePage", action = "EditService", id = UrlParameter.Optional }
-            );
-
-            routes.MapRoute(
-                name: "EditAbout",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "EditAboutPage", action = "EditAbout", id = UrlParameter.Optional }
-            );
+      
+            //routes.MapRoute(
+            //    name: "EditAbout",
+            //    url: "{controller}/{action}/{id}",
+            //    defaults: new { controller = "EditAboutPage", action = "EditAbout", id = UrlParameter.Optional }
+            //);
+      
         }
     }
 }
