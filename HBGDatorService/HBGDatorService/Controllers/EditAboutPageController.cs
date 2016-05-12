@@ -14,12 +14,13 @@ namespace HBGDatorService.Controllers
     [Authorize]
     public class EditAboutPageController : Controller
     {
-        // GET: EditAboutPage
+        [HttpGet]
         public ActionResult EditAbout()
         {
             var currentAboutInfo = Repository.GetLatestAbouts();
-            return View(currentAboutInfo);
+            return View();
         }
+
         [HttpPost]
         public ActionResult EditAbout(EditAboutModel model)
         {
@@ -33,44 +34,44 @@ namespace HBGDatorService.Controllers
             return View(model);
         }
 
-        public ActionResult AddEditAbout()
-        {
-            try
-            {
-                //Abouts abouts = new Abouts();
-                //About about    = new About(textBoxFirstName.Text, textBoxLastName.Text, textBoxEmail.Text, int.Parse(textBoxPersonID.Text));
-                //abouts.InsertPerson(about);
-            }
-            catch (Exception exception)
-            {
+        //public ActionResult AddEditAbout()
+        //{
+        //    try
+        //    {
+        //        //Abouts abouts = new Abouts();
+        //        //About about    = new About(textBoxFirstName.Text, textBoxLastName.Text, textBoxEmail.Text, int.Parse(textBoxPersonID.Text));
+        //        //abouts.InsertPerson(about);
+        //    }
+        //    catch (Exception exception)
+        //    {
            
-            }
-        }
-        public ActionResult UpdateEditAbout()
-        {
-            try
-            {
-                //Abouts abouts = new Abouts();
-                //About about    = new About(textBoxFirstName.Text, textBoxLastName.Text, textBoxEmail.Text, int.Parse(textBoxPersonID.Text));
-                //abouts.UpdatePerson(about);
-            }
-            catch (Exception exception)
-            {
+        //    }
+        //}
+        //public ActionResult UpdateEditAbout()
+        //{
+        //    try
+        //    {
+        //        //Abouts abouts = new Abouts();
+        //        //About about    = new About(textBoxFirstName.Text, textBoxLastName.Text, textBoxEmail.Text, int.Parse(textBoxPersonID.Text));
+        //        //abouts.UpdatePerson(about);
+        //    }
+        //    catch (Exception exception)
+        //    {
                 
-            }
-        }
-        public ActionResult DeleteEditAbout()
-        {
-            try
-            {
-                //Abouts abouts = new Abouts();
-                //About about    = new About(textBoxFirstName.Text, textBoxLastName.Text, textBoxEmail.Text);
+        //    }
+        //}
+        //public ActionResult DeleteEditAbout()
+        //{
+        //    try
+        //    {
+        //        //Abouts abouts = new Abouts();
+        //        //About about    = new About(textBoxFirstName.Text, textBoxLastName.Text, textBoxEmail.Text);
 
-            }
-            catch (Exception exception)
-            {
+        //    }
+        //    catch (Exception exception)
+        //    {
             
-            }
-        }
+        //    }
+        //}
     }
 }
