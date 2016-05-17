@@ -17,14 +17,14 @@ namespace HBGDatorServiceDAL
         private List<Service> services;
         private List<UserAccount> permAdmins;
 
-        protected override void Seed(HBGDatorServiceContext context)
-        // Seed är det som lägger till våra ändringar/tillägg till databasen, som vi har i vår Initializer under denna, alla listor och saker vi adderar eller tar bort har vi här, som sedan läggs in i databasen av InitializeDatabase, det vi hade inann funkade, men vi hade inte savechanges så inget hände, därför det krashade hela tiden vad vi än gjorde. Dåck detta stämmer inte eftersom SaveChanges ska inte vehövas när man har public override void InitializeDatabase(HBGDatorServiceContext context)
-        {
-            abouts.ForEach(a => context.Abouts.Add(a));
-            services.ForEach(s => context.Services.Add(s));
-            permAdmins.ForEach(h => context.UserAccount.Add(h));
-            context.SaveChanges();
-        }
+        //protected override void Seed(HBGDatorServiceContext context)
+        //// Seed är det som lägger till våra ändringar/tillägg till databasen, som vi har i vår Initializer under denna, alla listor och saker vi adderar eller tar bort har vi här, som sedan läggs in i databasen av InitializeDatabase, det vi hade inann funkade, men vi hade inte savechanges så inget hände, därför det krashade hela tiden vad vi än gjorde. Dåck detta stämmer inte eftersom SaveChanges ska inte vehövas när man har public override void InitializeDatabase(HBGDatorServiceContext context)
+        //{
+        //    //abouts.ForEach(a => context.Abouts.Add(a));
+        //    //services.ForEach(s => context.Services.Add(s));
+        //    //permAdmins.ForEach(h => context.UserAccount.Add(h));
+        //    context.SaveChanges();
+        //}
 
         public HBGDatorServiceContextInitializer()
         {
@@ -62,6 +62,9 @@ namespace HBGDatorServiceDAL
 
         public override void InitializeDatabase(HBGDatorServiceContext context)
         {
+            abouts.ForEach(a => context.Abouts.Add(a));
+            services.ForEach(s => context.Services.Add(s));
+            permAdmins.ForEach(h => context.UserAccount.Add(h));
             base.InitializeDatabase(context);
         }
     }

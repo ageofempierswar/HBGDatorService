@@ -1,16 +1,13 @@
 ﻿@model HBGDatorServiceDAL.Models.ServiceReadOnlyModel
 @using HBGDatorServiceDAL.Models
-
 <script type="text/javascript">
     function showTab(selected, total) {
         for (i = 1; i <= total; i += 1) {
             document.getElementById('tabs-' + i).style.display = 'none';
         }
-
         document.getElementById('tabs-' + selected).style.display = 'block';
     }
 </script>
-
 <div class="tabsInfoboxes">
     <div id="tabDescription" class="col-md-12">
         <div role="tabpanel" id="tabInformation">
@@ -19,10 +16,8 @@
                 <li id="tabs1" onclick="showTab(1,2)" role="presentation"><a href="#Företag" aria-controls="Företag" role="tab" data-toggle="tab">För Företag</a></li>
                 <li id="tabs2" onclick="showTab(2,2)" role="presentation"><a href="#PrivatPersoner" aria-controls="PrivatPersoner" role="tab" data-toggle="tab">För PrivatPersoner</a></li>
             </ul>
-
             <div id="tabs-1" style="display: none" role="tabpanel" class="tabContent">
                 <div class="ServiceInfo">
-
                     <p>
                         @if (Session["Admin"] != null && (bool)Session["Admin"])
                         {
@@ -36,14 +31,19 @@
                     <p>
                         Vi kan erbjuda service alla dagar i veckan även kvällar och helger.
                     </p>
-                        Varje stopp eller driftstörning i Er datormiljö skapar onödig irritation, kostar pengar, i minskad effektivitet och ökade driftskostnader.
-
+                    <p>
+                        Varje stopp eller driftstörning i Er datormiljö skapar onödig irritation, kostar
+                    </p>
+                    <p>
                         Helsingborgs Datorservice hjälper ditt företag med allt från drift och underhåll till utveckling av din IT-infrastruktur i enlighet med ditt verksamhetsbehov.
-
+                    </p>
+                    <p>
                         Vi står för snabbhet och kvalité och med vår jourverksamhet hjälper vi ditt företag snabbt 24 timmar om dygnet 365 dagar om året! Vi säkerställer problemfri IT-miljö som hjälper dig att fokusera på din kärnverksamhet.
-
+                    </p>
+                    <p>
                         Med våra serviceavtal som ni finner till höger på denna sida skapar ni trygghet, minskar irriterande små problem och sänker risken för oplanerade driftstopp. Ni får mobilnummer till er egen personliga tekniker och snabb hjälp vid behov och kraftigt sänkta avgifter vid akututryckningar.
-
+                    </p>
+                    <p>
                         Vi har 100% sekretess mot alla våra kunder. Vi kan service och säkerhet. Vid tecknande av serviceavtal får du just nu dessutom första månaden gratis!.
                     </p>
                     <div class="ServiceHeader">
@@ -53,48 +53,39 @@
                     <div class="ServiceContent">
                         @foreach (var service in Model.services)
                         {
-
                             <div class="ServiceInfoBox">
                                 <h1>@service.Header</h1>
                                 <p>@service.Textfield</p>
                                 <hr />
                             </div>
-
                         }
                     </div>
-
                 </div>
             </div>
             <div id="tabs-2" style="display: none" role="tabpanel" class="tabContent">
                 <div class="ServiceInfo">
-
                     <p>
                         @if (Session["Admin"] != null && (bool)Session["Admin"])
                         {
                             @Html.ActionLink("Edit", "EditService", "EditServicePage")
                         }
                     </p>
-
                     <div class="ServiceHeader">
                         <h1>Våra Tjänster</h1>
                         <h3>Här är en lista över vad vi här på HBG Datorservice kan stå till tjänst med.</h3>
                     </div>
-
                     <div class="ServiceContent">
                         @foreach (var service in Model.services)
                         {
-
                             <div class="ServiceInfoBox">
                                 <h1>@service.Header</h1>
                                 <p>@service.Textfield</p>
                                 <hr />
                             </div>
-
                         }
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

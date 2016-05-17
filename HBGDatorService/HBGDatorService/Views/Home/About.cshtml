@@ -3,8 +3,10 @@
 
 <p>
    
-       @Html.ActionLink("Edit", "EditAbout", "EditAboutPage")
-    
+    @if (Session["Admin"] != null && (bool)Session["Admin"])
+    {
+        @Html.ActionLink("Edit", "EditAbout", "EditAboutPage")
+    }
 </p>
 
 <div class="AboutContent">
