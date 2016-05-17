@@ -66,7 +66,6 @@ namespace HBGDatorServiceDAL
                 context.SaveChanges();
             }
         }
-
         public static void RemoveUserByID(int id)
         {
             using (var context = new HBGDatorServiceContext())
@@ -76,7 +75,6 @@ namespace HBGDatorServiceDAL
                 context.SaveChanges();
             }
         }
-
         public static List<UserAccount> GetAllUsers()
         {
             using (var context = new HBGDatorServiceContext())
@@ -103,7 +101,6 @@ namespace HBGDatorServiceDAL
                 return s;
             }
         }
-
         public static void UpdateService(Service service)
         {
             using (var context = new HBGDatorServiceContext())
@@ -112,7 +109,6 @@ namespace HBGDatorServiceDAL
                 context.SaveChanges();
             }
         }
-
         public static Service GetLatestService()
         {
             using (var context = new HBGDatorServiceContext())
@@ -127,7 +123,6 @@ namespace HBGDatorServiceDAL
                 return a;
             }
         }
-
         public static Service SetServiceValues(EditServiceModel model, Service service)
         {
             service.ID = model.ID;
@@ -142,12 +137,10 @@ namespace HBGDatorServiceDAL
                 var query =
                     (from a in context.Services
                      orderby a.ID descending
-                     select
-                         new EditServiceModel()
+                     select new EditServiceModel()
                          {
                              ID = a.ID,
                              Header = a.Header,
-
                              Textfield = a.Textfield,
 
                          }).FirstOrDefault();
@@ -170,7 +163,6 @@ namespace HBGDatorServiceDAL
 
             }
         }
-
         public static void UpdateAbouts(About about)
         {
             using (var context = new HBGDatorServiceContext())
@@ -198,25 +190,25 @@ namespace HBGDatorServiceDAL
             about.Textfield=model.Textfield;
             return about;
         }
-        public static EditAboutModel GetLatestAboutInformation()
+        public static List<About> GetAllAbouts()
         {
             using (var context = new HBGDatorServiceContext())
             {
-                var query =
-                    (from a in context.Abouts
-                     orderby a.ID descending
-                     select
-                         new EditAboutModel()
-                         {
-                             ID = a.ID,
-                             Header = a.Header,
-                             
-                             Textfield = a.Textfield,
-                            
-                         }).FirstOrDefault();
+                List<About> Returnlist = new List<About>();
 
-                return query;
+                foreach (var item in context.Abouts)
+                {
+                    var query = from a in context.Abouts
+                                orderby a.ID
+                                select a;
+
+                    Returnlist.Add(item);
+                }
+
+                return Returnlist;
             }
         }
+
+        //------------------------------------------------------------------------------------------------------- Extra Spacing
     }
 }

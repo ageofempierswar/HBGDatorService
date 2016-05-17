@@ -25,7 +25,7 @@ namespace HBGDatorService.Controllers
             {
                 var service = Repository.GetLatestService();
                 Repository.UpdateService(Repository.SetServiceValues(model, service));
-                return RedirectToAction("Index", "Service");
+                return RedirectToAction("Service", "Home");
             }
             return View(model);
         }
