@@ -4,17 +4,16 @@
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
         @Html.AntiForgeryToken()
-
         <ul class="nav navbar-nav navbar-right"> 
             <li>
                 @*kollar om du är admin eller inte när du loggar in, och sätter en simpel tag på ditt namn om du är en admin.*@
                 @if (Session["Admin"] != null && !(bool)Session["Admin"])
                 {
-                    @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                    @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Home", routeValues: null, htmlAttributes: new { title = "Manage" })
                 }
                 else
                 {
-                     @Html.ActionLink("Hello Administrator " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                     @Html.ActionLink("Hello Administrator " + User.Identity.GetUserName() + "!", "Index", "Home", routeValues: null, htmlAttributes: new { title = "Manage" })
                 }
 
                 @*@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })*@
