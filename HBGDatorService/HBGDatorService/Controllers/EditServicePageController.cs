@@ -13,10 +13,9 @@ namespace HBGDatorService.Controllers
     public class EditServicePageController : Controller
     {
         //GET: EditServicePage
-        [HttpGet]
         public ActionResult EditService()
         {
-            var currentServiceInfo = Repository.GetLatestService();
+            var currentServiceInfo = Repository.GetLatestServiceInformation();
             return View(currentServiceInfo);
         }
         [HttpPost]

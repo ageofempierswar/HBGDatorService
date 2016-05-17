@@ -9,6 +9,7 @@ using HBGDatorServiceDAL.Models;
 using HBGDatorServiceDAL.POCO;
 using System.Configuration;
 using System.Data.SqlClient;
+
 namespace HBGDatorService.Controllers
 {
     [Authorize]

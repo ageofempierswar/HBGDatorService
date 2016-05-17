@@ -135,6 +135,26 @@ namespace HBGDatorServiceDAL
             service.Textfield = model.Textfield;
             return service;
         }
+        public static EditServiceModel GetLatestServiceInformation()
+        {
+            using (var context = new HBGDatorServiceContext())
+            {
+                var query =
+                    (from a in context.Services
+                     orderby a.ID descending
+                     select
+                         new EditServiceModel()
+                         {
+                             ID = a.ID,
+                             Header = a.Header,
+
+                             Textfield = a.Textfield,
+
+                         }).FirstOrDefault();
+
+                return query;
+            }
+        }
 
         //------------------------------------------------------------------------------------------------------- About
 
@@ -159,22 +179,6 @@ namespace HBGDatorServiceDAL
                 context.SaveChanges();
             }
         }
-
-        //public static About GetLatestAbouts()
-        //{
-        //    using (var context = new HBGDatorServiceContext())
-        //    {
-        //        EditAboutModel e = new EditAboutModel();
-        //        About a = context.Abouts.OrderByDescending(x => x.ID).FirstOrDefault();
-
-        //        e.Header = a.Header;
-        //        e.ID = a.ID;
-        //        e.Textfield = a.Textfield;
-
-
-        //        return a;
-        //    }
-        //}
         public static About GetLatestAbout()
         {
             using (var context = new HBGDatorServiceContext())
@@ -214,12 +218,5 @@ namespace HBGDatorServiceDAL
                 return query;
             }
         }
-        //public static About SetAboutValues(EditAboutModel model, About about)
-        //{
-        //    about.ID = model.ID;
-        //    about.Header = model.Header;
-        //    about.Textfield = model.Textfield;
-        //    return about;
-        //}
     }
 }
