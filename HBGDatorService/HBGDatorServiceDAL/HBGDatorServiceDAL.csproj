@@ -11,10 +11,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>HBGDatorServiceDAL</RootNamespace>
     <AssemblyName>HBGDatorServiceDAL</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -76,9 +77,11 @@
     <Compile Include="Models\AdminModel.cs" />
     <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Models\EditAboutModel.cs" />
+    <Compile Include="Models\EditPriceModel.cs" />
     <Compile Include="Models\EditServiceModel.cs" />
     <Compile Include="Models\ErrorModel.cs" />
     <Compile Include="Models\ImageModel.cs" />
+    <Compile Include="Models\PricesReadOnlyModel.cs" />
     <Compile Include="Models\RegisterAdminModel.cs" />
     <Compile Include="Models\ServiceReadOnlyModel.cs" />
     <Compile Include="Models\SlideShowImgModel.cs" />
@@ -87,6 +90,7 @@
     <Compile Include="POCO\Abouts.cs" />
     <Compile Include="POCO\DB.cs" />
     <Compile Include="POCO\Disconnected.cs" />
+    <Compile Include="POCO\Price.cs" />
     <Compile Include="POCO\Service.cs" />
     <Compile Include="POCO\SlideShowImage.cs" />
     <Compile Include="POCO\AdminAccount.cs" />

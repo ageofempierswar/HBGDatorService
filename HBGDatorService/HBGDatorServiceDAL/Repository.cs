@@ -208,24 +208,24 @@ namespace HBGDatorServiceDAL
                 return Returnlist;
             }
         }
-        public static EditAboutModel GetLatestAboutInformation()
-        {
-            using (var context = new HBGDatorServiceContext())
-            {
-                var query =
-                    (from a in context.Abouts
-                     orderby a.ID descending
-                     select new EditServiceModel()
-                     {
-                         ID = a.ID,
-                         Header = a.Header,
-                         Textfield = a.Textfield,
+        //public static EditAboutModel GetLatestAboutInformation()
+        //{
+        //    using (var context = new HBGDatorServiceContext())
+        //    {
+        //        var query =
+        //            (from a in context.Abouts
+        //             orderby a.ID descending
+        //             select new EditAboutModel()
+        //             {
+        //                 ID = a.ID,
+        //                 Header = a.Header,
+        //                 Textfield = a.Textfield,
 
-                     }).FirstOrDefault();
+        //             }).FirstOrDefault();
 
-                return query;
-            }
-        }
+        //        return query;
+        //    }
+        //}
 
         //------------------------------------------------------------------------------------------------------- Price
         public static PricesReadOnlyModel PriceReadOnly()
