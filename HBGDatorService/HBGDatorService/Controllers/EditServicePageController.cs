@@ -29,5 +29,13 @@ namespace HBGDatorService.Controllers
             }
             return View(model);
         }
+        //public ActionResult EditPriceList()
+        //{
+
+        //}
+        //public ActionResult EditService(EditServiceModel model)
+        //{
+           
+        //}
     }
 }

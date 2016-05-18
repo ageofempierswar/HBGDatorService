@@ -33,5 +33,6 @@ namespace HBGDatorServiceDAL
         public DbSet<About> Abouts { get; set; }
         public DbSet<UserAccount> UserAccount { get; set; }
         public DbSet<Service> Services { get; set; }
+        public DbSet<Price> Prices { get; set; }
     }
 }
