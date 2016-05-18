@@ -208,6 +208,24 @@ namespace HBGDatorServiceDAL
                 return Returnlist;
             }
         }
+        public static EditAboutModel GetLatestAboutInformation()
+        {
+            using (var context = new HBGDatorServiceContext())
+            {
+                var query =
+                    (from a in context.Abouts
+                     orderby a.ID descending
+                     select new EditServiceModel()
+                     {
+                         ID = a.ID,
+                         Header = a.Header,
+                         Textfield = a.Textfield,
+
+                     }).FirstOrDefault();
+
+                return query;
+            }
+        }
 
         //------------------------------------------------------------------------------------------------------- Extra Spacing
         public static PricesReadOnlyModel PriceReadOnly()
@@ -242,7 +260,7 @@ namespace HBGDatorServiceDAL
                 return query;
             }
         }
-        public static Price SetAboutValues(EditPriceModel model, Price price)
+        public static Price SetPriceValues(EditPriceModel model, Price price)
         {
             price.ID = model.ID;
             price.Textfield = model.Textfield;
@@ -264,6 +282,23 @@ namespace HBGDatorServiceDAL
                 }
 
                 return Returnlist;
+            }
+        }
+        public static EditPriceModel GetLatestPriceInformation()
+        {
+            using (var context = new HBGDatorServiceContext())
+            {
+                var query =
+                    (from a in context.Prices
+                     orderby a.ID descending
+                     select new EditPriceModel()
+                     {
+                         ID = a.ID,
+                         Textfield = a.Textfield,
+
+                     }).FirstOrDefault();
+
+                return query;
             }
         }
 

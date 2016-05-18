@@ -29,13 +29,21 @@ namespace HBGDatorService.Controllers
             }
             return View(model);
         }
-        //public ActionResult EditPriceList()
+        //public ActionResult EditPrice()
         //{
-
+        //    var currentServiceInfo = Repository.GetLatestPriceInformation();
+        //    return View(currentServiceInfo);
         //}
-        //public ActionResult EditService(EditServiceModel model)
+        //[HttpPost]
+        //public ActionResult EditPrice(EditPriceModel model)
         //{
-           
+        //    if (ModelState.IsValid)
+        //    {
+        //        var price = Repository.GetLatesPrice();
+        //        Repository.UpdatePrice(Repository.SetPriceValues(model, price));
+        //        return RedirectToAction("Price", "Home");
+        //    }
+        //    return View(model);
         //}
     }
 }
