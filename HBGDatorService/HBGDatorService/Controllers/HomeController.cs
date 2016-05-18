@@ -10,6 +10,7 @@ namespace HBGDatorService.Controllers
     {
         public ActionResult Index()
         {
+
             var images = Repository.GetAllSlideShowImages();
             List<string> list = new List<string>();
             list.Add("~/SlideImages/7cf0d7b2ceaf3358305aafa10b0f376c.jpg");
