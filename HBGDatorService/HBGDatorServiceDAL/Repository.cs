@@ -227,7 +227,7 @@ namespace HBGDatorServiceDAL
             }
         }
 
-        //------------------------------------------------------------------------------------------------------- Extra Spacing
+        //------------------------------------------------------------------------------------------------------- Price
         public static PricesReadOnlyModel PriceReadOnly()
         {
             using (var contex = new HBGDatorServiceContext())
