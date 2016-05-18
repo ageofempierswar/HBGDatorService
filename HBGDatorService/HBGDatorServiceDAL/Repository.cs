@@ -208,6 +208,110 @@ namespace HBGDatorServiceDAL
                 return Returnlist;
             }
         }
+        public static EditAboutModel GetLatestAboutInformation()
+        {
+            using (var context = new HBGDatorServiceContext())
+            {
+                var query =
+                    (from a in context.Abouts
+                     orderby a.ID descending
+                     select new EditServiceModel()
+                     {
+                         ID = a.ID,
+                         Header = a.Header,
+                         Textfield = a.Textfield,
+
+                     }).FirstOrDefault();
+
+                return query;
+            }
+        }
+
+        //------------------------------------------------------------------------------------------------------- Price
+        public static PricesReadOnlyModel PriceReadOnly()
+        {
+            using (var contex = new HBGDatorServiceContext())
+            {
+
+                PricesReadOnlyModel p = new PricesReadOnlyModel();
+                p.Prices = contex.Prices.Take(3).ToList();
+
+                return p;
+
+            }
+        }
+        public static void UpdatePrice(Price price)
+        {
+            using (var context = new HBGDatorServiceContext())
+            {
+                context.Entry(price).State = EntityState.Modified;
+                context.SaveChanges();
+            }
+        }
+        public static Price GetLatesPrice()
+        {
+            using (var context = new HBGDatorServiceContext())
+            {
+                var query =
+                    (from a in context.Prices
+                     orderby a.ID descending
+                     select a).FirstOrDefault();
+
+                return query;
+            }
+        }
+        public static Price SetPriceValues(EditPriceModel model, Price price)
+        {
+            price.ID = model.ID;
+            price.Textfield = model.Textfield;
+            return price;
+        }
+        public static List<Price> GetAllPrices()
+        {
+            using (var context = new HBGDatorServiceContext())
+            {
+                List<Price> Returnlist = new List<Price>();
+
+                foreach (var item in context.Prices)
+                {
+                    var query = from a in context.Prices
+                                orderby a.ID
+                                select a;
+
+                    Returnlist.Add(item);
+                }
+
+                return Returnlist;
+            }
+        }
+        public static EditPriceModel GetLatestPriceInformation()
+        {
+            using (var context = new HBGDatorServiceContext())
+            {
+                var query =
+                    (from a in context.Prices
+                     orderby a.ID descending
+                     select new EditPriceModel()
+                     {
+                         ID = a.ID,
+                         Textfield = a.Textfield,
+
+                     }).FirstOrDefault();
+
+                return query;
+            }
+        }
+
+        //------------------------------------------------------------------------------------------------------- Extra Spacing
+
+
+
+
+        //------------------------------------------------------------------------------------------------------- Extra Spacing
+
+        //------------------------------------------------------------------------------------------------------- Extra Spacing
+
+        //------------------------------------------------------------------------------------------------------- Extra Spacing
 
         //------------------------------------------------------------------------------------------------------- Extra Spacing
     }

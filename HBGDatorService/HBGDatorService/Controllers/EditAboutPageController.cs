@@ -18,7 +18,7 @@ namespace HBGDatorService.Controllers
         // GET: EditAboutPage
         public ActionResult EditAbout()
         {
-            var currentAboutInfo = Repository.GetAllAbouts();
+            var currentAboutInfo = Repository.GetLatestAboutInformation();
             return View();
         }
         [HttpPost]
