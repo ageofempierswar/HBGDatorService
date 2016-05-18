@@ -208,26 +208,29 @@ namespace HBGDatorServiceDAL
                 return Returnlist;
             }
         }
-        //public static EditAboutModel GetLatestAboutInformation()
-        //{
-        //    using (var context = new HBGDatorServiceContext())
-        //    {
-        //        var query =
-        //            (from a in context.Abouts
-        //             orderby a.ID descending
-        //             select new EditAboutModel()
-        //             {
-        //                 ID = a.ID,
-        //                 Header = a.Header,
-        //                 Textfield = a.Textfield,
 
-        //             }).FirstOrDefault();
+        /*public static EditAboutModel GetLatestAboutInformation()
+        {
+            using (var context = new HBGDatorServiceContext())
+            {
+                var query =
+                    (from a in context.Abouts
+                     orderby a.ID descending
+                     select new EditAboutModel()
+                     {
+                         ID = a.ID,
+                         Header = a.Header,
+                         Textfield = a.Textfield,
 
-        //        return query;
-        //    }
-        //}
+                     }).FirstOrDefault();
+
+                return query;
+            }
+        }
+        */
 
         //------------------------------------------------------------------------------------------------------- Price
+
         public static PricesReadOnlyModel PriceReadOnly()
         {
             using (var contex = new HBGDatorServiceContext())
@@ -304,15 +307,5 @@ namespace HBGDatorServiceDAL
 
         //------------------------------------------------------------------------------------------------------- Extra Spacing
 
-
-
-
-        //------------------------------------------------------------------------------------------------------- Extra Spacing
-
-        //------------------------------------------------------------------------------------------------------- Extra Spacing
-
-        //------------------------------------------------------------------------------------------------------- Extra Spacing
-
-        //------------------------------------------------------------------------------------------------------- Extra Spacing
     }
 }
