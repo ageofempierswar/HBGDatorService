@@ -17,6 +17,7 @@
                 <li id="tabs2" onclick="showTab(2,2)" role="presentation"><a href="#PrivatPersoner" aria-controls="PrivatPersoner" role="tab" data-toggle="tab">För PrivatPersoner</a></li>
             </ul>
             <div id="tabs-1" style="display: none" role="tabpanel" class="tabContent">
+
                 <div class="ServiceInfo">
                     <p>
                         @if (Session["Admin"] != null && (bool)Session["Admin"])
@@ -26,22 +27,58 @@
                     </p>
 
                     <div class="ServiceHeader">
-                        <h1 style="color:red">Våra Tjänster</h1>
+                        <h1>Våra Tjänster</h1>
                         <h3>Här är en lista över vad vi här på HBG Datorservice kan stå till tjänst med.</h3>
                     </div>
                     <div class="ServiceContent">
-                        @foreach (var service in Model.services)
-                        {
-                            <div class="ServiceInfoBox">
-                                <h1>@service.Header</h1>
-                                <p>@service.Textfield</p>
-                                <hr />
-                            </div>
-                        }
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li id="tabs3" onclick="showTab(3,4)" role="presentation"><a href="#PriserHem" aria-controls="PriserHem" role="tab" data-toggle="tab">Priser vid hembesök</a></li>
+                            <li id="tabs4" onclick="showTab(4,4)" role="presentation"><a href="#PriserService" aria-controls="PriserService" role="tab" data-toggle="tab">Priser för Service/Verkstad</a></li>
+                        </ul>
+
+                        <div id="tabs-1Service" style="display: none" role="tabpanel" class="tabContent">
+                            <h2>Priser för hembesök</h2>
+                            <p>
+                                Startavgift inkl 30min inom Helsingborgsområdet är 495kr
+                                där efter 695kr/h
+                                Alla priser är inklusive moms.
+                            </p>
+                        </div>
+
+                        <div id="tabs-2Service" style="display: none" role="tabpanel" class="tabContent">
+                            <h1>Priser för Service/Verkstad</h1>
+
+                            <h2>Tidsbaserade priser</h2>
+                            <p>
+                                Fast timpris datorservice 15 min: 100 kr
+                                Fast timpris datorservice 30 min: 200 kr
+                                Fast timpris datorservice 45 min: 300 kr
+                                Fast timpris datorservice 60 min: 400 kr
+                            </p>
+                            <h2>Fasta åtgärds priser</h2>
+                            <p>
+                                Felsökning (när vi sedan ställt diagnos på inlämnat gods så ringer vi dig och du bestämmer åtgärd): 395 kr
+                                Hälsocheck ( en allmän genomgång för att se att datorn är ok ): 395 kr
+                                Express avgift dator ( d.v.s komma före i kön av datorer): 500 kr
+                                Rengöring av Dator ( städning av dammig & smutisg dator ): 349 kr
+                                Grundläggande virusborttagning: 495 kr
+                                Installation programvara: 100 kr
+                                Installation av Antivirusprogram: 195 kr
+                                Installation av kringutrustning som skrivare etc /enhet: 149 kr
+                                Konfigurering av router: 299 kr
+                                Återskapning från minneskort: 699 kr
+                                Återskapning från hårddisk: 1395 kr
+                                Backup av data från media upp till 40 Gb: 495 kr
+                                Installation operativsystem utan backup: 695 kr
+                                Installation operativsystem med backup: 995 kr
+                            </p>
+                        </div>
                     </div>
                 </div>
+
             </div>
             <div id="tabs-2" style="display: none" role="tabpanel" class="tabContent">
+
                 <div class="ServiceInfo">
                     <p>
                         @if (Session["Admin"] != null && (bool)Session["Admin"])
@@ -65,6 +102,7 @@
                         }
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
