@@ -138,12 +138,12 @@ namespace HBGDatorServiceDAL
                     (from a in context.Services
                      orderby a.ID descending
                      select new EditServiceModel()
-                         {
-                             ID = a.ID,
-                             Header = a.Header,
-                             Textfield = a.Textfield,
+                     {
+                         ID = a.ID,
+                         Header = a.Header,
+                         Textfield = a.Textfield,
 
-                         }).FirstOrDefault();
+                     }).FirstOrDefault();
 
                 return query;
             }
@@ -186,8 +186,8 @@ namespace HBGDatorServiceDAL
         public static About SetAboutValues(EditAboutModel model, About about)
         {
             about.ID = model.ID;
-            about.Header=model.Header;
-            about.Textfield=model.Textfield;
+            about.Header = model.Header;
+            about.Textfield = model.Textfield;
             return about;
         }
         public static List<About> GetAllAbouts()
@@ -307,5 +307,62 @@ namespace HBGDatorServiceDAL
 
         //------------------------------------------------------------------------------------------------------- Extra Spacing
 
+        //------------------------------------------------------------------------------------------------------- News
+
+        public static List<News> GetLatestNews(int nrToGet = 4)
+        {
+            using (var context = new HBGDatorServiceContext())
+            {
+                return context.News.OrderByDescending(d => d.newsDate).Take(nrToGet).ToList();
+            }
+        }
+        public static News GetNewsById(int idToGet)
+        {
+            using (var context = new HBGDatorServiceContext())
+            {
+                return context.News.Where(n => n.newsID == idToGet).FirstOrDefault();
+            }
+        }
+        public static void UpdateOrSaveNews(News newsToEdit)
+        {
+            using (var context = new HBGDatorServiceContext())
+            {
+                if (context.News.Where(n => n.newsID == newsToEdit.newsID).FirstOrDefault() == null)
+                {
+                    context.News.Add(newsToEdit);
+                    context.SaveChanges();
+                }
+                else
+                {
+                    context.News.Attach(newsToEdit);
+                    context.Entry(newsToEdit).State = EntityState.Modified;
+                    context.SaveChanges();
+                }
+            }
+        }
+        public static void DeleteNews(int id)
+        {
+            using (var context = new HBGDatorServiceContext())
+            {
+                News toRemove = context.News.Where(n => n.newsID == id).FirstOrDefault();
+                if (toRemove != null)
+                {
+                    context.News.Remove(toRemove);
+                    context.SaveChanges();
+                }
+                else
+                {
+                    return;
+                }
+            }
+        }
+
+        public static IEnumerable<News> GetNewsList()
+        {
+            using (var context = new HBGDatorServiceContext())
+            {
+                return context.News.OrderByDescending(d => d.newsDate).ToList();
+            }
+        }
     }
 }

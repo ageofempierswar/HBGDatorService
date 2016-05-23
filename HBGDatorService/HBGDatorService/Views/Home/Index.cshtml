@@ -1,12 +1,14 @@
 ﻿@using System.Collections.Specialized
 @using System.Web.Razor
 @using HBGDatorService.Controllers
-@model List<string>
+@using HBGDatorService.Models
+
+@model IndexPageModel
 
 <div class="slider-container">
     <div class="hiddenoo">
         <div class="owl-carousel slider">
-            @foreach (var image in Model)
+            @foreach (var image in Model.sliderImages)
             {
                 <div class="panel panel-primary slider-item">
                     <img src="@Url.Content(image)" />
@@ -19,35 +21,65 @@
     @if (Session["Admin"] != null && (bool)Session["Admin"])
     {
         <div class="btn-btn-default">
-                <input type="button" value="Edit SlideShow" onclick="location.href = '@Url.Action("UploadSlideshowFile", "EditSlideShowImages")'" />
-            </div> 
+            <input type="button" value="Edit SlideShow" onclick="location.href = '@Url.Action("UploadSlideshowFile", "EditSlideShowImages")'" />
+        </div>
     }
 </p>
-<div class="row">
-    <div class="col-md-4">
+    <div class="panel panel-info">
+        <div class="panel-heading"><h4>Välkommen till Helsingborgs Datorservice</h4></div>
+        <div class="panel-body">
+            <div class="col-md-5">
 
-        <img src="~/Images/IMG_0210.JPG"width="400" height="400" />
-     
-    
+                <img src="~/Images/IMG_0210.JPG" style="width:100%; border-radius:5px;" />
+
+
+            </div>
+            <div class="col-md-7">
+                <h2 style="margin-top:0px;"></h2>
+                <article>
+                    <p>Vi är ett företag som har 20 årig erfarenhet av datorer och datorproblematik, du väljer oss för att vi kan Datorer och datorutrustning.</p>
+                    <p>Vi hjälper dig att välja rätt och vi sätter alltid dig som kund i centrum .</p>
+                    <p>Vi har funnits i Helsingborg i snart 6 år. Du hittar oss i de södra delarna av Helsingborg 100 meter från Södergatan där vi har vår butik och service verkstad för både företag & privat personer.</p>
+                    <p>På följande sidor kan du som privat kund eller företagskund navigera dig rätt till just det som du söker hjälp med.</p>
+                </article>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
+
+    <div class="panel panel-info">
+        <div class="panel-heading"><h4> Nyheter</h4> </div>
+        @if (Session["Admin"] != null && (bool)Session["Admin"])
+        {
+            <div class="panel-footer"> @Html.ActionLink("Visa alla nyheter", "ListNews", "Home") </div>
+        }
+        <div class="panel-body">
+            @foreach (var news in Model.indexNews)
+            {
+
+
+            <div class="col-md-6 col-sm-12 col-lg-6">
+                <div class="panel panel-info">
+                    <div class="panel-heading"><h5> @news.newsDate.ToString().Substring(0,10) - @news.newsTopic </h5></div>
+                    <div class="panel-body">
+                        @news.newsBody
+                    </div>
+                    @if (Session["Admin"] != null && (bool)Session["Admin"])
+                    {
+                        <div class="panel-footer"> @Html.ActionLink("Ändra", "EditNews", new { id = news.newsID }) </div>
+                    }
+                </div>
+            </div>
+            }
        
+
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Välkommen till Helsingborgs Datorservice</h2>
-        <article>
-            <p>Vi är ett företag som har 20 årig erfarenhet av datorer och datorproblematik, du väljer oss för att vi kan Datorer och datorutrustning.</p>
-            <p>Vi hjälper dig att välja rätt och vi sätter alltid dig som kund i centrum .</p>
-            <p>Vi har funnits i Helsingborg i snart 6 år. Du hittar oss i de södra delarna av Helsingborg 100 meter från Södergatan där vi har vår butik och service verkstad för både företag & privat personer.</p>
-            <p>På följande sidor kan du som privat kund eller företagskund navigera dig rätt till just det som du söker hjälp med.</p>            
-        </article>
-    </div>
-</div>
+
 
 
 @section Styles {
     <link href="~/Content/owl.carousel.css" rel="stylesheet" />
-<link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
 }
 
 @section Scripts {

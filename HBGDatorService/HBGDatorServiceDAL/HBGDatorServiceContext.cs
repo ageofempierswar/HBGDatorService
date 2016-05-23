@@ -41,6 +41,8 @@ namespace HBGDatorServiceDAL
         public DbSet<Service> Services { get; set; }
         public DbSet<Price> Prices { get; set; }
 
+        public DbSet<News> News { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

@@ -29,5 +29,7 @@ namespace HBGDatorService.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<HBGDatorServiceDAL.POCO.News> News { get; set; }
     }
 }

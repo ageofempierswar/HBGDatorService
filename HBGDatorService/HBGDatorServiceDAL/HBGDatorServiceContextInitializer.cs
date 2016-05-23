@@ -18,6 +18,7 @@ namespace HBGDatorServiceDAL
         private List<About> abouts;
         private List<Service> services;
         private List<UserAccount> permAdmins;
+        private List<News> defaultNews;
 
         protected override void Seed(HBGDatorServiceContext context)
         /*
@@ -28,11 +29,20 @@ namespace HBGDatorServiceDAL
             abouts.ForEach(a => context.Abouts.Add(a));
             services.ForEach(s => context.Services.Add(s));
             permAdmins.ForEach(h => context.UserAccount.Add(h));
+            defaultNews.ForEach(n => context.News.Add(n));
             base.Seed(context);
         }
 
         public HBGDatorServiceContextInitializer()
         {
+            defaultNews = new List<News>()
+            {
+                new News {
+                    newsTopic = "Default nyheten, skapas av seed.",
+                    newsBody = "Detta är en lorem ipsus nyhet som skapas av databas-genereringen.",
+                    newsDate = DateTime.Now
+                }
+            };
 
             abouts = new List<About>()
             {

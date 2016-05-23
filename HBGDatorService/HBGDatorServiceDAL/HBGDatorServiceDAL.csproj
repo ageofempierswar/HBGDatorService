@@ -90,6 +90,7 @@
     <Compile Include="POCO\Abouts.cs" />
     <Compile Include="POCO\DB.cs" />
     <Compile Include="POCO\Disconnected.cs" />
+    <Compile Include="POCO\News.cs" />
     <Compile Include="POCO\Price.cs" />
     <Compile Include="POCO\Service.cs" />
     <Compile Include="POCO\SlideShowImage.cs" />
