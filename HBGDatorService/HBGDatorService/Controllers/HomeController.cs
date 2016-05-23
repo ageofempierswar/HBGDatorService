@@ -20,10 +20,7 @@ namespace HBGDatorService.Controllers
             var images = Repository.GetAllSlideShowImages();
             List<string> list = new List<string>();
             list.Add("~/SlideImages/20160523_151339.jpg");
-            list.Add("~/SlideImages/20160523_151410.jpg");
             list.Add("~/SlideImages/20160523_151430.jpg");
-            list.Add("~/SlideImages/20160523_151510.jpg");
-            list.Add("~/SlideImages/20160523_151543.jpg");
 
             foreach (var SlideImage in images)
             {

@@ -197,6 +197,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Images\broken_computer.png" />
     <Content Include="Images\HBGDatorserviceNYliten.png" />
     <Content Include="Images\IMG_0210.JPG" />
     <Content Include="Content\owl.carousel.css" />
