@@ -183,6 +183,7 @@
     <Compile Include="Controllers\EditSlideShowImagesController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -197,12 +198,6 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Images\HBGDatorserviceNYliten.png" />
-    <Content Include="SlideImages\7cf0d7b2ceaf3358305aafa10b0f376c.jpg" />
-    <Content Include="SlideImages\all-mass-effect-characters.jpg" />
-    <Content Include="SlideImages\mass-effect-2-16685-1366x768.jpg" />
-    <Content Include="SlideImages\mass-effect-3-17004-1366x768.jpg" />
-    <Content Include="SlideImages\mass_effect_shepard_female_graphics_gun_1366x768_hd-wallpaper-15574.jpg" />
-    <Content Include="SlideImages\tali-mass-effect-15770-1366x768.jpg" />
     <Content Include="Images\IMG_0210.JPG" />
     <Content Include="Content\owl.carousel.css" />
     <Content Include="favicon.ico" />
@@ -227,6 +222,11 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="SlideImages\20160523_151339.jpg" />
+    <Content Include="SlideImages\20160523_151410.jpg" />
+    <Content Include="SlideImages\20160523_151430.jpg" />
+    <Content Include="SlideImages\20160523_151510.jpg" />
+    <Content Include="SlideImages\20160523_151543.jpg" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -273,6 +273,11 @@
     </Content>
     <Content Include="Views\Home\ListNews.cshtml" />
     <Content Include="Views\Home\EditNews.cshtml" />
+    <Content Include="Views\News\Create.cshtml" />
+    <Content Include="Views\News\Delete.cshtml" />
+    <Content Include="Views\News\Details.cshtml" />
+    <Content Include="Views\News\Edit.cshtml" />
+    <Content Include="Views\News\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
