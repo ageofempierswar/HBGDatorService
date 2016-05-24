@@ -3,9 +3,10 @@
 @using (Html.BeginForm("Contact", "Contact", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    <div>
-        <div class="form-group">
 
+    <div>
+
+        <div class="form-group">
             @Html.LabelFor(model => model.EmailAdress, htmlAttributes: new { })
             <div>
                 @Html.EditorFor(model => model.EmailAdress, new { htmlAttributes = new { @class = "form-control", @rows = 8 } })
@@ -14,7 +15,6 @@
         </div>
 
         <div class="form-group">
-
             @Html.LabelFor(model => model.Subject, htmlAttributes: new { })
             <div>
                 @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { @class = "form-control", @rows = 8 } })
@@ -23,7 +23,6 @@
         </div>
 
         <div class="form-group">
-
             @Html.LabelFor(model => model.Message, htmlAttributes: new { })
             <div>
                 @Html.EditorFor(model => model.Message, new { htmlAttributes = new { @class = "form-control", @rows = 8 } })
@@ -32,16 +31,10 @@
         </div>
 
         <div class="form-group">
-
             <div>
-                <img src="/resources/norobot.jpg" alt="Mountain View"/><br/><br/>
-
-                     @Html.TextBoxFor(model => model.ValidationNumber, new { htmlAttributes = new { @class = "form-control", @rows = 1 } })<br/>
-                     @Html.ValidationMessageFor(model => model.ValidationNumber, "", new { @class = "text-danger" })<span style="color: red">@ViewBag.WrongAnswer</span>
+                @Html.TextBoxFor(model => model.ValidationNumber, new { htmlAttributes = new { @class = "form-control", @rows = 1 } })<br />
+                @Html.ValidationMessageFor(model => model.ValidationNumber, "", new { @class = "text-danger" })<span style="color: red">@ViewBag.WrongAnswer</span>
             </div>
-
-
-
         </div>
 
         <div class="form-group">

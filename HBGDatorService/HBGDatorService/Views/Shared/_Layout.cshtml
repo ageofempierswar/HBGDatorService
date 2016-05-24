@@ -12,26 +12,27 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="wrapper">
-        <img src="~/Images/HBGDatorserviceNYliten.png" style="margin-left:15%; margin-top:20px;" />
+    <div class="container wrapper">
+        <img src="~/Images/HBGDatorserviceNYliten.png" style="margin-left:20%; margin-top:20px;" />
 
         <div class="panel panel-info">
             <div class="container">
 
                 <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav" style="margin:5px; float:left; font-size:16px;">
+                    <div class="row">
+                        <ul class="nav navbar-nav" style="margin:5px; float:left; font-size:16px;">
+                            @HtmlHelpers.MenuItem("Hem", "Index", "Home")
+                            @HtmlHelpers.MenuItem("Om oss", "About", "Home")
+                            @HtmlHelpers.MenuItem("Våra tjänster", "Service", "Home")
+                            @HtmlHelpers.MenuItem("Kontakta oss", "Index", "Contact")
+                        </ul>
 
-                        @HtmlHelpers.MenuItem("Hem", "Index", "Home")
-                        @HtmlHelpers.MenuItem("Om oss", "About", "Home")
-                        @HtmlHelpers.MenuItem("Våra tjänster", "Service", "Home")
-                        @HtmlHelpers.MenuItem("Kontakta oss", "Index", "Contact")
+                        <ul class="nav navbar-nav" style="margin:5px; float:right; font-size:16px; margin-right:35px;">
 
-                    </ul>
-                    <ul class="nav navbar-nav" style="margin:5px; float:right; font-size:16px;">
+                            @Html.Partial("_LoginPartial")
 
-                        @Html.Partial("_LoginPartial")
-
-                    </ul>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

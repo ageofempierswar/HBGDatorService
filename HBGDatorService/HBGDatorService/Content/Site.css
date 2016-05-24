@@ -61,13 +61,11 @@ textarea {
 
 
 .wrapper {
-    max-width: 1024px;
     height: auto;
     background-color: #ffffff;
-    margin-left: auto;
-    margin-right: auto;
     -webkit-box-shadow: 0 0 10px 5px #C4C4C4;
     box-shadow: 0 0 10px 5px #C4C4C4;
+    min-width:480px;
 }
 
 .slider-container {
@@ -79,17 +77,25 @@ textarea {
     margin-bottom: 30px;
     background-color: #ffffff;
 }
+#contactContainer{
+    margin-top:10px;
+    margin-bottom:20px;
+    max-width:1024px;
+}
 
 #contact {
-    width: 300px;
+    width:49%;
+    min-width: 300px;
     float: left;
     padding: 30px;
 }
 
 #googleMap {
-    width: 300px;
     float: left;
-    padding: 30px;
+    border:0; 
+    min-width:250px;
+    width:100%; 
+    min-height:450px;
 }
 
 .slider-item {

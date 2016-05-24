@@ -12,7 +12,7 @@ if (mvcHandler != null)
     var isCurrent = string.Equals(currentAction, action, StringComparison.InvariantCultureIgnoreCase) &&
                     string.Equals(currentController, controller, StringComparison.InvariantCultureIgnoreCase);
 
-        <li class="@(isCurrent ? "active" : "")"><a href="@url.Action(action, controller)">@linkText</a></li>
+        <li class="@(isCurrent ? "active" : "") btn btn-default" style="margin:3px;"><a href="@url.Action(action, controller)" style="padding-top:5px; padding-bottom:5px;">@linkText</a></li>
         
 }
 }
