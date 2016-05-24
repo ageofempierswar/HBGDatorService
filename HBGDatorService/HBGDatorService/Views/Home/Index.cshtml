@@ -5,8 +5,8 @@
 
 @model IndexPageModel
 
-<div class="container slider-container">
-    <div class="hiddenoo">
+<div class="slider-container">
+    <div class="slider">
         <div class="owl-carousel slider">
             @foreach (var image in Model.sliderImages)
             {
@@ -83,6 +83,7 @@
 
 @section Scripts {
     <script src="~/Scripts/owl.carousel.min.js"></script>
+
     <script>
         $(document).ready(function () {
             $(".slider").owlCarousel({
@@ -97,8 +98,13 @@
             });
         });
     </script>
-}
 
+<script type="text/javascript">
+    $("ul.nav-tabs a").click(function (e) {
+        e.preventDefault();
+        $(this).tab('show');
+    });
+</script>
 
 <script>
 
@@ -132,3 +138,6 @@
     });
 
 </script>
+}
+
+

@@ -7,34 +7,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - HBGDatorService</title>
     <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="Content/bootstrap.css" rel="stylesheet" />
     @RenderSection("Styles", required: false)
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="container wrapper">
-        <img src="~/Images/HBGDatorserviceNYliten.png" style="margin-left:20%; margin-top:20px;" />
+    <div class="wrapper">
+        <img id="logo" src="~/Images/HBGDatorserviceNYliten.png" />
 
-        <div class="panel panel-info">
-            <div class="container">
+        <div id="navbar-panel" class="panel panel-info container">
 
-                <div class="navbar-collapse collapse">
-                    <div class="row">
-                        <ul class="nav navbar-nav" style="margin:5px; float:left; font-size:16px;">
-                            @HtmlHelpers.MenuItem("Hem", "Index", "Home")
-                            @HtmlHelpers.MenuItem("Om oss", "About", "Home")
-                            @HtmlHelpers.MenuItem("Våra tjänster", "Service", "Home")
-                            @HtmlHelpers.MenuItem("Kontakta oss", "Index", "Contact")
-                        </ul>
+            <div class="navbar-default">
+                <ul id="navbar-left" class="nav navbar-nav">
+                    @HtmlHelpers.MenuItem("Hem", "Index", "Home")
+                    @HtmlHelpers.MenuItem("Om oss", "About", "Home")
+                    @HtmlHelpers.MenuItem("Våra tjänster", "Service", "Home")
+                    @HtmlHelpers.MenuItem("Kontakta oss", "Index", "Contact")
+                </ul>
 
-                        <ul class="nav navbar-nav" style="margin:5px; float:right; font-size:16px; margin-right:35px;">
-
-                            @Html.Partial("_LoginPartial")
-
-                        </ul>
-                    </div>
-                </div>
+                <ul id="navbar-right" class="nav navbar-nav">
+                    @Html.Partial("_LoginPartial")
+                </ul>
             </div>
+
         </div>
         <br />
 
