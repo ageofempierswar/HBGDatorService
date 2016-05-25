@@ -11,20 +11,23 @@ namespace HBGDatorServiceDAL.Models
     public class ContactModel
     {
         [Required(ErrorMessage = "Can not be empty")]
+        [DisplayName("Ämne")]
         public string Subject { get; set; }
 
         [Required(ErrorMessage = "Can not be empty")]
         [EmailAddress(ErrorMessage = "Invalid adress, try again (example@teamnordahl.com)")]
-        [DisplayName("Your Email")]
+        [DisplayName("Din Mail")]
         public string EmailAdress { get; set; }
 
         [Required(ErrorMessage = "Can not be empty")]
         [MaxLength(1000)]
         [DataType(DataType.MultilineText)]
+        [DisplayName("Meddelande")]
         public string Message { get; set; }
         public HttpPostedFileBase Upload { get; set; }
 
         [Required(ErrorMessage = "Invalid Captcha")]
+        [DisplayName("Randomnummer")]
         public string ValidationNumber { get; set; }
     }
 }

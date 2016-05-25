@@ -17,14 +17,12 @@
         </div>
     </div>
 </div>
-<p>
+
     @if (Session["Admin"] != null && (bool)Session["Admin"])
     {
-        <div class="btn-btn-default">
-            <input type="button" value="Edit SlideShow" onclick="location.href = '@Url.Action("UploadSlideshowFile", "EditSlideShowImages")'" />
-        </div>
+            <div class="panel-footer"> @Html.ActionLink("Ändra bildspel", "UploadSlideshowFile", "EditSlideShowImages") </div>
     }
-</p>
+
     <div class="panel panel-info">
         <div class="panel-heading"><h4>Välkommen till Helsingborgs Datorservice</h4></div>
         <div class="panel-body">

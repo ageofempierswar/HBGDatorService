@@ -18,13 +18,11 @@ namespace HBGDatorService.Controllers
         }
         public ActionResult UploadSlideshowFile()
         {
-
             return View();
         }
         [ChildActionOnly]
         public ActionResult SliderGallery()
         {
-
             var model = Repository.GetAllSlideShowImages();
             return View(model);
         }

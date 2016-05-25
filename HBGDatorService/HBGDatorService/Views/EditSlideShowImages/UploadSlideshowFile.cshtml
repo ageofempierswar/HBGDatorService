@@ -1,16 +1,23 @@
-﻿@using (Html.BeginForm("Upload", "EditSlideShowImages", FormMethod.Post, new { enctype = "multipart/form-data" }))
+﻿@model IEnumerable<HBGDatorServiceDAL.Models.ImageModel>
 
-{ @Html.AntiForgeryToken()
 
-    <fieldset>
-        <legend>Upload a file</legend>
-        <p>Only .jpg .jpeg . png and .gif allowed</p>
-        <div class="editor-field"> @Html.TextBox("file", "", new { type = "file" }) </div>
-        <div class="editor-field"> <input type="submit" value="Upload" /> </div>
-    </fieldset>
+@using (Html.BeginForm("Upload", "EditSlideShowImages", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
 
-}
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="panel-body">
+                <div class="panel-heading"> <h4>Ladda upp en bild</h4> </div>
+                <br />
+                <p>bildens format måste vara av typen: .jpg .jpeg .png eller .gif</p>
+                <ul>
+                    <div class="btn btn-default"> @Html.TextBox("file", "", new { type = "file" }) </div>
+                    <div class="btn btn-default"> <input type="submit" value="Ladda Upp" /> </div>
+                </ul>
+            </div>
+        </div>
+    </div>
 
 @Html.Action("SliderGallery")
-
+}
 

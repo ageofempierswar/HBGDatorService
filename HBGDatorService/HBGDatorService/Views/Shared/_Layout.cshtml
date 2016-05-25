@@ -6,8 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - HBGDatorService</title>
-    <link href="~/Content/Site.css" rel="stylesheet" />
-    <link href="Content/bootstrap.css" rel="stylesheet" />
+   
     @RenderSection("Styles", required: false)
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -16,22 +15,23 @@
     <div class="wrapper">
         <img id="logo" src="~/Images/HBGDatorserviceNYliten.png" />
 
-        <div id="navbar-panel" class="panel panel-info container">
+    
+            <div class="nav">
+                <div class="container">
+                    <ul class="nav navbar-nav navbar-left">
+                        @HtmlHelpers.MenuItem("Hem", "Index", "Home")
+                        @HtmlHelpers.MenuItem("Om oss", "ListAbout", "Home")
+                        @HtmlHelpers.MenuItem("Våra tjänster", "ListService", "Home")
+                        @HtmlHelpers.MenuItem("Kontakta oss", "Index", "Contact")
+                    </ul>
 
-            <div class="navbar-collapse">
-                <ul id="navbar-left" class="nav navbar-nav">
-                    @HtmlHelpers.MenuItem("Hem", "Index", "Home")
-                    @HtmlHelpers.MenuItem("Om oss", "ListAbout", "Home")
-                    @HtmlHelpers.MenuItem("Våra tjänster", "ListService", "Home")
-                    @HtmlHelpers.MenuItem("Kontakta oss", "Index", "Contact")
-                </ul>
-
-                <ul id="navbar-right" class="nav navbar-nav">
-                    @Html.Partial("_LoginPartial")
-                </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        @Html.Partial("_LoginPartial")
+                    </ul>
+                </div>
             </div>
 
-        </div>
+        
         <br />
 
         <div class="container body-content">

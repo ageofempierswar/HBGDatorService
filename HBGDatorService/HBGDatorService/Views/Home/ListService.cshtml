@@ -7,36 +7,42 @@
 
 <h2>Våra Tjänster</h2>
 
-<p>
-    @Html.ActionLink("Skapa ny", "Create")
-</p>
+@if (Session["Admin"] != null && (bool)Session["Admin"])
+{
+    <div class="panel-footer"> @Html.ActionLink("Skapa ny", "Create", "Home") </div>
+}
+
 <div class="panel panel-info">
 
-        <div class="panel-heading col-md-4">
-            @Html.DisplayNameFor(model => model.Header)
-        </div>
-        <div class="panel-heading col-md-8">
-            @Html.DisplayNameFor(model => model.Textfield)
-        </div>
-
-
-@foreach (var item in Model)
-{
-    <div class="panel-body">
-        <div>
-            <div class="col-md-4">
-                @Html.DisplayFor(modelItem => item.Header)
-            </div>
-            <div class="col-md-8">
-                @Html.DisplayFor(modelItem => item.Textfield)
-            </div>
-            <div class="col-md-12">
-                @Html.ActionLink("Ändra", "EditService", new { id = item.ID }) |
-                @Html.ActionLink("Ta bort", "DeleteService", new { id = item.ID })
-            </div>
-        </div>
+    <div class="panel-heading col-md-4">
+        @Html.DisplayNameFor(model => model.Header)
     </div>
-    <div class="row"><hr style="margin:0px;" /></div>
-}
+    <div class="panel-heading col-md-8">
+        @Html.DisplayNameFor(model => model.Textfield)
+    </div>
+
+
+    @foreach (var item in Model)
+    {
+        <div class="panel-body">
+            <div>
+                <div class="col-md-4">
+                    @Html.DisplayFor(modelItem => item.Header)
+                </div>
+                <div class="col-md-8">
+                    @Html.DisplayFor(modelItem => item.Textfield)
+                </div>
+                @if (Session["Admin"] != null && (bool)Session["Admin"])
+                {
+                    <div class="col-md-12">
+                        @Html.ActionLink("Ändra", "EditService", new { id = item.ID }) |
+                        @Html.ActionLink("Ta bort", "DeleteService", new { id = item.ID })
+                    </div>
+                }
+
+            </div>
+        </div>
+        <div class="row"><hr style="margin:0px;" /></div>
+    }
 
 </div>
