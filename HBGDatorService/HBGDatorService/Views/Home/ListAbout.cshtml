@@ -1,0 +1,40 @@
+﻿@model IEnumerable<HBGDatorServiceDAL.POCO.About>
+
+@{
+    ViewBag.Title = "ListAbout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Om Oss</h2>
+
+<p>
+    @Html.ActionLink("Skapa Ny", "Create")
+</p>
+<div class="panel panel-info">
+
+        <div class="panel-heading col-md-4">
+            @Html.DisplayNameFor(model => model.Header)
+        </div>
+        <div class="panel-heading col-md-8">
+            @Html.DisplayNameFor(model => model.Textfield)
+        </div>
+
+
+@foreach (var item in Model)
+{
+    <div class="panel-body">
+        <div>
+            @Html.DisplayFor(modelItem => item.Header)
+        </div>
+        <div>
+            @Html.DisplayFor(modelItem => item.Textfield)
+        </div>
+        <div>
+            @Html.ActionLink("Ändra", "EditAbout", new { id=item.ID }) |
+            @Html.ActionLink("Ta bort", "DeleteAbout", new { id=item.ID })
+        </div>
+    </div>
+    <div class="row"><hr style="margin:0px;" /></div>
+}
+
+</div>

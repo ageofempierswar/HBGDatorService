@@ -10,5 +10,7 @@ namespace HBGDatorService.Models
     {
         public List<string> sliderImages;
         public List<News> indexNews;
+        public List<About> indexAbout;
+        public List<Service> indexService;
     }
 }

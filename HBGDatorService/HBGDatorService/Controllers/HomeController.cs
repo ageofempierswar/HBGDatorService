@@ -29,6 +29,8 @@ namespace HBGDatorService.Controllers
             ip.sliderImages = list;
 
             ip.indexNews = Repository.GetLatestNews();
+            ip.indexAbout = Repository.GetAllAbouts();
+            ip.indexService = Repository.GetAllServices();
 
             return View(ip);
         }
@@ -58,6 +60,7 @@ namespace HBGDatorService.Controllers
         [Authorize]
         public ActionResult DeleteNews(int id)
         {
+            Repository.DeleteNews(id);
             return RedirectToAction("ListNews");
         }
 
@@ -68,20 +71,75 @@ namespace HBGDatorService.Controllers
             return View(newsList);
         }
 
-        public ActionResult About()
+        [Authorize]
+        [HttpGet]
+        public ActionResult EditAbout(int id = 0)
         {
-            var model = Repository.AboutReadOnly();
-            return View(model);
+            About aboutToEdit = new About();
 
-            //return View(db.Abouts.ToList());
+            if (id != 0)
+            {
+                aboutToEdit = Repository.GetAboutsById(id);
+            }
+            return View(aboutToEdit);
+
+        }
+        [Authorize]
+        [HttpPost]
+        public ActionResult EditAbout(About updatedAbout)
+        {
+            Repository.UpdateOrSaveAbouts(updatedAbout);
+            return RedirectToAction("ListAbout");
+
+        }
+        [Authorize]
+        public ActionResult DeleteAbout(int id)
+        {
+            Repository.DeleteAbouts(id);
+            return RedirectToAction("ListAbout");
         }
 
-        public ActionResult Service()
+        public ActionResult ListAbout()
         {
-            var model = Repository.ServiceReadOnly(10);
-            return View(model);
-
-            //return View(db.Service.ToList());
+            IEnumerable<About> aboutList = Repository.GetAboutList();
+            return View(aboutList);
         }
+
+
+        [Authorize]
+        [HttpGet]
+        public ActionResult EditService(int id = 0)
+        {
+            Service serviceToEdit = new Service();
+
+            if (id != 0)
+            {
+                serviceToEdit = Repository.GetServiceById(id);
+            }
+            return View(serviceToEdit);
+
+        }
+        [Authorize]
+        [HttpPost]
+        public ActionResult EditService(Service updatedService)
+        {
+            Repository.UpdateOrSaveService(updatedService);
+            return RedirectToAction("ListService");
+
+        }
+        [Authorize]
+        public ActionResult DeleteService(int id)
+        {
+            Repository.DeleteService(id);
+            return RedirectToAction("ListService");
+        }
+
+        public ActionResult ListService()
+        {
+            IEnumerable<Service> serviceList = Repository.GetServiceList();
+            return View(serviceList);
+        }
+
+
     }
 }

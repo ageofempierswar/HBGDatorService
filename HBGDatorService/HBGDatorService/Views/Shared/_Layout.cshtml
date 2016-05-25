@@ -18,11 +18,11 @@
 
         <div id="navbar-panel" class="panel panel-info container">
 
-            <div class="navbar-default">
+            <div class="navbar-collapse">
                 <ul id="navbar-left" class="nav navbar-nav">
                     @HtmlHelpers.MenuItem("Hem", "Index", "Home")
-                    @HtmlHelpers.MenuItem("Om oss", "About", "Home")
-                    @HtmlHelpers.MenuItem("Våra tjänster", "Service", "Home")
+                    @HtmlHelpers.MenuItem("Om oss", "ListAbout", "Home")
+                    @HtmlHelpers.MenuItem("Våra tjänster", "ListService", "Home")
                     @HtmlHelpers.MenuItem("Kontakta oss", "Index", "Contact")
                 </ul>
 
@@ -38,40 +38,45 @@
             @RenderBody()
         </div>
 
-        <footer>
+        <footer class="panel panel-footer container">
             <div class="row">
-                <div class="col-md-4">
+                <div class="panel panel-group">
 
-                    <h4>Kontakt Information</h4>
-                    <p>Tel: 042-400 44 66</p>
-                    <p>Fax: 042-400 44 66</p>
-                    <p>Email: info@hbgdatorservice.se</p>
+                    <div class="panel-info col-md-4">
+                        <div class="panel-title"><h4>Kontakt Information</h4></div>
+                        <div class="panel-body">
+                            <p>Tel: 042-400 44 66</p>
+                            <p>Fax: 042-400 44 66</p>
+                            <p>Email: info@hbgdatorservice.se</p>
+                        </div>
+                    </div>
+
+                    <div class="panel-info col-md-4">
+                        <div class="panel-title"><h4>Öppertider</h4></div>
+                        <div class="panel-body">
+                            <p>Måndag - Fredag 10:00 - 18:00</p>
+                            <p>Lördag 10:00 - 13:00</p>
+                            <p>Söndag Stängt</p>
+                        </div>
+                    </div>
+
+                    <div class="panel-info col-md-4">
+                        <div class="panel-title"><h4>Adress</h4></div>
+                        <div class="panel-body">
+                            <p>Gasverksgatan 33</p>
+                            <p>252 68 Helsingborg</p>
+                        </div>
+                    </div>
 
                 </div>
+                <br />
 
-                <div class="col-md-4 col-md-pull-1">
-
-                    <h4>Öppertider</h4>
-                    <p>Våra öppettider:</p>
-                    <p>Måndag - Fredag 10:00 - 18:00</p>
-                    <p>Lördag 10:00 - 13:00</p>
-                    <p>Söndag Stängt</p>
-
-                </div>
-
-                <div class="col-md-4 col-md-pull-2">
-
-                    <h4>Adress</h4>
-                    <p>Address:</p>
-                    <p>Gasverksgatan 33</p>
-                    <p>252 68 Helsingborg</p>
-
+                <div class="col-md-12">
+                    <h3>@DateTime.Now.Year - HBGDatorService</h3>
                 </div>
             </div>
 
-            <div class="col-md-4">
-                <h3>@DateTime.Now.Year - HBGDatorService</h3>
-            </div>
+
 
         </footer>
 

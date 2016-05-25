@@ -58,254 +58,133 @@ namespace HBGDatorServiceDAL
 
         //------------------------------------------------------------------------------------------------------- Users/Admins
 
-        public static void UpdateUserProfile(UserAccount user)
+        public static List<UserAccount> GetAllUsers(int nrToGet)
         {
             using (var context = new HBGDatorServiceContext())
             {
-                context.Entry(user).State = EntityState.Modified;
-                context.SaveChanges();
-            }
-        }
-        public static void RemoveUserByID(int id)
-        {
-            using (var context = new HBGDatorServiceContext())
-            {
-                var user = context.Users.Find(id);
-                user.IsActive = false;
-                context.SaveChanges();
-            }
-        }
-        public static List<UserAccount> GetAllUsers()
-        {
-            using (var context = new HBGDatorServiceContext())
-            {
-                return (from i in context.UserAccount
-                        where i.FirstName != null
-                        select (new UserAccount
-                        {
-                            FirstName = i.FirstName,
-                            LastName = i.LastName,
-                            Email = i.Email
-                        })).ToList();
+                return context.UserAccount.OrderByDescending(d => d.FirstName).Take(nrToGet).ToList();
             }
         }
 
         //------------------------------------------------------------------------------------------------------- Service
 
-        public static ServiceReadOnlyModel ServiceReadOnly(int nrToShow)
-        {
-            using (var contex = new HBGDatorServiceContext())
-            {
-                ServiceReadOnlyModel s = new ServiceReadOnlyModel();
-                s.services = contex.Services.Take(nrToShow).ToList();
-                return s;
-            }
-        }
-        public static void UpdateService(Service service)
+        public static List<Service> GetAllServices(int nrToGet = 4)
         {
             using (var context = new HBGDatorServiceContext())
             {
-                context.Entry(service).State = EntityState.Modified;
-                context.SaveChanges();
+                return context.Services.OrderByDescending(d => d.ID).Take(nrToGet).ToList();
             }
         }
-        public static Service GetLatestService()
+        public static Service GetServiceById(int idToGet)
         {
             using (var context = new HBGDatorServiceContext())
             {
-                EditServiceModel e = new EditServiceModel();
-                Service a = context.Services.OrderByDescending(x => x.ID).FirstOrDefault();
-
-                e.Header = a.Header;
-                e.ID = a.ID;
-                e.Textfield = a.Textfield;
-
-                return a;
+                return context.Services.Where(n => n.ID == idToGet).FirstOrDefault();
             }
         }
-        public static Service SetServiceValues(EditServiceModel model, Service service)
-        {
-            service.ID = model.ID;
-            service.Header = model.Header;
-            service.Textfield = model.Textfield;
-            return service;
-        }
-        public static EditServiceModel GetLatestServiceInformation()
+        public static void UpdateOrSaveService(Service serviceToEdit)
         {
             using (var context = new HBGDatorServiceContext())
             {
-                var query =
-                    (from a in context.Services
-                     orderby a.ID descending
-                     select new EditServiceModel()
-                     {
-                         ID = a.ID,
-                         Header = a.Header,
-                         Textfield = a.Textfield,
+                if (context.Services.Where(n => n.ID == serviceToEdit.ID).FirstOrDefault() == null)
+                {
+                    context.Services.Add(serviceToEdit);
+                    context.SaveChanges();
+                }
+                else
+                {
+                    context.Services.Attach(serviceToEdit);
+                    context.Entry(serviceToEdit).State = EntityState.Modified;
+                    context.SaveChanges();
+                }
+            }
+        }
+        public static void DeleteService(int id)
+        {
+            using (var context = new HBGDatorServiceContext())
+            {
+                Service toRemove = context.Services.Where(n => n.ID == id).FirstOrDefault();
+                if (toRemove != null)
+                {
+                    context.Services.Remove(toRemove);
+                    context.SaveChanges();
+                }
+                else
+                {
+                    return;
+                }
+            }
+        }
 
-                     }).FirstOrDefault();
-
-                return query;
+        public static IEnumerable<Service> GetServiceList()
+        {
+            using (var context = new HBGDatorServiceContext())
+            {
+                return context.Services.OrderByDescending(d => d.ID).ToList();
             }
         }
 
         //------------------------------------------------------------------------------------------------------- About
 
-        public static AboutReadOnlyModel AboutReadOnly()
-        {
-            using (var contex = new HBGDatorServiceContext())
-            {
-
-                AboutReadOnlyModel a = new AboutReadOnlyModel();
-                a.About = contex.Abouts.Take(3).ToList();
-
-                return a;
-
-            }
-        }
-        public static void UpdateAbouts(About about)
+        public static List<About> GetAllAbouts(int nrToGet = 4)
         {
             using (var context = new HBGDatorServiceContext())
             {
-                context.Entry(about).State = EntityState.Modified;
-                context.SaveChanges();
+                return context.Abouts.OrderByDescending(d => d.ID).Take(nrToGet).ToList();
             }
         }
-        public static About GetLatestAbout()
+        public static About GetAboutsById(int idToGet)
         {
             using (var context = new HBGDatorServiceContext())
             {
-                var query =
-                    (from a in context.Abouts
-                     orderby a.ID descending
-                     select a).FirstOrDefault();
-
-                return query;
+                return context.Abouts.Where(n => n.ID == idToGet).FirstOrDefault();
             }
         }
-        public static About SetAboutValues(EditAboutModel model, About about)
-        {
-            about.ID = model.ID;
-            about.Header = model.Header;
-            about.Textfield = model.Textfield;
-            return about;
-        }
-        public static List<About> GetAllAbouts()
+        public static void UpdateOrSaveAbouts(About aboutsToEdit)
         {
             using (var context = new HBGDatorServiceContext())
             {
-                List<About> Returnlist = new List<About>();
-
-                foreach (var item in context.Abouts)
+                if (context.Abouts.Where(n => n.ID == aboutsToEdit.ID).FirstOrDefault() == null)
                 {
-                    var query = from a in context.Abouts
-                                orderby a.ID
-                                select a;
-
-                    Returnlist.Add(item);
+                    context.Abouts.Add(aboutsToEdit);
+                    context.SaveChanges();
                 }
-
-                return Returnlist;
+                else
+                {
+                    context.Abouts.Attach(aboutsToEdit);
+                    context.Entry(aboutsToEdit).State = EntityState.Modified;
+                    context.SaveChanges();
+                }
             }
         }
-
-        /*public static EditAboutModel GetLatestAboutInformation()
+        public static void DeleteAbouts(int id)
         {
             using (var context = new HBGDatorServiceContext())
             {
-                var query =
-                    (from a in context.Abouts
-                     orderby a.ID descending
-                     select new EditAboutModel()
-                     {
-                         ID = a.ID,
-                         Header = a.Header,
-                         Textfield = a.Textfield,
-
-                     }).FirstOrDefault();
-
-                return query;
+                About toRemove = context.Abouts.Where(n => n.ID == id).FirstOrDefault();
+                if (toRemove != null)
+                {
+                    context.Abouts.Remove(toRemove);
+                    context.SaveChanges();
+                }
+                else
+                {
+                    return;
+                }
             }
         }
-        */
+
+        public static IEnumerable<About> GetAboutList()
+        {
+            using (var context = new HBGDatorServiceContext())
+            {
+                return context.Abouts.OrderByDescending(d => d.ID).ToList();
+            }
+        }
 
         //------------------------------------------------------------------------------------------------------- Price
 
-        public static PricesReadOnlyModel PriceReadOnly()
-        {
-            using (var contex = new HBGDatorServiceContext())
-            {
 
-                PricesReadOnlyModel p = new PricesReadOnlyModel();
-                p.Prices = contex.Prices.Take(3).ToList();
-
-                return p;
-
-            }
-        }
-        public static void UpdatePrice(Price price)
-        {
-            using (var context = new HBGDatorServiceContext())
-            {
-                context.Entry(price).State = EntityState.Modified;
-                context.SaveChanges();
-            }
-        }
-        public static Price GetLatesPrice()
-        {
-            using (var context = new HBGDatorServiceContext())
-            {
-                var query =
-                    (from a in context.Prices
-                     orderby a.ID descending
-                     select a).FirstOrDefault();
-
-                return query;
-            }
-        }
-        public static Price SetPriceValues(EditPriceModel model, Price price)
-        {
-            price.ID = model.ID;
-            price.Textfield = model.Textfield;
-            return price;
-        }
-        public static List<Price> GetAllPrices()
-        {
-            using (var context = new HBGDatorServiceContext())
-            {
-                List<Price> Returnlist = new List<Price>();
-
-                foreach (var item in context.Prices)
-                {
-                    var query = from a in context.Prices
-                                orderby a.ID
-                                select a;
-
-                    Returnlist.Add(item);
-                }
-
-                return Returnlist;
-            }
-        }
-        public static EditPriceModel GetLatestPriceInformation()
-        {
-            using (var context = new HBGDatorServiceContext())
-            {
-                var query =
-                    (from a in context.Prices
-                     orderby a.ID descending
-                     select new EditPriceModel()
-                     {
-                         ID = a.ID,
-                         Textfield = a.Textfield,
-
-                     }).FirstOrDefault();
-
-                return query;
-            }
-        }
-
-        //------------------------------------------------------------------------------------------------------- Extra Spacing
 
         //------------------------------------------------------------------------------------------------------- News
 

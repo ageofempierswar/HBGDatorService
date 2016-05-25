@@ -87,14 +87,10 @@
     <Compile Include="Models\SlideShowImgModel.cs" />
     <Compile Include="Models\UploadFileModel.cs" />
     <Compile Include="POCO\About.cs" />
-    <Compile Include="POCO\Abouts.cs" />
-    <Compile Include="POCO\DB.cs" />
-    <Compile Include="POCO\Disconnected.cs" />
     <Compile Include="POCO\News.cs" />
     <Compile Include="POCO\Price.cs" />
     <Compile Include="POCO\Service.cs" />
     <Compile Include="POCO\SlideShowImage.cs" />
-    <Compile Include="POCO\AdminAccount.cs" />
     <Compile Include="POCO\UserAccount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />

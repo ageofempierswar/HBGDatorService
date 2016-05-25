@@ -31,5 +31,9 @@ namespace HBGDatorService.Models
         }
 
         public System.Data.Entity.DbSet<HBGDatorServiceDAL.POCO.News> News { get; set; }
+
+        public System.Data.Entity.DbSet<HBGDatorServiceDAL.POCO.About> Abouts { get; set; }
+
+        public System.Data.Entity.DbSet<HBGDatorServiceDAL.POCO.Service> Services { get; set; }
     }
 }
