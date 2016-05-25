@@ -11,7 +11,6 @@ body {
     background-size: cover;
     height: 100%;
     width: 100%;
-    min-width:496px;
 }
 
 .ServiceContent {
@@ -66,7 +65,6 @@ textarea {
     background-color: #ffffff;
     -webkit-box-shadow: 0 0 10px 5px #C4C4C4;
     box-shadow: 0 0 10px 5px #C4C4C4;
-    min-width: 480px;
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
