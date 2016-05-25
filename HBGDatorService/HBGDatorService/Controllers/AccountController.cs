@@ -37,7 +37,7 @@ namespace HBGDatorService.Controllers
                         db.SaveChanges();
                     }
                     ModelState.Clear();
-                    ViewBag.Message = account.FirstName + " " + account.LastName + " successfully registerd";
+                    ViewBag.Message = account.FirstName + " " + account.LastName + "Registrering lyckades!";
                 }
             return View();
         }
@@ -66,7 +66,7 @@ namespace HBGDatorService.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "The user name or password provided is incorrect.");
+                    ModelState.AddModelError("", "Det angivna användardamnet eller lösenordet stämmer inte.");
                 }
 
             }
@@ -114,34 +114,22 @@ namespace HBGDatorService.Controllers
             switch (createStatus)
             {
                 case MembershipCreateStatus.DuplicateUserName:
-                    return "User name already exists. Please enter a different user name.";
+                    return "Användarnamnet existerar redan. Ange ett annat användarnamn.";
 
                 case MembershipCreateStatus.DuplicateEmail:
-                    return "A user name for that e-mail address already exists. Please enter a different e-mail address.";
+                    return "Ett användarnamn för epostadressen finns redan. Ange en annan epostadress.";
 
                 case MembershipCreateStatus.InvalidPassword:
-                    return "The password provided is invalid. Please enter a valid password value.";
+                    return "Lösenordet är ogiltigt. Ange ett giltigt lösenord.";
 
                 case MembershipCreateStatus.InvalidEmail:
-                    return "The e-mail address provided is invalid. Please check the value and try again.";
-
-                case MembershipCreateStatus.InvalidAnswer:
-                    return "The password retrieval answer provided is invalid. Please check the value and try again.";
-
-                case MembershipCreateStatus.InvalidQuestion:
-                    return "The password retrieval question provided is invalid. Please check the value and try again.";
+                    return "Epostadressen är ogiltig. Kontrollera vad du skrivit och försök igen.";
 
                 case MembershipCreateStatus.InvalidUserName:
-                    return "The user name provided is invalid. Please check the value and try again.";
-
-                case MembershipCreateStatus.ProviderError:
-                    return "The authentication provider returned an error. Please verify your entry and try again. If the problem persists, please contact your system administrator.";
-
-                case MembershipCreateStatus.UserRejected:
-                    return "The user creation request has been canceled. Please verify your entry and try again. If the problem persists, please contact your system administrator.";
+                    return "Användarnamnet är ogiltigt. Kontrollera vad du skrivit och försök igen.";
 
                 default:
-                    return "An unknown error occurred. Please verify your entry and try again. If the problem persists, please contact your system administrator.";
+                    return "Ett okänt fel inträffade. Vänligen kontrollera dina uppgifter och försök igen. Om problemet kvarstår, kontakta din systemadministratör.";
             }
         }
         #endregion

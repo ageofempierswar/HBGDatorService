@@ -9,23 +9,16 @@
 
 @if (Session["Admin"] != null && (bool)Session["Admin"])
 {
-    <div class="panel-footer"> @Html.ActionLink("Skapa Ny", "Create", "Home") </div>
+    <div class="panel-footer"> @Html.ActionLink("Skapa Ny", "EditAbout") </div>
 }
 
 <div class="panel panel-info">
-
-    <div class="panel-heading col-md-4">
-        @Html.DisplayNameFor(model => model.Header)
-    </div>
-    <div class="panel-heading col-md-8">
-        @Html.DisplayNameFor(model => model.Textfield)
-    </div>
 
 
     @foreach (var item in Model)
     {
         <div class="panel-body">
-            <div>
+            <div style="font-size:18px;">
                 @Html.DisplayFor(modelItem => item.Header)
             </div>
             <div>

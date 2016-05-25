@@ -13,25 +13,30 @@ namespace HBGDatorServiceDAL.POCO
 
         public bool Admin { get; set; }
 
-        [Required(ErrorMessage = "First name is required.")]
+        [Required(ErrorMessage = "Förnamn måste fyllas i.")]
+        [Display(Name = "Förnamn")]
         public string FirstName { get; set; }
 
-        [Required(ErrorMessage = "Last name is required.")]
+        [Required(ErrorMessage = "Efternamn måste fyllas i.")]
+        [Display(Name = "Efternamn")]
         public string LastName { get; set; }
 
-        [Required(ErrorMessage = "Email is required.")]
+        [Required(ErrorMessage = "Email måste fyllas i.")]
+        [Display(Name = "Email")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Username is required.")]
+        [Required(ErrorMessage = "Användarnamn måste fyllas i.")]
+        [Display(Name = "Användarnamn")]
         public string Username { get; set; }
 
-        [Required(ErrorMessage = "Password is required.")]
-        //[StringLength(100, ErrorMessage = "The {0} must be at least {6} characters long.", MinimumLength = 6)]
+        [Required(ErrorMessage = "Lösenord måste fyllas i.")]
+        [Display(Name = "Lösenord")]
         [DataType(DataType.Password)]
         public string Password { get { return _Password ?? ""; } set { _Password = value; } }
 
-        [Compare("Password", ErrorMessage = "Plese confirm your password.")]
+        [Compare("Password", ErrorMessage = "Skriv in ditt lösenord igen.")]
+        [Display(Name = "Bekräfta lösenordet")]
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
         public bool RememberMe { get; set; }

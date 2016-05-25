@@ -76,6 +76,20 @@ textarea {
     }
 }
 
+@media Screen and (max-width: 768px)
+{
+    .Navcontainer {
+    margin-left:15px!important;
+}
+
+}
+@media Screen and (max-width: 992px) {
+    .nav > li > a {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+}
+
 @media Screen and (min-width: 992px) {
     .slider-container {
         max-width: 1140px;

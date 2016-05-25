@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
@@ -11,7 +13,11 @@ namespace HBGDatorServiceDAL.POCO
      public class About
     {
         public int ID { get; set; }
+        [DataType(DataType.MultilineText)]
+        [DisplayName("Rubrik")]
         public string Header { get; set; }
+        [DataType(DataType.MultilineText)]
+        [DisplayName("Innehåll")]
         public string Textfield { get; set; }
 
         public About()

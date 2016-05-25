@@ -86,15 +86,18 @@ namespace HBGDatorServiceDAL
         {
             using (var context = new HBGDatorServiceContext())
             {
-                if (context.Services.Where(n => n.ID == serviceToEdit.ID).FirstOrDefault() == null)
+                Service serviceExisting = context.Services.Where(n => n.ID == serviceToEdit.ID).FirstOrDefault();
+                if (serviceExisting == null)
                 {
                     context.Services.Add(serviceToEdit);
                     context.SaveChanges();
                 }
                 else
                 {
-                    context.Services.Attach(serviceToEdit);
-                    context.Entry(serviceToEdit).State = EntityState.Modified;
+
+                    serviceExisting.Header = serviceToEdit.Header;
+                    serviceExisting.Textfield = serviceToEdit.Textfield;
+                    context.Entry(serviceExisting).State = EntityState.Modified;
                     context.SaveChanges();
                 }
             }
@@ -144,15 +147,18 @@ namespace HBGDatorServiceDAL
         {
             using (var context = new HBGDatorServiceContext())
             {
-                if (context.Abouts.Where(n => n.ID == aboutsToEdit.ID).FirstOrDefault() == null)
+                About aboutsExisting = context.Abouts.Where(n => n.ID == aboutsToEdit.ID).FirstOrDefault();
+                if (aboutsExisting == null)
                 {
                     context.Abouts.Add(aboutsToEdit);
                     context.SaveChanges();
                 }
                 else
                 {
-                    context.Abouts.Attach(aboutsToEdit);
-                    context.Entry(aboutsToEdit).State = EntityState.Modified;
+
+                    aboutsExisting.Header = aboutsToEdit.Header;
+                    aboutsExisting.Textfield = aboutsToEdit.Textfield;
+                    context.Entry(aboutsExisting).State = EntityState.Modified;
                     context.SaveChanges();
                 }
             }
@@ -184,7 +190,7 @@ namespace HBGDatorServiceDAL
 
         //------------------------------------------------------------------------------------------------------- Price
 
-
+            //Finns inte ännu.
 
         //------------------------------------------------------------------------------------------------------- News
 
@@ -206,15 +212,18 @@ namespace HBGDatorServiceDAL
         {
             using (var context = new HBGDatorServiceContext())
             {
-                if (context.News.Where(n => n.newsID == newsToEdit.newsID).FirstOrDefault() == null)
+                News newsExisting = context.News.Where(n => n.newsID == newsToEdit.newsID).FirstOrDefault();
+                if (newsExisting == null)
                 {
                     context.News.Add(newsToEdit);
                     context.SaveChanges();
                 }
                 else
                 {
-                    context.News.Attach(newsToEdit);
-                    context.Entry(newsToEdit).State = EntityState.Modified;
+                    newsExisting.newsBody = newsToEdit.newsBody;
+                    newsExisting.newsDate = newsToEdit.newsDate;
+                    newsExisting.newsTopic = newsExisting.newsTopic;
+                    context.Entry(newsExisting).State = EntityState.Modified;
                     context.SaveChanges();
                 }
             }
